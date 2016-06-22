@@ -1,18 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-
 <?php
-	$local_url = '../../';
-	$navy = array();
-	$navy[Home] = $local_url.'index.php';
-	$navy[Board] = 'index.php';
-	include $local_url.'from/navybar.php';
-	include $local_url.'db_login.php';
+$web_title = 'PHP 연습장 - home';
+$nav_array = array();
+$nav_array[Home] = $_SERVER['DOCUMENT_ROOT'].'/index.php';
+$nav_array[Board] = $_SERVER['DOCUMENT_ROOT'].'/board/04_db/index.php';
+include $_SERVER['DOCUMENT_ROOT'].'/header.php';
+include $_SERVER['DOCUMENT_ROOT'].'/db_login.php';
 ?>
 
 <div class="fix main_content">

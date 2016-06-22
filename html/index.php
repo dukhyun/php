@@ -1,19 +1,8 @@
-<!DOCTYPE HTML>
-<html>
-
-<head>
-<title>PHP 학습 페이지 - 김덕현</title>
-<meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="style.css">
-</head>
-
-<body>
-
 <?php
-	$local_url = '';
-	$navy = array();
-	$navy[Home] = $local_url.'index.php';
-	include $local_url.'from/navybar.php';
+$web_title = 'PHP 연습장 - home';
+$nav_array = array();
+$nav_array[Home] = $_SERVER['DOCUMENT_ROOT'].'/index.php';
+include $_SERVER['DOCUMENT_ROOT'].'/header.php';
 ?>
 
 <div class="fix main_content">
@@ -95,12 +84,11 @@
 	<div class="fix box_content floatleft">
 		<h2>폼<span>From</span></h2>
 		<ul> <!-- 목록 //-->
-			<li><a href="from/navybar.php">네비바</a></li>
-			<li><a href="from/navybar_test.php">네비바test</a></li>
+			<li><a href="from/navbar.php">네비바</a></li>
+			<li><a href="from/navbar_test.php">네비바test</a></li>
 		</ul>
 	</div>
 	
 </div>
 
-</body>
-</html>
+<?php include $local_url.'footer.php'; ?>
