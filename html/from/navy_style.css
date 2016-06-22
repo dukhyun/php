@@ -1,0 +1,16 @@
+/* navybar */
+.navy {
+    background-color: #5f5f5f;
+	padding: 0 10px;
+    min-height: 30px;
+	margin-bottom: 10px;
+}
+.navy a {
+    display: inline-block;
+	font-size: 16px;
+    color: white;
+    padding: 10px;
+}
+.navy a:hover {
+    background-color: black;
+}
