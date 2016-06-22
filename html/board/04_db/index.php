@@ -1,10 +1,12 @@
 <?php
-$web_title = 'PHP 연습장 - home';
+$local_url = '../../';
+$web_title = 'PHP 연습장 - 게시판';
 $nav_array = array();
-$nav_array[Home] = $_SERVER['DOCUMENT_ROOT'].'/index.php';
-$nav_array[Board] = $_SERVER['DOCUMENT_ROOT'].'/board/04_db/index.php';
-include $_SERVER['DOCUMENT_ROOT'].'/header.php';
-include $_SERVER['DOCUMENT_ROOT'].'/db_login.php';
+$nav_array['Home'] = $local_url.'index.php';
+$nav_array['Board'] = $local_url.'board/04_db/index.php';
+$css_array['board'] = $local_url.'board/04_db/style.css';
+include $local_url.'header.php';
+include $local_url.'db_login.php';
 ?>
 
 <div class="fix main_content">
@@ -23,6 +25,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/db_login.php';
 
 <?php
 	$conn = mysqli_connect($hostname, $username, $password, $dbname);
+	mysqli_query($conn, "SET NAMES 'utf8'");
 	if (!$conn) {
 		die('Mysql connection failed: '.mysqli_connect_error());
 	}
@@ -55,5 +58,4 @@ include $_SERVER['DOCUMENT_ROOT'].'/db_login.php';
 
 </div>
 
-</body>
-</html>
+<?php include $local_url.'footer.php'; ?>

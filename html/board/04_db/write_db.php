@@ -1,15 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-
 <?php
-	$local_url = '../../';
-	include $local_url.'from/navybar.php';
-	include $local_url.'db_login.php';
+$local_url = '../../';
+$web_title = 'PHP 연습장 - 게시판';
+$nav_array = array();
+$nav_array['Home'] = $local_url.'index.php';
+$nav_array['Board'] = $local_url.'board/04_db/index.php';
+$css_array['board'] = $local_url.'board/04_db/style.css';
+include $local_url.'header.php';
+include $local_url.'db_login.php';
 ?>
 
 <div class="fix main_content">
@@ -42,5 +39,4 @@
 
 </div>
 
-</body>
-</html>
+<?php include $local_url.'footer.php'; ?>

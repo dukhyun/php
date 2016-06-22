@@ -1,8 +1,9 @@
 <?php
-$web_title = 'PHP 연습장 - home';
+$local_url = '';
+$web_title = 'PHP 연습장';
 $nav_array = array();
-$nav_array[Home] = $_SERVER['DOCUMENT_ROOT'].'/index.php';
-include $_SERVER['DOCUMENT_ROOT'].'/header.php';
+$nav_array[Home] = $local_url.'index.php';
+include $local_url.'header.php';
 ?>
 
 <div class="fix main_content">
@@ -74,10 +75,10 @@ include $_SERVER['DOCUMENT_ROOT'].'/header.php';
 	</div>
 	
 	<div class="fix box_content floatleft">
-		<h2>연습<span>Training</span></h2>
+		<h2>연습<span>Test</span></h2>
 		<ul> <!-- 목록 //-->
-			<li><a href="training/time.php">Time</a></li>
-			<li><a href="training/"></a></li>
+			<li><a href="test/time.php">Time</a></li>
+			<li><a href="test/server_url.php">server_url</a></li>
 		</ul>
 	</div>
 	
