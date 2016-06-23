@@ -58,7 +58,7 @@ include 'function.php';
 		<a href="#">글쓰기</a>
 		<a href="#">수정</a>
 		<a href="#">삭제</a>
-		<a href="#">목록</a>
+		<a href="index.php">목록</a>
 	</div>
 	
 <?php 

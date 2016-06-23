@@ -21,10 +21,11 @@ include 'function.php';
 		$title = $_POST['title'];
 		$content = $_POST['content'];
 	}
+	$board_id = get_boardid($conn, $board_title);
 	
 	$conn = db_connect($local_url);
 	$insert_query = 'INSERT INTO post (author, title, content, board_id) VALUES ("'
-					.$author.'", "'.$title.'", "'.$content.'", "'.get_boardid($conn, $board_title).'")';
+					.$author.'", "'.$title.'", "'.$content.'", "'.$board_id.'")';
 	if (mysqli_query($conn, $insert_query) === false) {
 		echo mysqli_error($conn);
 	} else {

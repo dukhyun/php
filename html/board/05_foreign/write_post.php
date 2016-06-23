@@ -17,6 +17,7 @@ include 'function.php';
 		$conn = db_connect($local_url);
 		$board_title = get_board_title($conn, $board_id);
 	?>
+	
 	<h1>글 작성</h1>
 	<form action="write_db.php" method="post">
 		<ul class="form_style">

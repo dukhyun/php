@@ -42,7 +42,7 @@ include 'function.php';
 			$row['title'].'</a>'.'</li>';
 			echo '<li class="author floatleft">'.$row['author'].'</li>';
 			echo '<li class="author floatleft">'
-			.date("m-d H:i", strtotime($row['crea_dtm'])).'</li>';
+			.date("m-d H:i", time_seoul($row['crea_dtm'])).'</li>';
 		echo '</ul>';
 	}
 	

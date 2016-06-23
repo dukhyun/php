@@ -32,4 +32,11 @@ function get_board_title($conn, $id) {
 		return $row['title'];
 	}
 }
+
+function time_seoul($date) {
+	$date = strtotime($str);
+	$date = date_timezone_set($date, new DateTimeZone('Asia/Seoul'));
+	
+	return $date;
+}
 ?>
