@@ -1,4 +1,11 @@
 <?php
+$local_url = '../';
+$nav_array = array();
+$nav_array['Home'] = $local_url.'index.php';
+include $local_url.'header.php';
+?>
+
+<?php
 	// 주어진 배열의 짝수번째(홀수번째) 원소들만 출력하기
 	$numbers = array(1, 2, 4, 8, 16);
 	$even = array();
@@ -66,3 +73,5 @@
 		}
 	}
 ?>
+
+<?php include $local_url.'footer.php'; ?>

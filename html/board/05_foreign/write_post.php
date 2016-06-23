@@ -6,6 +6,7 @@ $nav_array['Home'] = $local_url.'index.php';
 $nav_array['Board'] = $local_url.'board/05_foreign/index.php';
 $css_array['board'] = $local_url.'board/05_foreign/style.css';
 include $local_url.'header.php';
+include 'function.php';
 ?>
 
 <div class="fix input_content">
@@ -13,13 +14,15 @@ include $local_url.'header.php';
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$board_id = $_GET['board_id'];
 		}
+		$conn = db_connect($local_url);
+		$board_title = get_board_title($conn, $board_id);
 	?>
 	<h1>글 작성</h1>
 	<form action="write_db.php" method="post">
 		<ul class="form_style">
 			<li>
-				<label>게시판</label>
-				<input type="text" name="board" value="<?php echo $board_id; ?>">
+				<!-- <label>게시판</label> //-->
+				<input type="hidden" name="board" value="<?php echo $board_title; ?>" readonly>
 			</li>
 			<li>
 				<label>이름</label>

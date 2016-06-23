@@ -1,0 +1,8 @@
+김덕현	파일 쓰기	$file_handle = fopen($file_name, 'a');
+김덕현	파일 읽기	$file_handle = fopen($file_name, 'r');
+김덕현	explode문	문자열로 구분할 수 있습니다.
+왜그래	정말로	왜말이야
+		
+		
+123	123	123415
+		

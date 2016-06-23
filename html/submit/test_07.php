@@ -1,4 +1,11 @@
 <?php
+$local_url = '../';
+$nav_array = array();
+$nav_array['Home'] = $local_url.'index.php';
+include $local_url.'header.php';
+?>
+
+<?php
 	function get_bigger($num1, $num2) {
 		// 더 큰 숫자를 리턴
 		if ($num1 > $num2) {
@@ -28,3 +35,6 @@
 ?>
 
 <p>======================================================================</p>
+
+
+<?php include $local_url.'footer.php'; ?>

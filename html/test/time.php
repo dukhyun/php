@@ -1,15 +1,8 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-<meta charset="UTF-8">
-</head>
-<body>
-
 <?php
-	$local_url = '../';
-	$navy = array();
-	$navy[Home] = $local_url.'index.php';
-	include $local_url.'savefrom/navybar.php';
+$local_url = '../';
+$nav_array = array();
+$nav_array['Home'] = $local_url.'index.php';
+include $local_url.'header.php';
 ?>
 
 <div class="main_content">
@@ -25,5 +18,4 @@
 ?>
 </div>
 
-</body>
-</html>
+<?php include $local_url.'footer.php'; ?>

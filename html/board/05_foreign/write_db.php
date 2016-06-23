@@ -8,13 +8,15 @@ $css_array['board'] = $local_url.'board/05_foreign/style.css';
 include $local_url.'header.php';
 include 'function.php';
 ?>
+<meta http-equiv="refresh" content="2; url='index.php'">
 
 <div class="fix main_content">
 
+	<div class="fix">
 <?php
 	// 입력 내용	
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-		$board_id = $_POST['board_id'];
+		$board_title = $_POST['board_title'];
 		$author = $_POST['author'];
 		$title = $_POST['title'];
 		$content = $_POST['content'];
@@ -22,15 +24,17 @@ include 'function.php';
 	
 	$conn = db_connect($local_url);
 	$insert_query = 'INSERT INTO post (author, title, content, board_id) VALUES ("'
-					.$author.'", "'.$title.'", "'.$content.'", "'.$board_id.'")';
+					.$author.'", "'.$title.'", "'.$content.'", "'.get_boardid($conn, $board_title).'")';
 	if (mysqli_query($conn, $insert_query) === false) {
 		echo mysqli_error($conn);
 	} else {
-		echo 'DB INSERT :'.$author.' '.$title.'<br>';
+		echo 'DB INSERT :'.$board_title.' '.$title.'<br>';
 	}
 ?>
+	</div>
+	
 	<div class="fix">
-		<a href="index.php">게시판 목록으로 이동</a>
+		<a href="index.php">2 sec after... auto move.</a>
 	</div>
 
 </div>

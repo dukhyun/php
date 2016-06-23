@@ -1,6 +1,5 @@
 <?php
 $local_url = '../';
-$web_title = 'PHP 연습장 - home';
 $nav_array = array();
 $nav_array[Home] = $local_url.'/index.php';
 include $local_url.'/header.php';

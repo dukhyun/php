@@ -1,4 +1,11 @@
 <?php
+$local_url = '../';
+$nav_array = array();
+$nav_array['Home'] = $local_url.'index.php';
+include $local_url.'header.php';
+?>
+
+<?php
 	// array_slice(('a', 'b', 'c', 'd'), 1, 2) => ('b', 'c')
 	// array_slice(배열, 시작index, length)
 	$subarray = array_slice(array('a', 'b', 'c', 'd'), 1, 2);
@@ -91,3 +98,5 @@
 		echo $key.' '.$value.'<br>';
 	} 
 ?>
+
+<?php include $local_url.'footer.php'; ?>

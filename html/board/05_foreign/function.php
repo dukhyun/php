@@ -11,15 +11,25 @@ function db_connect($local_url) {
 	return $conn;
 }
 
-function get_boardid($conn, $name) {
-	//echo $name.'<br>';
-	$query = "SELECT * FROM board WHERE name = '".$name."';";
+function get_boardid($conn, $title) {
+	$query = "SELECT * FROM board WHERE title = '".$title."';";
 	$result = mysqli_query($conn, $query);
 	if (!$result) {
 		die ("Database access failed: ".mysqli_error());
 	} else {
 		$row = mysqli_fetch_assoc($result);
 		return $row['id'];
+	}
+}
+
+function get_board_title($conn, $id) {
+	$query = "SELECT * FROM board WHERE id = ".$id.";";
+	$result = mysqli_query($conn, $query);
+	if (!$result) {
+		die ("Database access failed: ".mysqli_error());
+	} else {
+		$row = mysqli_fetch_assoc($result);
+		return $row['title'];
 	}
 }
 ?>

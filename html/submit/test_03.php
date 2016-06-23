@@ -1,4 +1,11 @@
 <?php
+$local_url = '../';
+$nav_array = array();
+$nav_array['Home'] = $local_url.'index.php';
+include $local_url.'header.php';
+?>
+
+<?php
 	// 구구단 2단
 	$index = 2;
 	while ($index <= 9) {
@@ -96,3 +103,5 @@
 	}
 	echo '입니다.';
 ?>
+
+<?php include $local_url.'footer.php'; ?>

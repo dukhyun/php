@@ -1,4 +1,11 @@
 <?php
+$local_url = '../';
+$nav_array = array();
+$nav_array['Home'] = $local_url.'index.php';
+include $local_url.'header.php';
+?>
+
+<?php
 	function sum_total($array) {
 		// 모든 원소의 값의 합을 반환
 		$sum = 0;
@@ -213,3 +220,5 @@
 ?>
 
 <?php print_r(arr_floor(45678)); ?>
+
+<?php include $local_url.'footer.php'; ?>

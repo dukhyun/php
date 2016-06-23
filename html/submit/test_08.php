@@ -1,4 +1,11 @@
 <?php
+$local_url = '../';
+$nav_array = array();
+$nav_array['Home'] = $local_url.'index.php';
+include $local_url.'header.php';
+?>
+
+<?php
 	$days = array('월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일');
 
 	$days = implode('과 ', $days); // Array -> 문자열
@@ -21,3 +28,5 @@
 	
 	print_r($days_array);
 ?>
+
+<?php include $local_url.'footer.php'; ?>
