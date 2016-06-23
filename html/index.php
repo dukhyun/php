@@ -19,6 +19,7 @@ include $local_url.'header.php';
 			<li><a href="board/02_arr/index.php">Array</a></li>
 			<li><a href="board/03_css/index.php">CSS</a></li>
 			<li><a href="board/04_db/index.php">DB</a></li>
+			<li><a href="board/05_foreign/index.php">Foreign Key</a></li>
 		</ul>
 	</div>
 	

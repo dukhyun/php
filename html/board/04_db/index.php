@@ -30,7 +30,7 @@ include $local_url.'db_login.php';
 		die('Mysql connection failed: '.mysqli_connect_error());
 	}
 	
-	$query = "SELECT idx, title, author, crea_dtm FROM board";
+	$query = "SELECT id, title, author, crea_dtm FROM post WHERE board_id = '1'";
 	$result = mysqli_query($conn, $query);
 	if (!$result) {
 		die ("Database access failed: ".mysqli_error());
@@ -38,9 +38,9 @@ include $local_url.'db_login.php';
 	
 	while($row = mysqli_fetch_assoc($result)) {
 		echo '<ul>';
-			echo '<li class="index floatleft">'.$row['idx'].'</li>';
+			echo '<li class="index floatleft">'.$row['id'].'</li>';
 			echo '<li class="title floatleft">'.
-			'<a href="view_post.php?id='.$row['idx'].'">'.$row['title'].'</a>'.'</li>';
+			'<a href="view_post.php?id='.$row['id'].'">'.$row['title'].'</a>'.'</li>';
 			echo '<li class="author floatleft">'.$row['author'].'</li>';
 			echo '<li class="author floatleft">'
 			.date("m-d H:i", strtotime($row['crea_dtm'])).'</li>';

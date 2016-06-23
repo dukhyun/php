@@ -11,7 +11,7 @@ include $local_url.'db_login.php';
 
 <div class="view_post">
 	<?php
-		$board_id = 1;
+		//$board_id = 1;
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$post_id = $_GET['id'];
