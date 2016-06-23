@@ -3,25 +3,20 @@ $local_url = '../../';
 $web_title = 'PHP 연습장 - 게시판';
 $nav_array = array();
 $nav_array['Home'] = $local_url.'index.php';
-$nav_array['Board'] = $local_url.'board/04_db/index.php';
-$css_array['board'] = $local_url.'board/04_db/style.css';
+$nav_array['Board'] = $local_url.'board/05_foreign/index.php';
+$css_array['board'] = $local_url.'board/05_foreign/style.css';
 include $local_url.'header.php';
-include $local_url.'db_login.php';
+include 'function.php';
 ?>
 
 <div class="view_post">
 	<?php
-		//$board_id = 1;
-		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-			$post_id = $_GET['id'];
+			$board_id = $_GET['board_id'];
+			$post_id = $_GET['post_id'];
 		}
 		
-		$conn = mysqli_connect($hostname, $username, $password, $dbname);
-		mysqli_query($conn, "SET NAMES 'utf8'");
-		if (!$conn) {
-			die('Mysql connection failed: '.mysqli_connect_error());
-		}
+		$conn = db_connect($local_url);
 		
 		$query = "SELECT * FROM post WHERE board_id = ".$board_id." AND id = ".$post_id.";";
 		$result = mysqli_query($conn, $query);

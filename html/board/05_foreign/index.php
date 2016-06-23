@@ -38,7 +38,8 @@ include 'function.php';
 		echo '<ul>';
 			echo '<li class="index floatleft">'.$row['id'].'</li>';
 			echo '<li class="title floatleft">'.
-			'<a href="view_post.php?id='.$row['id'].'">'.$row['title'].'</a>'.'</li>';
+			'<a href="view_post.php?board_id='.$board_id.'&post_id='.$row['id'].'">'.
+			$row['title'].'</a>'.'</li>';
 			echo '<li class="author floatleft">'.$row['author'].'</li>';
 			echo '<li class="author floatleft">'
 			.date("m-d H:i", strtotime($row['crea_dtm'])).'</li>';
@@ -84,7 +85,8 @@ include 'function.php';
 		echo '<ul>';
 			echo '<li class="index floatleft">'.$row['id'].'</li>';
 			echo '<li class="title floatleft">'.
-			'<a href="view_post.php?id='.$row['id'].'">'.$row['title'].'</a>'.'</li>';
+			'<a href="view_post.php?board_id='.$board_id.'&post_id='.$row['id'].'">'.
+			$row['title'].'</a>'.'</li>';
 			echo '<li class="author floatleft">'.$row['author'].'</li>';
 			echo '<li class="author floatleft">'
 			.date("m-d H:i", strtotime($row['crea_dtm'])).'</li>';

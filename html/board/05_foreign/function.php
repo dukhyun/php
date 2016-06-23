@@ -12,7 +12,6 @@ function db_connect($local_url) {
 }
 
 function get_boardid($conn, $name) {
-
 	//echo $name.'<br>';
 	$query = "SELECT * FROM board WHERE name = '".$name."';";
 	$result = mysqli_query($conn, $query);
