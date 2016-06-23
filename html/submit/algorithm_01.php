@@ -1,4 +1,11 @@
 <?php
+$local_url = '../';
+$nav_array = array();
+$nav_array['Home'] = $local_url.'index.php';
+include $local_url.'header.php';
+?>
+
+<?php
 	// (0, 1, 2) = 3
 	// count($array); // 배열 길이 length
 	// print_r($array);
@@ -231,3 +238,5 @@
 arr1 : <?php print_r(subarray($arr1)); ?><br>
 arr2 : <?php print_r(subarray($arr2)); ?><br>
 arr3 : <?php print_r(subarray($arr3)); ?><br>
+
+<?php include $local_url.'footer.php'; ?>

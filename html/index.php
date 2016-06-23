@@ -87,7 +87,7 @@ include $local_url.'header.php';
 		<h2>폼<span>From</span></h2>
 		<ul> <!-- 목록 //-->
 			<li><a href="from/navbar.php">네비바</a></li>
-			<li><a href="from/navbar_test.php">네비바test</a></li>
+			<li><a href="from/nav_test.php">네비바test</a></li>
 		</ul>
 	</div>
 	
