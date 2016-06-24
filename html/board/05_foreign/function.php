@@ -34,7 +34,7 @@ function get_board_title($conn, $id) {
 }
 
 function time_set($date) {
-	$timezone = 'Asia/Seoul';
+	$timezone = 'GMT+0';
 	$date = strtotime($date.' '.$timezone);
 	$date = date('m-d H:i', $date);
 	return $date;

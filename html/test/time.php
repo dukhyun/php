@@ -1,5 +1,6 @@
 <?php
-$local_url = '../';
+// $local_url = '../';
+$local_url = $_SERVER[];
 $nav_array = array();
 $nav_array['Home'] = $local_url.'index.php';
 include $local_url.'header.php';
@@ -10,6 +11,8 @@ include $local_url.'header.php';
 	$date = date('Y-m-d H:i:s');
 	echo $date.'<br>';
 	echo date('m-d', strtotime($date)).'<br>';
+	date_default_timezone_set('GMT+0');
+	echo 'GMT : '.date('Y-m-d H:i:s').'<br>';
 	date_default_timezone_set('Europe/London');
 	echo 'UTC : '.date('Y-m-d H:i:s').'<br>';
 	date_default_timezone_set('Pacific/Pitcairn');
