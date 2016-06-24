@@ -18,6 +18,14 @@ include 'function.php';
 		
 		$conn = db_connect($local_url);
 		
+		// hit_count 증가
+		$query = "UPDATE post SET hit_count = hit_count + 1 WHERE id = ".$post_id.";";
+		$result = mysqli_query($conn, $query);
+		if (!$result) {
+			die ("Database access failed: ".mysqli_error());
+		}
+		
+		// 게시판 내용 출력
 		$query = "SELECT * FROM post WHERE board_id = ".$board_id." AND id = ".$post_id.";";
 		$result = mysqli_query($conn, $query);
 		if (!$result) {
@@ -55,8 +63,8 @@ include 'function.php';
 	</div>
 	
 	<div class="button">
-		<a href="write_post?board_id=<?php echo $board_id; ?>">글쓰기</a>
-		<a href="#">수정</a>
+		<a href="write_post.php?board_id=<?php echo $board_id; ?>">글쓰기</a>
+		<a href="update_post.php?post_id=<?php echo $post_id; ?>">수정</a>
 		<a href="#">삭제</a>
 		<a href="index.php">목록</a>
 	</div>

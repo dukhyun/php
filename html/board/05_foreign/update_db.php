@@ -11,12 +11,11 @@ include 'function.php';
 <meta http-equiv="refresh" content="3; url='index.php'">
 
 <div class="fix main_content">
-
 	<div class="fix">
 <?php
 	// 입력 내용
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-		$board_title = $_POST['board'];
+		$post_id = $_POST['post'];
 		$author = $_POST['author'];
 		$title = $_POST['title'];
 		$content = $_POST['content'];
@@ -25,21 +24,24 @@ include 'function.php';
 	$conn = db_connect($local_url);
 	$board_id = get_boardid($conn, $board_title);
 
-	$insert_query = 'INSERT INTO post (author, title, content, board_id) VALUES ("'
-					.$author.'", "'.$title.'", "'.$content.'", "'.$board_id.'")';
-	if (mysqli_query($conn, $insert_query) === false) {
-		echo mysqli_error($conn);
+	$query = "UPDATE post SET 
+						author = '".$author."',
+						title = '".$title."',
+						content = '".$content."' 
+						WHERE id = ".$post_id.";";
+	if (mysqli_query($conn, $query) === false) {
+		echo 'UPDATE ERROR : '.mysqli_error($conn);
 	} else {
-		echo 'DB INSERT<br>';
-		echo $board_id.'<br>'.$author.'<br>'.$title.'<br>'.$content.'<br>';
+		echo 'DB UPDATE<br>';
 	}
+	echo $query.'<br>';
 ?>
 	</div>
 	
 	<div class="fix">
-		<a href="index.php">3 sec after... auto move.</a>
+		<a href="<?php echo 'view_post.php?board_id='.$board_id.'&post_id='.$post_id; ?>">3 sec after... auto move.</a>
 	</div>
-
 </div>
+
 
 <?php include $local_url.'footer.php'; ?>

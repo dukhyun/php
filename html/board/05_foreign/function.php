@@ -12,7 +12,7 @@ function db_connect($local_url) {
 }
 
 function get_boardid($conn, $title) {
-	$query = "SELECT * FROM board WHERE title = '".$title."';";
+	$query = "SELECT id FROM board WHERE title = '".$title."';";
 	$result = mysqli_query($conn, $query);
 	if (!$result) {
 		die ("Database access failed: ".mysqli_error());
@@ -23,7 +23,7 @@ function get_boardid($conn, $title) {
 }
 
 function get_board_title($conn, $id) {
-	$query = "SELECT * FROM board WHERE id = ".$id.";";
+	$query = "SELECT title FROM board WHERE id = ".$id.";";
 	$result = mysqli_query($conn, $query);
 	if (!$result) {
 		die ("Database access failed: ".mysqli_error());
