@@ -80,6 +80,7 @@ include $local_url.'header.php';
 		<ul> <!-- 목록 //-->
 			<li><a href="test/time.php">Time</a></li>
 			<li><a href="test/server_url.php">server_url</a></li>
+			<li><a href="test/a_link.php">a_link</a></li>
 		</ul>
 	</div>
 	
