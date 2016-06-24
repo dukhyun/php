@@ -1,6 +1,6 @@
 <?php
-// $local_url = '../';
-$local_url = $_SERVER[];
+$local_url = '../';
+// $local_url = $_SERVER[];
 $nav_array = array();
 $nav_array['Home'] = $local_url.'index.php';
 include $local_url.'header.php';
