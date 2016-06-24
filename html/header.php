@@ -2,13 +2,9 @@
 <meta charset="UTF-8">
 <html>
 <?php
-if (!$local_url) {
-	$local_url = '';
-}
 // $css_array['key'] = 'link';
-// include $local_url.'header.php';
-$css_array['main'] =  $local_url.'style.css';
-$css_array['nav'] = $local_url.'from/nav.css';
+$css_array['main'] =  '/css/main.css';
+$css_array['nav'] = '/css/nav.css';
 ?>
 
 <head>
@@ -26,6 +22,6 @@ foreach ($css_array as $key => $link) {
 
 <body>
 <?php // navbar
-$nav_php = 'from/navbar.php';
-include $local_url.$nav_php;
+$nav_php = '/from/navbar.php';
+include $nav_php;
 ?>
