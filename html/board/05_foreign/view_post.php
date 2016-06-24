@@ -55,7 +55,7 @@ include 'function.php';
 	</div>
 	
 	<div class="button">
-		<a href="#">글쓰기</a>
+		<a href="write_post?board_id=<?php echo $board_id; ?>">글쓰기</a>
 		<a href="#">수정</a>
 		<a href="#">삭제</a>
 		<a href="index.php">목록</a>

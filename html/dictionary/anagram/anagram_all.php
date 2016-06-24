@@ -1,14 +1,13 @@
-<!DOCTYPE html>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<html>
+<?php
+$local_url = '../../';
+$nav_array = array();
+$nav_array['Home'] = $local_url.'index.php';
+include $local_url.'header.php';
+?>
 
-<p><a href="index.php">뒤로가기</a></p>
-
-<h1>쌍 찾기</h1>
+<h1>Anagram all</h1>
 
 <?php
-	//$start_time = array_sum(explode(' ', microtime()));
-
 	// string => array => string
 	function str_arr($str) {
 		$arr = array();
@@ -51,7 +50,7 @@
 	while (($line = fgets($file_handle)) !== false) {
 		$tmp = explode("\t", $line);
 		if (count($tmp) === 2) {
-			$dic_arr[$tmp[1]] = $tmp[0];
+			$dic_arr[$tmp[0]] = str_arr($tmp[0]);
 		}
 	}
 	
@@ -59,6 +58,7 @@
 	
 	//print_r($dic_arr);
 	
+	/* 
 	foreach ($dic_arr as $index1 => $word1) {
 		echo $word1.'('.$index1.')'.' : ';
 		foreach ($dic_arr as $index2 => $word2) {
@@ -70,10 +70,24 @@
 		}
 		echo '<br>';
 	}
+	 */
 	
-	//$end_time = array_sum(explode(' ', microtime()));
-
-	//echo 'TIME : '.($end_time - $start_time);
+	asort($dic_arr);
+	// print_r($dic_arr);
+	foreach ($dic_arr as $word => $value) {
+		if ($temp == $value) {
+			$temp_arr[] = $word;
+		}
+		else {
+			if (count($temp_arr) > 1) {
+				print_r($temp_arr);
+				echo '<br>';
+			}
+			$temp = $value;
+			$temp_arr = array();
+			$temp_arr[] = $word;
+		}
+	}
 ?>
 
-</html>
+<?php include $local_url.'footer.php'; ?>

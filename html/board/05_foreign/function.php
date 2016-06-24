@@ -33,10 +33,10 @@ function get_board_title($conn, $id) {
 	}
 }
 
-function time_seoul($date) {
-	$date = strtotime($str);
-	$date = date_timezone_set($date, new DateTimeZone('Asia/Seoul'));
-	
+function time_set($date) {
+	$timezone = 'Asia/Seoul';
+	$date = strtotime($date.' '.$timezone);
+	$date = date('m-d H:i', $date);
 	return $date;
 }
 ?>

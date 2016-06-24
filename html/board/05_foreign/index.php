@@ -41,8 +41,8 @@ include 'function.php';
 			'<a href="view_post.php?board_id='.$board_id.'&post_id='.$row['id'].'">'.
 			$row['title'].'</a>'.'</li>';
 			echo '<li class="author floatleft">'.$row['author'].'</li>';
-			echo '<li class="author floatleft">'
-			.date("m-d H:i", time_seoul($row['crea_dtm'])).'</li>';
+			// echo '<li class="dtm floatleft">'.strtotime($row['crea_dtm']).'</li>';
+			echo '<li class="dtm floatleft">'.time_set($row['crea_dtm']).'</li>';
 		echo '</ul>';
 	}
 	
@@ -88,8 +88,7 @@ include 'function.php';
 			'<a href="view_post.php?board_id='.$board_id.'&post_id='.$row['id'].'">'.
 			$row['title'].'</a>'.'</li>';
 			echo '<li class="author floatleft">'.$row['author'].'</li>';
-			echo '<li class="author floatleft">'
-			.date("m-d H:i", strtotime($row['crea_dtm'])).'</li>';
+			echo '<li class="dtm floatleft">'.time_set($row['crea_dtm']).'</li>';
 		echo '</ul>';
 	}
 	
