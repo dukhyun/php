@@ -35,7 +35,7 @@ include 'function.php';
 	
 	$page_one = 5; // 한 페이지에 표시할 글의 갯수
 	$page_all = ceil($post_all / $page_one); // 전체 페이지 수
-	echo $post_all.' '.$page_all.'<br>';
+	// echo $post_all.' '.$page_all.'<br>';
 	
 	$post_limit = ($page_one * $page) - $page_one; // 표시할 글 위치
 ?>
