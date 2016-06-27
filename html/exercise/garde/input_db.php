@@ -15,21 +15,36 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/db_login.php';
 		$score = $_POST['score'];
 	}
 	
+	// db 접속
 	$conn = mysqli_connect($hostname, $username, $password, $dbname);
 	mysqli_query($conn, "SET NAMES 'utf8'");
 	if (!$conn) {
 		die('Mysql connection failed: '.mysqli_connect_error());
 	}
 	
-	$query = sprintf('INSERT INTO garde (student, subject, score) VALUES (\'%s\', \'%s\', %d);', $student, $subject, $score);
+	// student
+	$query = sprintf("SECECT * FROM student WHERE name = '%s';", $student);
+	$result = mysqli_query($conn, $query);
+	if (!$result) {
+		$query = sprintf("INSERT INTO student (name) VALUES ('%s');", $student);
+		if (mysqli_query($conn, $query) === false) {
+			die('INSERT failed : '.mysqli_error($conn));
+		}
+	} else {
+		$row = mysqli_fetch_assoc($result);
+		$student_id = row['id'];
+	}
+	
+	/*
+	$query = sprintf("INSERT INTO garde (student, subject, score) VALUES (%d, %d, %d);", $student_id, $subject_id, $score);
 	if (mysqli_query($conn, $query) === false) {
-		echo 'INSERT failed : '.mysqli_error($conn);
+		die('INSERT failed : '.mysqli_error($conn));
 	} else {
 		echo 'INSERT<br>';
 		echo '이름 : '.$student.'<br>';
 		echo '과목 : '.$subject.'<br>';
 		echo '점수 : '.$score.'<br>';
-	}
+	} */
 ?>
 	<a href="index.php">이동..</a>
 </div>
