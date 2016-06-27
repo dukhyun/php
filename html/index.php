@@ -56,6 +56,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 			<li><a href="exercise/strcmp/index.php">strcmp 연습</a></li>
 			<li><a href="exercise/recursion/index.php">재귀 함수 활용</a></li>
 			<li><a href="exercise/reverse/index.php">문자 역순 정렬</a></li>
+			<li><a href="exercise/garde/index.php">성적 입력</a></li>
 		</ul>
 	</div>
 	
@@ -79,6 +80,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 	<div class="fix box_content floatleft">
 		<h2>연습<span>Test</span></h2>
 		<ul> <!-- 목록 //-->
+			<li><a href="test/nav_test.php">네비바test</a></li>
 			<li><a href="test/time.php">Time</a></li>
 			<li><a href="test/server_url.php">server_url</a></li>
 			<li><a href="test/a_link.php">a_link</a></li>
@@ -91,7 +93,6 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 			<li><a href="/section/header.php">header</a></li>
 			<li><a href="/section/footer.php">footer</a></li>
 			<li><a href="/section/navbar.php">navbar</a></li>
-			<li><a href="from/nav_test.php">네비바test</a></li>
 		</ul>
 	</div>
 	
