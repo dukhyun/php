@@ -3,7 +3,7 @@ $local_url = '';
 $web_title = 'PHP 연습장';
 $nav_array = array();
 $nav_array[Home] = $local_url.'index.php';
-include $local_url.'header.php';
+include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 ?>
 
 <div class="fix main_content">
@@ -85,13 +85,15 @@ include $local_url.'header.php';
 	</div>
 	
 	<div class="fix box_content floatleft">
-		<h2>폼<span>From</span></h2>
+		<h2>세션<span>Section</span></h2>
 		<ul> <!-- 목록 //-->
-			<li><a href="from/navbar.php">네비바</a></li>
+			<li><a href="/section/header.php">header</a></li>
+			<li><a href="/section/footer.php">footer</a></li>
+			<li><a href="/section/navbar.php">navbar</a></li>
 			<li><a href="from/nav_test.php">네비바test</a></li>
 		</ul>
 	</div>
 	
 </div>
 
-<?php include $local_url.'footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/../section/footer.php'; ?>

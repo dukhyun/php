@@ -5,7 +5,7 @@ $nav_array = array();
 $nav_array['Home'] = $local_url.'index.php';
 $nav_array['Board'] = $local_url.'board/05_foreign/index.php';
 $css_array['board'] = $local_url.'board/05_foreign/style.css';
-include $local_url.'header.php';
+include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 // include $local_url.'db_login.php';
 include 'function.php';
 ?>
@@ -36,13 +36,11 @@ include 'function.php';
 	
 	while($row = mysqli_fetch_assoc($result)) {
 		echo '<ul>';
-			echo '<li class="index floatleft">'.$row['id'].'</li>';
-			echo '<li class="title floatleft">'.
-			'<a href="view_post.php?board_id='.$board_id.'&post_id='.$row['id'].'">'.
-			$row['title'].'</a>'.'</li>';
-			echo '<li class="author floatleft">'.$row['author'].'</li>';
-			// echo '<li class="dtm floatleft">'.strtotime($row['crea_dtm']).'</li>';
-			echo '<li class="dtm floatleft">'.time_set($row['crea_dtm']).'</li>';
+			printf('<li class="index floatleft">%s</li>', $row['id']);
+			printf('<li class="title floatleft"><a href="view_post.php?board_id=%d&post_id%d">%s</a></li>'
+			, $board_id, $row['id'], $row['title']);
+			printf('<li class="author floatleft">%s</li>', $row['author']);
+			printf('<li class="dtm floatleft">%s</li>', time_set($row['crea_dtm']));
 		echo '</ul>';
 	}
 	
@@ -83,12 +81,11 @@ include 'function.php';
 	
 	while($row = mysqli_fetch_assoc($result)) {
 		echo '<ul>';
-			echo '<li class="index floatleft">'.$row['id'].'</li>';
-			echo '<li class="title floatleft">'.
-			'<a href="view_post.php?board_id='.$board_id.'&post_id='.$row['id'].'">'.
-			$row['title'].'</a>'.'</li>';
-			echo '<li class="author floatleft">'.$row['author'].'</li>';
-			echo '<li class="dtm floatleft">'.time_set($row['crea_dtm']).'</li>';
+			printf('<li class="index floatleft">%s</li>', $row['id']);
+			printf('<li class="title floatleft"><a href="view_post.php?board_id=%d&post_id%d">%s</a></li>'
+			, $board_id, $row['id'], $row['title']);
+			printf('<li class="author floatleft">%s</li>', $row['author']);
+			printf('<li class="dtm floatleft">%s</li>', time_set($row['crea_dtm']));
 		echo '</ul>';
 	}
 	
@@ -103,4 +100,4 @@ include 'function.php';
 <?php mysqli_close($conn); ?>
 </div>
 
-<?php include $local_url.'footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/../section/footer.php'; ?>

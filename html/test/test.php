@@ -2,11 +2,11 @@
 $local_url = '../';
 $nav_array = array();
 $nav_array['Home'] = $local_url.'index.php';
-include $local_url.'header.php';
+include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 ?>
 
 
-<?php include $local_url.'footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/../section/footer.php'; ?>
 
 
 

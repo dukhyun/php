@@ -15,13 +15,13 @@ if (!$web_title) {
 ?>
 <?php // css
 foreach ($css_array as $key => $link) {
-	echo '<link rel="stylesheet" type="text/css" href="'.$link.'">';
+	printf('<link rel="stylesheet" type="text/css" href="%s">', $link);
 }
 ?>
 </head>
 
 <body>
 <?php // navbar
-$nav_php = '/from/navbar.php';
+$nav_php = $_SERVER['DOCUMENT_ROOT'].'/../section/navbar.php';
 include $nav_php;
 ?>
