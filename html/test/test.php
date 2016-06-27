@@ -7,3 +7,9 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 
 
 <?php include $_SERVER['DOCUMENT_ROOT'].'/../section/footer.php'; ?>
+
+
+
+<?php // db_login
+include $_SERVER['DOCUMENT_ROOT'].'/../section/db_login.php';
+?>
