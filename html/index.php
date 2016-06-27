@@ -20,6 +20,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 			<li><a href="board/03_css/index.php">CSS</a></li>
 			<li><a href="board/04_db/index.php">DB</a></li>
 			<li><a href="board/05_foreign/index.php">Foreign Key</a></li>
+			<li><a href="board/06_delete/index.php">Delete</a></li>
 		</ul>
 	</div>
 	

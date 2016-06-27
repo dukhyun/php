@@ -3,8 +3,8 @@ $local_url = '../../';
 $web_title = 'PHP 연습장 - 게시판';
 $nav_array = array();
 $nav_array['Home'] = $local_url.'index.php';
-$nav_array['Board'] = $local_url.'board/05_foreign/index.php';
-$css_array['board'] = $local_url.'board/05_foreign/style.css';
+$nav_array['Board'] = $local_url.'board/06_delete/index.php';
+$css_array['board'] = $local_url.'board/06_delete/style.css';
 include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 include 'function.php';
 ?>
@@ -25,10 +25,10 @@ include 'function.php';
 	$board_id = get_boardid($conn, $board_title);
 
 	$query = "UPDATE post SET 
-						author = '".$author."',
-						title = '".$title."',
-						content = '".$content."' 
-						WHERE id = ".$post_id.";";
+				author = '".$author."',
+				title = '".$title."',
+				content = '".$content."' 
+				WHERE id = ".$post_id.";";
 	if (mysqli_query($conn, $query) === false) {
 		echo 'UPDATE ERROR : '.mysqli_error($conn);
 	} else {
@@ -39,9 +39,9 @@ include 'function.php';
 	</div>
 	
 	<div class="fix">
-		<a href="<?php echo 'view_post.php?board_id='.$board_id.'&post_id='.$post_id; ?>">3 sec after... auto move.</a>
+		3 sec after... auto move.
 	</div>
 </div>
 
 
-<?php include $local_url.'footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/../section/footer.php'; ?>

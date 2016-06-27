@@ -3,8 +3,8 @@ $local_url = '../../';
 $web_title = 'PHP 연습장 - 게시판';
 $nav_array = array();
 $nav_array['Home'] = $local_url.'index.php';
-$nav_array['Board'] = $local_url.'board/05_foreign/index.php';
-$css_array['board'] = $local_url.'board/05_foreign/style.css';
+$nav_array['Board'] = $local_url.'board/06_delete/index.php';
+$css_array['board'] = $local_url.'board/06_delete/style.css';
 include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 include 'function.php';
 ?>
@@ -22,6 +22,8 @@ include 'function.php';
 			die ("Database access failed: ".mysqli_error());
 		}
 		$row = mysqli_fetch_assoc($result);
+		
+		// $prev_url = $_SERVER['HTTP_REFERER'];
 	?>
 	
 	<h1>글 작성</h1>
@@ -50,4 +52,4 @@ include 'function.php';
 </div>
 
 
-<?php include $local_url.'footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/../section/footer.php'; ?>

@@ -3,8 +3,8 @@ $local_url = '../../';
 $web_title = 'PHP 연습장 - 게시판';
 $nav_array = array();
 $nav_array['Home'] = $local_url.'index.php';
-$nav_array['Board'] = $local_url.'board/05_foreign/index.php';
-$css_array['board'] = $local_url.'board/05_foreign/style.css';
+$nav_array['Board'] = $local_url.'board/06_delete/index.php';
+$css_array['board'] = $local_url.'board/06_delete/style.css';
 include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 include 'function.php';
 ?>
@@ -65,9 +65,9 @@ include 'function.php';
 	</div>
 	
 	<div class="button">
-		<a href="write_post.php?board_id=<?php echo $board_id; ?>">글쓰기</a>
+		<a class="mark" href="write_post.php?board_id=<?php echo $board_id; ?>">글쓰기</a>
 		<a href="update_post.php?post_id=<?php echo $post_id; ?>">수정</a>
-		<a href="#">삭제</a>
+		<a href="delete_post.php?post_id=<?php echo $post_id; ?>">삭제</a>
 		<a href="index.php">목록</a>
 	</div>
 	

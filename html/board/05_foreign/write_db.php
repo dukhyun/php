@@ -5,7 +5,7 @@ $nav_array = array();
 $nav_array['Home'] = $local_url.'index.php';
 $nav_array['Board'] = $local_url.'board/05_foreign/index.php';
 $css_array['board'] = $local_url.'board/05_foreign/style.css';
-include $local_url.'header.php';
+include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 include 'function.php';
 ?>
 <meta http-equiv="refresh" content="3; url='index.php'">
@@ -22,7 +22,7 @@ include 'function.php';
 		$content = $_POST['content'];
 	}
 	
-	$conn = db_connect($local_url);
+	$conn = db_connect();
 	$board_id = get_boardid($conn, $board_title);
 
 	$insert_query = 'INSERT INTO post (author, title, content, board_id) VALUES ("'

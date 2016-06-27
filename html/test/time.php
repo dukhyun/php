@@ -1,9 +1,8 @@
 <?php
 $local_url = '../';
-// $local_url = $_SERVER[];
 $nav_array = array();
 $nav_array['Home'] = $local_url.'index.php';
-include $local_url.'header.php';
+include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 ?>
 
 <div class="main_content">
@@ -34,4 +33,4 @@ include $local_url.'header.php';
 ?>
 </div>
 
-<?php include $local_url.'footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/../section/footer.php'; ?>
