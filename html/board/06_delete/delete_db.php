@@ -18,7 +18,7 @@ include 'function.php';
 	}
 	
 	$conn = db_connect();
-	$query = "DELETE FROM post WHERE id = ".$post_id.";";
+	$query = sprintf("DELETE FROM post WHERE id = %d;", $post_id);
 	if (mysqli_query($conn, $query) === false) {
 		echo 'DELETE ERROR : '.mysqli_error($conn);
 	} else {

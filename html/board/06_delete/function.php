@@ -12,9 +12,10 @@ function db_connect() {
 }
 
 function get_boardid($conn, $title) {
-	$query = "SELECT id FROM board WHERE title = '".$title."';";
+	$query = sprintf("SELECT id FROM board WHERE title = '%s';", $title);
 	$result = mysqli_query($conn, $query);
 	if (!$result) {
+		echo $query.'<br>';
 		die ("Database access failed: ".mysqli_error());
 	} else {
 		$row = mysqli_fetch_assoc($result);
@@ -23,9 +24,10 @@ function get_boardid($conn, $title) {
 }
 
 function get_board_title($conn, $id) {
-	$query = "SELECT title FROM board WHERE id = ".$id.";";
+	$query = sprintf("SELECT id FROM board WHERE id = %d;", $id);
 	$result = mysqli_query($conn, $query);
 	if (!$result) {
+		echo $query.'<br>';
 		die ("Database access failed: ".mysqli_error());
 	} else {
 		$row = mysqli_fetch_assoc($result);

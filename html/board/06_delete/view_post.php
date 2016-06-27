@@ -19,14 +19,15 @@ include 'function.php';
 		$conn = db_connect();
 		
 		// hit_count 증가
-		$query = "UPDATE post SET hit_count = hit_count + 1 WHERE id = ".$post_id.";";
+		$query = sprintf("UPDATE post SET hit_count = hit_count + 1 WHERE id = %d;", $post_id);
 		$result = mysqli_query($conn, $query);
 		if (!$result) {
 			die ("Database access failed: ".mysqli_error());
 		}
 		
 		// 게시판 내용 출력
-		$query = "SELECT * FROM post WHERE board_id = ".$board_id." AND id = ".$post_id.";";
+		$query = sprintf("SELECT * FROM post WHERE board_id = %d AND id = %d;",
+					$board_id, $post_id);
 		$result = mysqli_query($conn, $query);
 		if (!$result) {
 			die ("Database access failed: ".mysqli_error());

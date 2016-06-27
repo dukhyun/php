@@ -27,7 +27,7 @@ include 'function.php';
 	$conn = db_connect();
 	$board_id = get_boardid($conn, 'board_test');
 
-	$query = "SELECT id, title, author, crea_dtm FROM post WHERE board_id = ".$board_id;
+	$query = sprintf("SELECT id, title, author, crea_dtm FROM post WHERE board_id = %d", $board_id);
 	$result = mysqli_query($conn, $query);
 	if (!$result) {
 		die ("Database access failed: ".mysqli_error());

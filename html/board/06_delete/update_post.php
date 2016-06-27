@@ -15,15 +15,12 @@ include 'function.php';
 			$post_id = $_GET['post_id'];
 		}
 		$conn = db_connect();
-		
-		$query = "SELECT * FROM post WHERE id = ".$post_id.";";
+		$query = sprintf("SELECT * FROM post WHERE id = %d;", $post_id);
 		$result = mysqli_query($conn, $query);
 		if (!$result) {
 			die ("Database access failed: ".mysqli_error());
 		}
 		$row = mysqli_fetch_assoc($result);
-		
-		// $prev_url = $_SERVER['HTTP_REFERER'];
 	?>
 	
 	<h1>글 작성</h1>

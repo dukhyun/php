@@ -25,8 +25,7 @@ include 'function.php';
 	$conn = db_connect();
 	$board_id = get_boardid($conn, $board_title);
 
-	$insert_query = 'INSERT INTO post (author, title, content, board_id) VALUES ("'
-					.$author.'", "'.$title.'", "'.$content.'", "'.$board_id.'")';
+	$insert_query = sprintf("INSERT INTO post (author, title, content, board_id) VALUES ('%s', '%s', '%s', '%d');", $author, $title, $content, $board_id);
 	if (mysqli_query($conn, $insert_query) === false) {
 		echo mysqli_error($conn);
 	} else {
