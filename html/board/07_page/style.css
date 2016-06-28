@@ -72,9 +72,13 @@ h2 {
 .page {
 	text-align: left;
 }
-.page a {
+.page a, .page span {
 	font-size: 16px;
 	margin: 0 5px;
+}
+.page span.now {
+	font-weight: bold;
+	color: blue;
 }
 /* button */
 .button {

@@ -31,13 +31,10 @@ include 'function.php';
 		die ("Database access failed: ".mysqli_error());
 	}
 	$row = mysqli_fetch_assoc($result);
+	
 	$post_all = $row['count']; // 전체 글 갯수
-	
-	$page_one = 5; // 한 페이지에 표시할 글의 갯수
-	$page_all = ceil($post_all / $page_one); // 전체 페이지 수
-	// echo $post_all.' '.$page_all.'<br>';
-	
-	$post_limit = ($page_one * $page) - $page_one; // 표시할 글 위치
+	$page_post = 5; // 한 페이지에 표시할 글의 갯수
+	$post_limit = ($page_post * $page) - $page_post; // 표시할 글 위치
 ?>
 	<div class="fix">
 		<h1>게시판1</h1>
@@ -52,7 +49,7 @@ include 'function.php';
 		</ul>
 
 <?php
-	$query = sprintf("SELECT * FROM post WHERE board_id = %d LIMIT %d, %d;", $board_id, $post_limit, $page_one);
+	$query = sprintf("SELECT * FROM post WHERE board_id = %d LIMIT %d, %d;", $board_id, $post_limit, $page_post);
 	$result = mysqli_query($conn, $query);
 	if (!$result) {
 		echo $query.'<br>';
@@ -76,14 +73,32 @@ include 'function.php';
 
 	<div class="fix button">
 		<a class="mark floatright" href="write_post.php?board_id=<?php echo $board_id; ?>">글쓰기</a>
+		<a class="floatright" href="test_write_db.php?board_id=<?php echo $board_id; ?>">글 50개 작성</a>
 	</div>
 	
 	<div class="fix page">
-	<?php
-		for ($i = 1; $i <= $page_all; $i += 1) {
+<?php
+	$page_all = ceil($post_all / $page_post); // 전체 페이지 수
+	$page_view = 5; // 한 페이지에 표시할 페이지 갯수
+	
+	$page_prev = (ceil($page / $page_view) - 1) * $page_view;
+	if ($page_prev) {
+		printf('<a href="index.php?page=%d">이전</a>', $page_prev);
+	}
+	
+	for ($i = ($page_prev + 1); $i <= ($page_prev + $page_view); $i += 1) {
+		if ($i == $page) {
+			printf('<span class="now">%d</span>', $i, $i);
+		} else {
 			printf('<a href="index.php?page=%d">%d</a>', $i, $i);
 		}
-	?>
+	}
+	
+	$page_next = ceil($page / $page_view) * $page_view + 1;
+	if ($page_next) {
+		printf('<a href="index.php?page=%d">다음</a>', $page_next);
+	}
+?>
 	</div>
 </div>
 <?php mysqli_close($conn); ?>

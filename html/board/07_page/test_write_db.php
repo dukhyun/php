@@ -14,14 +14,21 @@ include 'function.php';
 
 	<div class="fix">
 <?php
+	if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+		$board_id = $_GET['board_id'];
+	}
 	$conn = db_connect();
-	$board_id = get_boardid($conn, $board_title);
 
-	$insert_query = sprintf("INSERT INTO post (author, title, content, board_id) VALUES ('%s', '%s', '%s', '%d');", $author, $title, $content, $board_id);
-	if (mysqli_query($conn, $insert_query) === false) {
-		echo mysqli_error($conn);
-	} else {
-		echo 'DB INSERT('.$board_id.') : ['.$author.'] <'.$title.'> {'.$content.'}<br>';
+	for ($i = 1; $i < 30; $i++) {
+		$author = 'Test';
+		$title = 'Test'.$i;
+		$content = 'Test Content';
+		$insert_query = sprintf("INSERT INTO post (author, title, content, board_id) VALUES ('%s', '%s', '%s', '%d');", $author, $title, $content, $board_id);
+		if (mysqli_query($conn, $insert_query) === false) {
+			echo mysqli_error($conn);
+		} else {
+			echo 'DB INSERT('.$board_id.') : '.$author.' ['.$title.'] {'.$content.'}<br>';
+		}
 	}
 ?>
 	</div>
