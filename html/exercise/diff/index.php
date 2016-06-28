@@ -1,0 +1,30 @@
+<?php
+$local_url = '../../';
+$web_title = 'PHP 연습장 - Diff';
+$nav_array = array();
+$nav_array[Home] = $local_url.'index.php';
+$css_array[diff] = 'style.css';
+include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
+?>
+
+<div class="fix main_content">
+	<form action="diff.php" method="post">
+		<ul>
+			<li class="diff_input floatleft">
+				<label>Orignal Text</label>
+				<textarea name="diff_ori"></textarea>
+			</li>
+			
+			<li class="diff_input floatleft">
+				<label>Changed Text</label>
+				<textarea name="diff_cha"></textarea>
+			</li>
+			
+			<li class="clearboth">
+				<input type="submit" value="Diff Go">
+			</li>
+		</ul>
+	</form>
+</div>
+
+<?php include $_SERVER['DOCUMENT_ROOT'].'/../section/footer.php'; ?>

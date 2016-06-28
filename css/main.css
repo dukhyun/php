@@ -12,6 +12,7 @@ body {
 .fix { overflow: hidden; } /* box scroll hidden */
 .floatleft { float: left; }
 .floatright { float: right; }
+.clearboth { clear: both; }
 .center { text-align: center; }
 .main_content {
 	background: #fff;

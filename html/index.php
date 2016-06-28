@@ -59,6 +59,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 			<li><a href="exercise/recursion/index.php">재귀 함수 활용</a></li>
 			<li><a href="exercise/reverse/index.php">문자 역순 정렬</a></li>
 			<li><a href="exercise/garde/index.php">성적 입력</a></li>
+			<li><a href="exercise/diff/index.php">Diff</a></li>
 		</ul>
 	</div>
 	
