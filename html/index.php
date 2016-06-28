@@ -22,6 +22,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 			<li><a href="board/05_foreign/index.php">Foreign Key</a></li>
 			<li><a href="board/06_delete/index.php">Delete</a></li>
 			<li><a href="board/07_page/index.php">Page</a></li>
+			<li><a href="board/08_refactoring/index.php">Refactoring</a></li>
 		</ul>
 	</div>
 	
