@@ -76,6 +76,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 			<li><a href="submit/algorithm_01.php">array_merge</a></li>
 			<li><a href="submit/recursive function.php">recursive</a></li>
 			<li><a href="submit/reverse.php">reverse</a></li>
+			<li><a href="submit/class/index.php">class</a></li>
 		</ul>
 	</div>
 	
