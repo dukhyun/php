@@ -59,8 +59,8 @@ include 'function.php';
 	while ($row = mysqli_fetch_assoc($result)) {
 		echo '<ul>';
 			printf('<li class="index floatleft">%s</li>', $row['id']);
-			printf('<li class="title floatleft"><a href="view_post.php?board_id=%d&post_id=%d">%s</a></li>'
-			, $board_id, $row['id'], $row['title']);
+			printf('<li class="title floatleft"><a href="view_post.php?page=%d&board_id=%d&post_id=%d">%s</a></li>'
+			, $page, $board_id, $row['id'], $row['title']);
 			printf('<li class="author floatleft">%s</li>', $row['author']);
 			printf('<li class="dtm floatleft">%s</li>', time_set($row['crea_dtm']));
 		echo '</ul>';
@@ -73,7 +73,7 @@ include 'function.php';
 
 	<div class="fix button">
 		<a class="mark floatright" href="write_post.php?board_id=<?php echo $board_id; ?>">글쓰기</a>
-		<a class="floatright" href="test_write_db.php?board_id=<?php echo $board_id; ?>">글 50개 작성</a>
+		<a class="floatright" href="test_write_db.php?board_id=<?php echo $board_id; ?>">글 30개 작성</a>
 	</div>
 	
 	<div class="fix page">
@@ -87,7 +87,9 @@ include 'function.php';
 	}
 	
 	for ($i = ($page_prev + 1); $i <= ($page_prev + $page_view); $i += 1) {
-		if ($i == $page) {
+		if ($i > $page_all) {
+			break;
+		} else if ($i == $page) {
 			printf('<span class="now">%d</span>', $i, $i);
 		} else {
 			printf('<a href="index.php?page=%d">%d</a>', $i, $i);
@@ -95,7 +97,7 @@ include 'function.php';
 	}
 	
 	$page_next = ceil($page / $page_view) * $page_view + 1;
-	if ($page_next) {
+	if ($page_next < $page_all) {
 		printf('<a href="index.php?page=%d">다음</a>', $page_next);
 	}
 ?>

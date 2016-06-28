@@ -19,7 +19,7 @@ include 'function.php';
 	}
 	$conn = db_connect();
 
-	for ($i = 1; $i < 30; $i++) {
+	for ($i = 1; $i <= 30; $i++) {
 		$author = 'Test';
 		$title = 'Test'.$i;
 		$content = 'Test Content';

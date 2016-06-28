@@ -12,6 +12,7 @@ include 'function.php';
 <div class="view_post">
 	<?php
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+			$page = $_GET['page'];
 			$board_id = $_GET['board_id'];
 			$post_id = $_GET['post_id'];
 		}
@@ -69,7 +70,7 @@ include 'function.php';
 		<a class="mark" href="write_post.php?board_id=<?php echo $board_id; ?>">글쓰기</a>
 		<a href="update_post.php?post_id=<?php echo $post_id; ?>">수정</a>
 		<a href="delete_post.php?post_id=<?php echo $post_id; ?>">삭제</a>
-		<a href="index.php">목록</a>
+		<a href="index.php?page=<?php echo $page; ?>">목록</a>
 	</div>
 	
 <?php 
