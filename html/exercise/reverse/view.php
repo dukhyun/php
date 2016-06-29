@@ -11,13 +11,12 @@
 <p><a href="index.php">뒤로가기</a></p>
 
 <?php
-	// string => array => string
+	// string => array
 	function str_arr($str) {
 		$arr = array();
 		for ($index = 0; $index < strlen($str); $index += 1) {
 			$arr[$index] = substr($str, $index, 1);
 		}
-		asort($arr);
 		
 		return $arr;
 	}

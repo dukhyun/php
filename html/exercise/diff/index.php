@@ -8,23 +8,30 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 ?>
 
 <div class="fix main_content">
-	<form action="diff.php" method="post">
-		<ul>
-			<li class="diff_input floatleft">
-				<label>Orignal Text</label>
-				<textarea name="diff_ori"></textarea>
-			</li>
-			
-			<li class="diff_input floatleft">
-				<label>Changed Text</label>
-				<textarea name="diff_cha"></textarea>
-			</li>
-			
-			<li class="clearboth">
-				<input type="submit" value="Diff Go">
-			</li>
-		</ul>
-	</form>
+	<div class="diff_content">
+		<form action="diff.php" method="post">
+			<ul>
+				<li class="diff_text floatleft">
+					<label>Orignal Text</label>
+					<textarea name="diff_ori"></textarea>
+				</li>
+				<li class="diff_text floatleft">
+					<label>Changed Text</label>
+					<textarea name="diff_cha"></textarea>
+				</li>
+			</ul>
+			<ul>
+				<li>
+					<input type="submit" value="Diff Go">
+				</li>
+			</ul>
+		</form>
+		
+		<br>
+		<div>
+			<a href="test_lcs.php">LCS Test</a>
+		</div>
+	</div>
 </div>
 
 <?php include $_SERVER['DOCUMENT_ROOT'].'/../section/footer.php'; ?>
