@@ -45,6 +45,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 		<ul> <!-- 목록 //-->
 			<li><a href="security/security_01_session">1-session</a></li>
 			<li><a href="security/security_02_hashing">2-hashing</a></li>
+			<li><a href="security/security_03_db">3-db</a></li>
 		</ul>
 	</div>
 	
