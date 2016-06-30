@@ -10,8 +10,8 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 <?php
 	include 'function.php';
 	
-	$text_a = 'abcde';
-	$text_b = 'axcbcbe';
+	$text_a = 'abcdefg';
+	$text_b = 'axcbcbbeh';
 	
 	$diff_a = str_arr($text_a);
 	$diff_b = str_arr($text_b);
@@ -48,22 +48,30 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 	
 	$temp = -1;
 	for ($a = 0; $a < count($diff_a); $a += 1) {
-		for ($b = $temp+1; $b < count($diff_b); $b += 1) {
+		$b = $temp + 1;
+		while (true) {
 			if ($path[$a][$b][1] == 3) {
 				$best_path[$a][$b] = $diff_a[$a];
+				$diff_check[$a][$b] = 'unchanged';
+				$diff_result['a'][$b][0] = 'unchanged';
+				$diff_result['b'][$b][0] = 'unchanged';
 				$temp = $b;
 				break;
-			} else if ($path[$a][$b][0] == $path[$a+1][$b][0]) {
+			} else if ($path[$a][$b][1] == 1 || $path[$a][$b][1] == 0) {
 				$diff_check[$a][$b] = 'del';
 				$diff_result['a'][$b][0] = 'del';
-				$diff_result['b'] = insert_arr('blank', $diff_result['b'], $b+1);
+				// echo '(del"'.$diff_result['a'][$b][1].'")';
+				$diff_result['b'] = insert_blank($diff_result['b'], $b);
 				break;
-			} else if ($b > $temp) {
+			} else if ($b > $temp && !$diff_result['b'][$b][0]) {
 				$diff_check[$a][$b] = 'add';
 				$diff_result['b'][$b][0] = 'add';
-				$diff_result['a'] = insert_arr('blank', $diff_result['a'], $b);
+				// echo '(add"'.$diff_result['b'][$b][1].'")';
+				$diff_result['a'] = insert_blank($diff_result['a'], $b);
 			}
+			$b += 1;
 		}
+		// 문제점 수정 중..
 	}
 ?>
 

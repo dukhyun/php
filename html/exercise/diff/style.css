@@ -49,3 +49,6 @@ form input[type=submit] {
 .diff .blank {
 	background-color: #888;
 }
+.diff .unchanged {
+	background-color: yellow;
+}

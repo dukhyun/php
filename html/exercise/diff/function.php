@@ -19,12 +19,14 @@ function str_arr_diff($str) {
 }
 
 // str insert from array to index
-function insert_arr($str, $array, $index) {
+function insert_blank($array, $index) {
+	// if ($array)
+	
 	for ($i = count($array)-1; $i >= $index; $i -= 1) {
 		$array[$i+1] = $array[$i];
 	}
 	
-	$array[$index] = array($str, '');
+	$array[$index] = array('blank', '');
 	
 	return $array;
 }
@@ -64,10 +66,6 @@ function diff($arr, $diff, $i, $j) {
 	
 	return array($result, $path);
 }
-
-// function diff_check() {
-	
-// }
 
 function path_sc($a) {
 	if ($a == 1) {
