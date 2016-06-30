@@ -9,6 +9,26 @@ function str_arr($str) {
 	return $arr;
 }
 
+function str_arr_diff($str) {
+	$arr = array();
+	for ($index = 0; $index < strlen($str); $index += 1) {
+		$arr[] = array('', substr($str, $index, 1));
+	}
+	
+	return $arr;
+}
+
+// str insert from array to index
+function insert_arr($str, $array, $index) {
+	for ($i = count($array)-1; $i >= $index; $i -= 1) {
+		$array[$i+1] = $array[$i];
+	}
+	
+	$array[$index] = array($str, '');
+	
+	return $array;
+}
+
 function diff($arr, $diff, $i, $j) {
 	$result = 0;
 	$path = 0;
@@ -44,6 +64,10 @@ function diff($arr, $diff, $i, $j) {
 	
 	return array($result, $path);
 }
+
+// function diff_check() {
+	
+// }
 
 function path_sc($a) {
 	if ($a == 1) {

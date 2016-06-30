@@ -10,7 +10,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 <?php
 	include 'function.php';
 	
-	$text_a = 'abcd';
+	$text_a = 'abcde';
 	$text_b = 'axcbcbe';
 	
 	$diff_a = str_arr($text_a);
@@ -40,17 +40,31 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 	
 	// best_path
 	$best_path = array();
-	foreach ($diff_a as $a => $str_a) {
-		foreach ($diff_b as $b => $str_b) {
+	$diff_check = array();
+	// diff_result
+	$diff_result = array();
+	$diff_result['a'] = str_arr_diff($text_a);
+	$diff_result['b'] = str_arr_diff($text_b);
+	
+	$temp = -1;
+	for ($a = 0; $a < count($diff_a); $a += 1) {
+		for ($b = $temp+1; $b < count($diff_b); $b += 1) {
 			if ($path[$a][$b][1] == 3) {
 				$best_path[$a][$b] = $diff_a[$a];
+				$temp = $b;
 				break;
+			} else if ($path[$a][$b][0] == $path[$a+1][$b][0]) {
+				$diff_check[$a][$b] = 'del';
+				$diff_result['a'][$b][0] = 'del';
+				$diff_result['b'] = insert_arr('blank', $diff_result['b'], $b+1);
+				break;
+			} else if ($b > $temp) {
+				$diff_check[$a][$b] = 'add';
+				$diff_result['b'][$b][0] = 'add';
+				$diff_result['a'] = insert_arr('blank', $diff_result['a'], $b);
 			}
 		}
 	}
-	
-	// diff_result
-	$diff_result = array();
 ?>
 
 <div class="fix main_content">
@@ -160,18 +174,42 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 		<div class="diff">
 			<p>Diff Cheak</p>
 			<ul>
-				<li class="header floatleft"><?php echo $text_a; ?></li>
+				<li class="header floatleft">&nbsp;</li>
 				<?php
-				for ($i = 0; $i < count($diff_result[0]); $i += 1) {
-					printf('<li class="header path floatleft %s">%s</li>', $diff_result[0][0], $diff_result[0][1]);
+				foreach ($diff_b as $key => $value) {
+					printf('<li class="header path floatleft">%s</li>', $value);
+				}
+				?>
+			</ul>
+			<?php
+			foreach ($diff_a as $a => $str_a) {
+				echo '<ul>';
+				printf('<li class="floatleft">%s</li>', $str_a);
+				foreach ($diff_b as $b => $str_b) {
+					printf('<li class="path floatleft %s">%s</li>', $diff_check[$a][$b], $best_path[$a][$b]);
+				}
+				echo '</ul>';
+			}
+			?>
+		</div>
+		
+		<br>
+		
+		<div class="diff">
+			<p>Diff Result</p>
+			<ul>
+				<?php
+				for ($i = 0; $i < count($diff_result['a']); $i += 1) {
+					printf('<li class="header path floatleft %s">%s</li>'
+					, $diff_result['a'][$i][0], $diff_result['a'][$i][1]);
 				}
 				?>
 			</ul>
 			<ul>
-				<li class="floatleft"><?php echo $text_b; ?></li>
 				<?php
-				for ($i = 0; $i < count($diff_result[1]); $i += 1) {
-					printf('<li class="path floatleft %s">%s</li>', $diff_result[1][0], $diff_result[1][1]);
+				for ($i = 0; $i < count($diff_result['b']); $i += 1) {
+					printf('<li class="path floatleft %s">%s</li>'
+					, $diff_result['b'][$i][0], $diff_result[b][$i][1]);
 				}
 				?>
 			</ul>
