@@ -24,14 +24,14 @@ function start_session() {
     session_regenerate_id(true); // session fixation 대비
 }
 
- // start_session 호출된 후에 사용되어야 한다
+// start_session 호출된 후에 사용되어야 한다
 function destroy_session() {
 	$_SESSION = array(); // 모든 세션 변수 제거
 	// 세션 쿠키 제거
 	$params = session_get_cookie_params(); // 쿠키삭제를 위해서는 생성될때의 인자들을 알아야한다.
 	setcookie(session_name(), '', 0, 
 		$params['path'], $params['domain'], $params['secure'], isset($params['httponly'])); 
-	session_destroy(); 
+	session_destroy();
 }
 
  // start_session 호출된 후에 사용되어야 한다
@@ -49,8 +49,6 @@ function try_to_login($id, $password) {
 }
 
 function check_user_account($id, $password) {
-    $id = $_POST['id'];
-    $password = $_POST['password']; 
 	$conn = get_db_connection();
 	$stmt = mysqli_prepare($conn, "SELECT hash FROM user_account WHERE id = ?");
 	mysqli_stmt_bind_param($stmt, "s", $id);

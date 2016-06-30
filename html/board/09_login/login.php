@@ -1,11 +1,13 @@
 <header>
 	<?php
-		// start_session();
-		// if (check_login()) {
-		if (false) {
+		start_session();
+		if (check_login()) {
+			$user_id = $_SESSION['id'];
 	?>
-	<span>로그인 되어 있음.</span>
-	<form action="logout_process.php" method="get">
+	<span class="fix floatleft">
+		<?php echo $user_id; ?>님이 로그인되어 있습니다.
+	</span>
+	<form class="fix floatleft" action="logout_process.php" method="get">
 		<input type="submit" value="logout">
 	</form>
 	<?php
@@ -17,7 +19,7 @@
 				<input type="text" name="id" value="E-mail" onfocus="if(this.value =='E-mail') this.value=''" onblur="if(this.value =='') this.value='E-mail';">
 			</li>
 			<li class="floatleft">
-				<input type="text" name="score" value="password" onfocus="if(this.value =='password') { this.value=''; this.type='password'; }" onblur="if(this.value =='') { this.value='password'; this.type='text'; }">
+				<input type="text" name="password" value="password" onfocus="if(this.value =='password') { this.value=''; this.type='password'; }" onblur="if(this.value =='') { this.value='password'; this.type='text'; }">
 			</li>
 			<li class="floatleft">
 				<input type="submit" value="로그인">

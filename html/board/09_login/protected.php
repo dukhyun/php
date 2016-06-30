@@ -8,24 +8,22 @@ $css_array['board'] = 'style.css';
 include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 require_once 'function.php';
 ?>
+<meta http-equiv="refresh" content="3; url='index.php'">
 
-<div class="fix register">
-	<h1>회원 가입</h1>
-	<form class="form_style" action="register_db.php" method="post">
-		<ul>
-			<li>
-				<lable>회원 id</lable>
-				<input type="text" name="id">
-			</li>
-			<li>
-				<lable>비밀번호</lable>
-				<input type="password" name="password">
-			</li>
-			<li>
-				<input type="submit" value="회원 가입">
-			</li>
-		</ul>
+<div class="fix main_content">
+	<?php
+		start_session();
+		if (check_login()) {
+			echo "<h1>로그인 성공!</h1>";
+	?>
+	<form action="index.php">
+		<input type="submit" value="메인메뉴로 돌아가기">
 	</form>
+	<?php
+		} else {
+			header("Location: error.php?error_code=3");
+		}
+	?>
 </div>
-
+<?php mysqli_close($conn); ?>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/../section/footer.php'; ?>

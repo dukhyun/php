@@ -116,12 +116,12 @@ h2 {
     font-weight: bold;
 }
 .form_style input {
-	width: 100%;
-    padding: 8px 15px 8px 15px;
 	border: 1px solid #ccc;
 	/* border-radius: 4px; */
 }
-.form_style input[type=text] {
+.form_style input[type=text], .form_style input[type=password] {
+	width: 100%;
+    padding: 8px 15px;
 	background-color: #f8f8f8;
 	resize: none;
 }
@@ -131,14 +131,14 @@ h2 {
 	padding: 12px 20px;
 	box-sizing: border-box;
 	border: 1px solid #ccc;
-	/* border-radius: 4px; */
 	background-color: #f8f8f8;
 	resize: vertical;
     overflow: auto;
 }
 /* textarea:nth-of-type { overflow: hidden; } */
 .form_style input[type=submit] {
-	width: 80px;
+	min-width: 80px;
+	padding : 8px 15px;
 	font-size: 16px;
 	/* border-radius: 4px; */
     background: #4B99AD;
@@ -183,6 +183,10 @@ header {
 	width: 100%;
     overflow: auto;
 }
+header span {
+	padding-top: 1px;
+	margin-right: 5px;
+}
 header li {
     padding: 0;
     display: block;
@@ -196,9 +200,15 @@ header input {
 header input[type=text], header input[type=password] {
 	padding: 2px 4px;
 }
-header input[type=password] {
-	ime-mode:disabled;
-}
 header input[type=submit] {
 	padding: 0 4px 2px;
+}
+/* register form */
+.register {
+	width: 400px;
+	margin: 0 auto;
+}
+/* input type=password */
+input[type=password] {
+	ime-mode:disabled;
 }

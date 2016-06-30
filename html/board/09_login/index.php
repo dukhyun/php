@@ -11,7 +11,7 @@ require_once 'function.php';
 
 <div class="fix main_content">
 
-<?php include_once 'login.php' ?>
+<?php include_once 'login.php'; ?>
 
 <?php
 	// page 값이 존재하지 않으면 1page 출력
