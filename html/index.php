@@ -2,7 +2,7 @@
 $local_url = '';
 $web_title = 'PHP 연습장';
 $nav_array = array();
-$nav_array[Home] = $local_url.'index.php';
+$nav_array[Home] = $local_url.'';
 include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 ?>
 
@@ -15,27 +15,28 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 	<div class="fix box_content floatleft">
 		<h2>게시판<span>Board</span></h2>
 		<ul> <!-- 목록 //-->
-			<li><a href="board/01_file/index.php">파일</a></li>
-			<li><a href="board/02_arr/index.php">Array</a></li>
-			<li><a href="board/03_css/index.php">CSS</a></li>
-			<li><a href="board/04_db/index.php">DB</a></li>
-			<li><a href="board/05_foreign/index.php">Foreign Key</a></li>
-			<li><a href="board/06_delete/index.php">Delete</a></li>
-			<li><a href="board/07_page/index.php">Page</a></li>
-			<li><a href="board/08_refactoring/index.php">Refactoring</a></li>
+			<li><a href="board/01_file/">파일</a></li>
+			<li><a href="board/02_arr/">Array</a></li>
+			<li><a href="board/03_css/">CSS</a></li>
+			<li><a href="board/04_db/">DB</a></li>
+			<li><a href="board/05_foreign/">Foreign Key</a></li>
+			<li><a href="board/06_delete/">Delete</a></li>
+			<li><a href="board/07_page/">Page</a></li>
+			<li><a href="board/08_refactoring/">Refactoring</a></li>
+			<li><a href="board/09_login/">Login</a></li>
 		</ul>
 	</div>
 	
 	<div class="fix box_content floatleft">
 		<h2>사전<span>Dictionary</span></h2>
 		<ul> <!-- 목록 //-->
-			<li><a href="dictionary/search/index.php">단어 찾기</a></li>
-			<li><a href="dictionary/stringsum/index.php">문자열 코드합</a></li>
-			<li><a href="dictionary/sort/index.php">문자열 정렬</a></li>
-			<li><a href="dictionary/strpos/index.php">단어에 포함된 문자 찾기(strpos)</a></li>
-			<li><a href="dictionary/anagram/index.php">애너그램</a></li>
-			<li><a href="dictionary/palindrome/index.php">회문</a></li>
-			<li><a href="dictionary/02_db/index.php">DB 입력</a></li>
+			<li><a href="dictionary/search/">단어 찾기</a></li>
+			<li><a href="dictionary/stringsum/">문자열 코드합</a></li>
+			<li><a href="dictionary/sort/">문자열 정렬</a></li>
+			<li><a href="dictionary/strpos/">단어에 포함된 문자 찾기(strpos)</a></li>
+			<li><a href="dictionary/anagram/">애너그램</a></li>
+			<li><a href="dictionary/palindrome/">회문</a></li>
+			<li><a href="dictionary/02_db/">DB 입력</a></li>
 			<li><a href="dictionary/02_db/where.php">DB 조건부 검색</a></li>
 		</ul>
 	</div>
@@ -43,24 +44,24 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 	<div class="fix box_content floatleft">
 		<h2>보안<span>Security</span></h2>
 		<ul> <!-- 목록 //-->
-			<li><a href="security/security_01_session">1-session</a></li>
-			<li><a href="security/security_02_hashing">2-hashing</a></li>
-			<li><a href="security/security_03_db">3-db</a></li>
+			<li><a href="security/security_01_session/">1-session</a></li>
+			<li><a href="security/security_02_hashing/">2-hashing</a></li>
+			<li><a href="security/security_03_db/">3-db</a></li>
 		</ul>
 	</div>
 	
 	<div class="fix box_content floatleft">
 		<h2>예제<span>Exercise</span></h2>
 		<ul> <!-- 목록 //-->
-			<li><a href="exercise/login/index.php">로그인 폼</a></li>
+			<li><a href="exercise/login/">로그인 폼</a></li>
 			<li><a href="exercise/fget/string.php">파일 읽기</a></li>
-			<li><a href="exercise/write/index.php">파일쓰기&읽기</a></li>
-			<li><a href="exercise/calc/index.php">계산기</a></li>
-			<li><a href="exercise/strcmp/index.php">strcmp 연습</a></li>
-			<li><a href="exercise/recursion/index.php">재귀 함수 활용</a></li>
-			<li><a href="exercise/reverse/index.php">문자 역순 정렬</a></li>
-			<li><a href="exercise/garde/index.php">성적 입력</a></li>
-			<li><a href="exercise/diff/index.php">Diff</a></li>
+			<li><a href="exercise/write/">파일쓰기&읽기</a></li>
+			<li><a href="exercise/calc/">계산기</a></li>
+			<li><a href="exercise/strcmp/">strcmp 연습</a></li>
+			<li><a href="exercise/recursion/">재귀 함수 활용</a></li>
+			<li><a href="exercise/reverse/">문자 역순 정렬</a></li>
+			<li><a href="exercise/garde/">성적 입력</a></li>
+			<li><a href="exercise/diff/">Diff</a></li>
 		</ul>
 	</div>
 	
@@ -78,7 +79,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 			<li><a href="submit/algorithm_01.php">array_merge</a></li>
 			<li><a href="submit/recursive function.php">recursive</a></li>
 			<li><a href="submit/reverse.php">reverse</a></li>
-			<li><a href="submit/class/index.php">class</a></li>
+			<li><a href="submit/class/">class</a></li>
 		</ul>
 	</div>
 	
