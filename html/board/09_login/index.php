@@ -68,7 +68,7 @@ include_once 'login.php';
 			printf('<li class="index floatleft">%s</li>', $row['id']);
 			printf('<li class="title floatleft"><a href="view_post.php?page=%d&board_id=%d&post_id=%d">%s</a></li>'
 			, $page, $board_id, $row['id'], $row['title']);
-			if (check_login()) {
+			if ($row['member_id'] != NULL) {
 				printf('<li class="author floatleft">%s</li>', $row['member_id']);
 			} else {
 				printf('<li class="author floatleft">%s</li>', $row['author']);
