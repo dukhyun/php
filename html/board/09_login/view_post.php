@@ -3,13 +3,18 @@ $local_url = '../../';
 $web_title = 'PHP 연습장 - 게시판';
 $nav_array = array();
 $nav_array['Home'] = $local_url.'index.php';
-$nav_array['Board'] = $local_url.'board/06_delete/index.php';
-$css_array['board'] = $local_url.'board/06_delete/style.css';
+$nav_array['Board'] = $local_url.'board/09_login/';
+$css_array['board'] = 'style.css';
 include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 include 'function.php';
 ?>
 
 <div class="view_post">
+	<?php
+	start_session();
+	include_once 'login.php';
+	?>
+	
 	<?php
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$page = $_GET['page'];
@@ -34,17 +39,22 @@ include 'function.php';
 			die ("Database access failed: ".mysqli_error());
 		}
 	
-		while($row = mysqli_fetch_assoc($result)) {
-			$author = $row['author'];
+		while ($row = mysqli_fetch_assoc($result)) {
+			if ($row['author'] != NULL) {
+				$author = $row['author'];
+			} else if ($row['member_id'] != NULL) {
+				$author = $row['member_id'];
+			}
 			$title = $row['title'];
 			$date = $row['crea_dtm'];
 			$content = $row['content'];
 			$hit_count = $row['hit_count'];
 		}
 	?>
-
-	<h1>보기 화면</h1>
-
+	<div class="fix">
+		<h1>보기 화면</h1>
+	</div>
+	
 	<div class="text floatleft">번호</div>
 	<div class="output floatleft"><?php echo $post_id; ?></div>
 
@@ -68,8 +78,21 @@ include 'function.php';
 	
 	<div class="button">
 		<a class="mark" href="write_post.php?board_id=<?php echo $board_id; ?>">글쓰기</a>
+	<?php
+	if (check_login()) {
+		if ($author == $_SESSION['id']) {
+	?>
 		<a href="update_post.php?post_id=<?php echo $post_id; ?>">수정</a>
 		<a href="delete_post.php?post_id=<?php echo $post_id; ?>">삭제</a>
+	<?php
+		}
+	} else {
+	?>
+		<a href="update_post.php?post_id=<?php echo $post_id; ?>">수정</a>
+		<a href="delete_post.php?post_id=<?php echo $post_id; ?>">삭제</a>
+	<?php
+	}
+	?>
 		<a href="index.php?page=<?php echo $page; ?>">목록</a>
 	</div>
 	
