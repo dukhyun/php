@@ -29,10 +29,25 @@ include 'function.php';
 			<li>
 				<input type="hidden" name="post" value="<?php echo $post_id; ?>" readonly>
 			</li>
+			<?php
+				start_session();
+				if (check_login()) {
+					$user_id = $_SESSION['id'];
+			?>
+			<li>
+				<label>로그인된 회원</label>
+				<input type="text" name="member" value="<?php echo $row['member_id']; ?>" readonly>
+			</li>
+			<?php
+				} else {
+			?>
 			<li>
 				<label>이름</label>
 				<input type="text" name="author" value="<?php echo $row['author']; ?>">
 			</li>
+			<?php
+				}
+			?>
 			<li>
 				<label>제목</label>
 				<input type="text" name="title" value="<?php echo $row['title']; ?>">

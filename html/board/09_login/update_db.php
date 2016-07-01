@@ -13,10 +13,11 @@ include 'function.php';
 <div class="fix main_content">
 	<div class="fix">
 <?php
-	// 입력 내용
-	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-		$post_id = $_POST['post'];
-		$author = $_POST['author'];
+start_session();
+if (check_login()) {
+	if (isset($_POST['title'], $_POST['content'])) {
+		$board_title = $_POST['board'];
+		$member = $_POST['member'];
 		$title = $_POST['title'];
 		$content = $_POST['content'];
 	}
@@ -35,6 +36,35 @@ include 'function.php';
 		echo 'DB UPDATE<br>';
 	}
 	echo $query.'<br>';
+	mysqli_close($conn);
+}
+else if (!check_login()) {
+	if (isset($_POST['title'], $_POST['content'])) {
+		$board_title = $_POST['board'];
+		$member_id = $_POST['member'];
+		$title = $_POST['title'];
+		$content = $_POST['content'];
+	}
+
+	$conn = db_connect();
+	$board_id = get_boardid($conn, $board_title);
+
+	$query = "UPDATE post SET 
+				member_id = '".$member_id."',
+				title = '".$title."',
+				content = '".$content."' 
+				WHERE id = ".$post_id.";";
+	if (mysqli_query($conn, $query) === false) {
+		echo 'UPDATE ERROR : '.mysqli_error($conn);
+	} else {
+		echo 'DB UPDATE<br>';
+	}
+	echo $query.'<br>';
+	mysqli_close($conn);
+} else {
+	echo '게시글 수정에 실패했습니다.';
+}
+?>
 ?>
 	</div>
 	

@@ -13,11 +13,17 @@ include 'function.php';
 <div class="fix main_content">
 	<div class="fix">
 <?php
-	if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-		$post_id = $_GET['post_id'];
-	}
-	
-	$conn = db_connect();
+start_session();
+
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+	$post_id = $_GET['post_id'];
+}
+$conn = db_connect();
+$member_id = get_member_id($conn, $post_id);
+
+if (isset($member_id)) {
+	echo '다른 회원의 글은 삭제할 수 없습니다.';
+} else {
 	$query = sprintf("DELETE FROM post WHERE id = %d;", $post_id);
 	if (mysqli_query($conn, $query) === false) {
 		echo 'DELETE ERROR : '.mysqli_error($conn);
@@ -25,6 +31,8 @@ include 'function.php';
 		echo 'DB DELETE<br>';
 	}
 	echo $query.'<br>';
+}
+mysqli_close($conn);
 ?>
 	</div>
 	

@@ -40,10 +40,10 @@ include 'function.php';
 		}
 	
 		while ($row = mysqli_fetch_assoc($result)) {
-			if ($row['author'] != NULL) {
+			if (isset($row['author'])) {
 				$author = $row['author'];
-			} else if ($row['member_id'] != NULL) {
-				$author = $row['member_id'];
+			} else {
+				$member_id = $row['member_id'];
 			}
 			$title = $row['title'];
 			$date = $row['crea_dtm'];
@@ -59,8 +59,13 @@ include 'function.php';
 	<div class="output floatleft"><?php echo $post_id; ?></div>
 
 	<div class="text floatleft">작성자</div>
-	<div class="output floatleft"><?php echo $author; ?></div>
-
+	<?php
+	if ($author != NULL) {
+		printf('<div class="output floatleft">%s</div>', $author);
+	} else {
+		printf('<div class="output floatleft">%s</div>', $member_id);
+	}
+	?>
 	<div class="text floatleft">작성 날짜</div>
 	<div class="output floatleft"><?php echo $date; ?></div>
 
@@ -79,8 +84,9 @@ include 'function.php';
 	<div class="button">
 		<a class="mark" href="write_post.php?board_id=<?php echo $board_id; ?>">글쓰기</a>
 	<?php
-	if (check_login()) {
-		if ($author == $_SESSION['id']) {
+	// echo $member_id.', '.$_SESSION['id'];
+	if ($member_id) {
+		if ($member_id == $_SESSION['id']) {
 	?>
 		<a href="update_post.php?post_id=<?php echo $post_id; ?>">수정</a>
 		<a href="delete_post.php?post_id=<?php echo $post_id; ?>">삭제</a>

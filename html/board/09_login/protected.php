@@ -8,7 +8,6 @@ $css_array['board'] = 'style.css';
 include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 require_once 'function.php';
 ?>
-<meta http-equiv="refresh" content="3; url='index.php'">
 
 <div class="fix main_content">
 	<?php
