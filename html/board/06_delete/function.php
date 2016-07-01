@@ -24,7 +24,7 @@ function get_boardid($conn, $title) {
 }
 
 function get_board_title($conn, $id) {
-	$query = sprintf("SELECT id FROM board WHERE id = %d;", $id);
+	$query = sprintf("SELECT title FROM board WHERE id = %d;", $id);
 	$result = mysqli_query($conn, $query);
 	if (!$result) {
 		echo $query.'<br>';

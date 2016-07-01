@@ -12,7 +12,7 @@ function db_connect() {
 }
 
 function get_boardid($conn, $title) {
-	$query = sprintf("SELECT id FROM board WHERE title = '%s';", $title);
+	$query = sprintf("SELECT * FROM board WHERE title = '%s';", $title);
 	$result = mysqli_query($conn, $query);
 	if (!$result) {
 		echo $query.'<br>';
@@ -24,7 +24,7 @@ function get_boardid($conn, $title) {
 }
 
 function get_board_title($conn, $id) {
-	$query = sprintf("SELECT id FROM board WHERE id = %d;", $id);
+	$query = sprintf("SELECT * FROM board WHERE id = %d;", $id);
 	$result = mysqli_query($conn, $query);
 	if (!$result) {
 		echo $query.'<br>';

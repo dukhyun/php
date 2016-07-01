@@ -14,6 +14,14 @@ include 'function.php';
 
 	<div class="fix">
 <?php
+if (isset($_POST['author'], $_POST['title'], $_POST['content'])) {
+	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+		$board_title = $_POST['board'];
+		$author = $_POST['author'];
+		$title = $_POST['title'];
+		$content = $_POST['content'];
+	}
+
 	$conn = db_connect();
 	$board_id = get_boardid($conn, $board_title);
 
@@ -21,8 +29,12 @@ include 'function.php';
 	if (mysqli_query($conn, $insert_query) === false) {
 		echo mysqli_error($conn);
 	} else {
-		echo 'DB INSERT('.$board_id.') : ['.$author.'] <'.$title.'> {'.$content.'}<br>';
+		echo 'DB INSERT('.$board_id.')<br>';
+		echo $author.'<br>'.$title.'<br>'.$content.'<br>';
 	}
+} else {
+	echo '게시글 작성에 실패했습니다.';
+}
 ?>
 	</div>
 	

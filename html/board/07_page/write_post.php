@@ -23,7 +23,7 @@ include 'function.php';
 		<ul class="form_style">
 			<li>
 				<!-- <label>게시판</label> //-->
-				<input type="hidden" name="board" value="<?php echo $board_title; ?>" readonly>
+				<input type="text" name="board" value="<?php echo $board_title; ?>" readonly>
 			</li>
 			<li>
 				<label>이름</label>
