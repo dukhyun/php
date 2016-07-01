@@ -174,9 +174,16 @@ h2 {
 }
 .view_post .content {
 	width: 800px;
-	height: 200px;
 	padding: 10px;
 	border: 1px solid #bbb;
+}
+.view_post .content textarea {
+	font-size: 14px;
+	width: 100%;
+	min-height: 200px;
+	border: 0;
+	resize: none;
+	outline: 0;
 }
 /* header */
 header {

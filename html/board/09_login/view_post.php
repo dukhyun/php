@@ -47,8 +47,8 @@ include 'function.php';
 			}
 			$title = $row['title'];
 			$date = $row['crea_dtm'];
-			$content = str_replace("\n", "<br>", $row['content']);
-			// $content = $row['content'];
+			// $content = str_replace("\n", "<br>", $row['content']);
+			$content = $row['content'];
 			$hit_count = $row['hit_count'];
 		}
 	?>
@@ -77,9 +77,9 @@ include 'function.php';
 	<div class="output floatleft"><?php echo $title; ?></div>
 
 	<div class="content clearboth">
-		<?php // 내용
+		<textarea readonly><?php // 내용
 			echo $content;
-		?>
+		?></textarea>
 	</div>
 	
 	<div class="button">
