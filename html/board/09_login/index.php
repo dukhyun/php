@@ -5,13 +5,17 @@ $nav_array = array();
 $nav_array['Home'] = $local_url.'index.php';
 $nav_array['Board'] = $local_url.'board/09_login/';
 $css_array['board'] = 'style.css';
-include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
+// include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
+include $local_url.'../section/header.php';
 require_once 'function.php';
 ?>
 
 <div class="fix main_content">
 
-<?php include_once 'login.php'; ?>
+<?php
+start_session();
+include_once 'login.php';
+?>
 
 <?php
 	// page 값이 존재하지 않으면 1page 출력
@@ -64,7 +68,11 @@ require_once 'function.php';
 			printf('<li class="index floatleft">%s</li>', $row['id']);
 			printf('<li class="title floatleft"><a href="view_post.php?page=%d&board_id=%d&post_id=%d">%s</a></li>'
 			, $page, $board_id, $row['id'], $row['title']);
-			printf('<li class="author floatleft">%s</li>', $row['author']);
+			if (check_login()) {
+				printf('<li class="author floatleft">%s</li>', $row['member_id']);
+			} else {
+				printf('<li class="author floatleft">%s</li>', $row['author']);
+			}
 			printf('<li class="dtm floatleft">%s</li>', time_set($row['crea_dtm']));
 		echo '</ul>';
 	}

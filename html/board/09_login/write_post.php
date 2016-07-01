@@ -25,10 +25,25 @@ include 'function.php';
 				<!-- <label>게시판</label> //-->
 				<input type="hidden" name="board" value="<?php echo $board_title; ?>" readonly>
 			</li>
+			<?php
+				start_session();
+				if (check_login()) {
+					$user_id = $_SESSION['id'];
+			?>
+			<li>
+				<label>로그인된 회원</label>
+				<input type="text" name="member" value="<?php echo $user_id; ?>" readonly>
+			</li>
+			<?php
+				} else {
+			?>
 			<li>
 				<label>이름</label>
 				<input type="text" name="author">
 			</li>
+			<?php
+				}
+			?>
 			<li>
 				<label>제목</label>
 				<input type="text" name="title">

@@ -1,8 +1,8 @@
 <header>
 	<?php
-		start_session();
-		if (check_login()) {
-			$user_id = $_SESSION['id'];
+	// start_session();
+	if (check_login()) {
+		$user_id = $_SESSION['id'];
 	?>
 	<span class="fix floatleft">
 		<?php echo $user_id; ?>님이 로그인되어 있습니다.
@@ -11,7 +11,7 @@
 		<input type="submit" value="logout">
 	</form>
 	<?php
-		} else {
+	} else {
 	?>
 	<form action="login_process.php" method="post">
 		<ul>
@@ -30,6 +30,6 @@
 		<input type="submit" value="회원가입">
 	</form>
 	<?php
-		}
+	}
 	?>
 </header>
