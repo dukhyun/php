@@ -14,17 +14,19 @@ include 'function.php';
 	<div class="fix">
 <?php
 start_session();
-if (check_login()) {
+$conn = db_connect();
+if (isset($_POST['post'])) {
+	$post_id = $_POST['post'];
+}
+$member_id = get_member_id($conn, $post_id);
+
+if ($member_id == NULL) { // 비회원이 작성한 글일 경우
 	if (isset($_POST['title'], $_POST['content'])) {
-		$board_title = $_POST['board'];
-		$member = $_POST['member'];
+		$author = $_POST['author'];
 		$title = $_POST['title'];
 		$content = $_POST['content'];
 	}
 	
-	$conn = db_connect();
-	$board_id = get_boardid($conn, $board_title);
-
 	$query = "UPDATE post SET 
 				author = '".$author."',
 				title = '".$title."',
@@ -36,18 +38,13 @@ if (check_login()) {
 		echo 'DB UPDATE<br>';
 	}
 	echo $query.'<br>';
-	mysqli_close($conn);
 }
-else if (!check_login()) {
+else if ($member_id == $_SESSION['id']) {
 	if (isset($_POST['title'], $_POST['content'])) {
-		$board_title = $_POST['board'];
 		$member_id = $_POST['member'];
 		$title = $_POST['title'];
 		$content = $_POST['content'];
 	}
-
-	$conn = db_connect();
-	$board_id = get_boardid($conn, $board_title);
 
 	$query = "UPDATE post SET 
 				member_id = '".$member_id."',
@@ -60,11 +57,10 @@ else if (!check_login()) {
 		echo 'DB UPDATE<br>';
 	}
 	echo $query.'<br>';
-	mysqli_close($conn);
 } else {
 	echo '게시글 수정에 실패했습니다.';
 }
-?>
+mysqli_close($conn);
 ?>
 	</div>
 	

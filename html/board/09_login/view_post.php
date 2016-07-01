@@ -47,7 +47,8 @@ include 'function.php';
 			}
 			$title = $row['title'];
 			$date = $row['crea_dtm'];
-			$content = $row['content'];
+			$content = str_replace("\n", "<br>", $row['content']);
+			// $content = $row['content'];
 			$hit_count = $row['hit_count'];
 		}
 	?>

@@ -56,7 +56,7 @@ include_once 'login.php';
 		</ul>
 
 <?php
-	$query = sprintf("SELECT * FROM post WHERE board_id = %d LIMIT %d, %d;", $board_id, $post_limit, $page_post);
+	$query = sprintf("SELECT * FROM post WHERE board_id = %d ORDER BY crea_dtm DESC LIMIT %d, %d;", $board_id, $post_limit, $page_post);
 	$result = mysqli_query($conn, $query);
 	if (!$result) {
 		echo $query.'<br>';

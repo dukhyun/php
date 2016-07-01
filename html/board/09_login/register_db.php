@@ -5,10 +5,9 @@ if (isset($_POST['id'], $_POST['password'])) {
 	$id = $_POST['id'];
 	$password = $_POST['password'];
 	
-	$maxlen = 2;
-	if (strlen($id) < $maxlen && strlen($password) < $maxlen) {
+	$minlen = 2;
+	if (strlen($id) < $minlen || strlen($password) < $minlen) {
 		header('Location: error.php?error_code=6');
-		exit();
 	}
 	
 	$conn = db_connect();

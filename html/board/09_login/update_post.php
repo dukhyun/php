@@ -11,6 +11,8 @@ include 'function.php';
 
 <div class="fix input_content">
 	<?php
+		start_session();
+		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 			$post_id = $_GET['post_id'];
 		}
@@ -30,9 +32,8 @@ include 'function.php';
 				<input type="hidden" name="post" value="<?php echo $post_id; ?>" readonly>
 			</li>
 			<?php
-				start_session();
-				if (check_login()) {
-					$user_id = $_SESSION['id'];
+				$member_id = get_member_id($conn, $post_id);
+				if ($member_id == $_SESSION['id']) {
 			?>
 			<li>
 				<label>로그인된 회원</label>
