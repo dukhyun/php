@@ -12,6 +12,7 @@ include 'function.php';
 <div class="fix input_content">
 	<?php
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+			$board_id = $_GET['board_id'];
 			$post_id = $_GET['post_id'];
 		}
 		

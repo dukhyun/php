@@ -14,6 +14,7 @@ include 'function.php';
 		start_session();
 		
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+			$board_id = $_GET['board_id'];
 			$post_id = $_GET['post_id'];
 		}
 		$conn = db_connect();
@@ -25,11 +26,12 @@ include 'function.php';
 		$row = mysqli_fetch_assoc($result);
 	?>
 	
-	<h1>글 작성</h1>
+	<h1>글 수정</h1>
 	<form action="update_db.php" method="post">
 		<ul class="form_style">
 			<li>
-				<input type="hidden" name="post" value="<?php echo $post_id; ?>" readonly>
+				<input type="hidden" name="board_id" value="<?php echo $board_id; ?>">
+				<input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
 			</li>
 			<?php
 				$member_id = get_member_id($conn, $post_id);

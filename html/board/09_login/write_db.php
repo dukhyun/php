@@ -8,7 +8,6 @@ $css_array['board'] = $local_url.'board/06_delete/style.css';
 include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 include 'function.php';
 ?>
-<meta http-equiv="refresh" content="3; url='index.php'">
 
 <div class="fix main_content">
 
@@ -30,7 +29,10 @@ if (check_login()) {
 	if (mysqli_query($conn, $insert_query) === false) {
 		echo mysqli_error($conn);
 	} else {
-		echo 'DB INSERT('.$board_id.') : ['.$member.'] <'.$title.'> {'.$content.'}<br>';
+		echo 'DB INSERT<br>';
+		$post_id = mysqli_insert_id($conn);
+		$url = sprintf("Location: view_post.php?board_id=%d&post_id=%d", $board_id, $post_id);
+		header($url);
 	}
 	mysqli_close($conn);
 }
@@ -49,7 +51,10 @@ else if (!check_login()) {
 	if (mysqli_query($conn, $insert_query) === false) {
 		echo mysqli_error($conn);
 	} else {
-		echo 'DB INSERT('.$board_id.') : ['.$author.'] <'.$title.'> {'.$content.'}<br>';
+		echo 'DB INSERT<br>';
+		$post_id = mysqli_insert_id($conn);
+		$url = sprintf("Location: view_post.php?board_id=%d&post_id=%d", $board_id, $post_id);
+		header($url);
 	}
 	mysqli_close($conn);
 } else {

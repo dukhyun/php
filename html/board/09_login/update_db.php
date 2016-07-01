@@ -8,53 +8,49 @@ $css_array['board'] = $local_url.'board/06_delete/style.css';
 include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 include 'function.php';
 ?>
-<meta http-equiv="refresh" content="3; url='index.php'">
 
 <div class="fix main_content">
 	<div class="fix">
 <?php
 start_session();
-$conn = db_connect();
-if (isset($_POST['post'])) {
-	$post_id = $_POST['post'];
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+	$board_id = $_POST['board_id'];
+	$post_id = $_POST['post_id'];
+	$title = $_POST['title'];
+	$content = $_POST['content'];
 }
+
+$conn = db_connect();
 $member_id = get_member_id($conn, $post_id);
 
-if ($member_id == NULL) { // 비회원이 작성한 글일 경우
-	if (isset($_POST['title'], $_POST['content'])) {
-		$author = $_POST['author'];
-		$title = $_POST['title'];
-		$content = $_POST['content'];
-	}
+echo $post_id;
+
+if (isset($_POST['author'])) { // 비회원이 작성한 글일 경우
+	$author = $_POST['author'];
 	
-	$query = "UPDATE post SET 
-				author = '".$author."',
-				title = '".$title."',
-				content = '".$content."' 
-				WHERE id = ".$post_id.";";
+	$query = sprintf("UPDATE post SET author = '%s', title = '%s', content = '%s' 
+				WHERE id = %d;", $author, $title, $content, $post_id);
 	if (mysqli_query($conn, $query) === false) {
 		echo 'UPDATE ERROR : '.mysqli_error($conn);
 	} else {
 		echo 'DB UPDATE<br>';
+		$url = sprintf("Location: view_post.php?board_id=%d&post_id=%d", $board_id, $post_id);
+		header($url);
 	}
 	echo $query.'<br>';
 }
 else if ($member_id == $_SESSION['id']) {
-	if (isset($_POST['title'], $_POST['content'])) {
-		$member_id = $_POST['member'];
-		$title = $_POST['title'];
-		$content = $_POST['content'];
-	}
+	$member_id = $_POST['member'];
 
-	$query = "UPDATE post SET 
-				member_id = '".$member_id."',
-				title = '".$title."',
-				content = '".$content."' 
-				WHERE id = ".$post_id.";";
+	$query = sprintf("UPDATE post SET member_id = '%s', title = '%s', content = '%s' 
+				WHERE id = %d;", $member_id, $title, $content, $post_id);
 	if (mysqli_query($conn, $query) === false) {
 		echo 'UPDATE ERROR : '.mysqli_error($conn);
 	} else {
 		echo 'DB UPDATE<br>';
+		$url = sprintf("Location: view_post.php?board_id=%d&post_id=%d", $board_id, $post_id);
+		header($url);
 	}
 	echo $query.'<br>';
 } else {
@@ -65,7 +61,8 @@ mysqli_close($conn);
 	</div>
 	
 	<div class="fix">
-		3 sec after... auto move.
+		<!-- <span>3 sec after... auto move.</span> //-->
+		<a href="index.php">돌아가기</a>
 	</div>
 </div>
 

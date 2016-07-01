@@ -86,17 +86,18 @@ include 'function.php';
 		<a class="mark" href="write_post.php?board_id=<?php echo $board_id; ?>">글쓰기</a>
 	<?php
 	// echo $member_id.', '.$_SESSION['id'];
+	$temp = sprintf('board_id=%d&post_id=%d', $board_id, $post_id);
 	if ($member_id) {
 		if ($member_id == $_SESSION['id']) {
 	?>
-		<a href="update_post.php?post_id=<?php echo $post_id; ?>">수정</a>
-		<a href="delete_post.php?post_id=<?php echo $post_id; ?>">삭제</a>
+		<a href="update_post.php?<?php echo $temp; ?>">수정</a>
+		<a href="delete_post.php?<?php echo $temp; ?>">삭제</a>
 	<?php
 		}
 	} else {
 	?>
-		<a href="update_post.php?post_id=<?php echo $post_id; ?>">수정</a>
-		<a href="delete_post.php?post_id=<?php echo $post_id; ?>">삭제</a>
+		<a href="update_post.php?<?php echo $temp; ?>">수정</a>
+		<a href="delete_post.php?<?php echo $temp; ?>">삭제</a>
 	<?php
 	}
 	?>
