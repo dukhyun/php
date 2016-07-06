@@ -102,6 +102,15 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 		</ul>
 	</div>
 	
+	<div class="fix box_content floatleft">
+		<h2>자바스크립트<span>Script</span></h2>
+		<ul> <!-- 목록 //-->
+			<li><a href="/script/script1.php">script1</a></li>
+			<li><a href="/script/script2.php">script2</a></li>
+			<li><a href="/script/script3.php">script3</a></li>
+		</ul>
+	</div>
+	
 </div>
 
 <?php include $_SERVER['DOCUMENT_ROOT'].'/../section/footer.php'; ?>

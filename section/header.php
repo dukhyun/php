@@ -1,5 +1,4 @@
-<!DOCTYPE HTML>
-<meta charset="UTF-8">
+<!DOCTYPE html>
 <html>
 <?php
 // $css_array['key'] = 'link';
@@ -8,6 +7,7 @@ $css_array['nav'] = '/css/nav.css';
 ?>
 
 <head>
+<meta charset="UTF-8">
 <meta name="theme-color" content="#000000">
 <?php // title
 if (!$web_title) {
