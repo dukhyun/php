@@ -31,5 +31,6 @@ var someFunction = myFunction2;
 someFunction = myFunction;
 someFunction(Date());
 </script>
+<br>
 
 <?php include $_SERVER['DOCUMENT_ROOT'].'/../section/footer.php'; ?>
