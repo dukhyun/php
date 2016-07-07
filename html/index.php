@@ -108,6 +108,8 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 			<li><a href="/script/script1.php">script1</a></li>
 			<li><a href="/script/script2.php">script2</a></li>
 			<li><a href="/script/script3.php">script3</a></li>
+			<li><a href="/script/script4.php">script4</a></li>
+			<li><a href="/script/script5.php">script5</a></li>
 		</ul>
 	</div>
 	
