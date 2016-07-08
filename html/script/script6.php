@@ -6,7 +6,7 @@ $nav_array[Home] = $local_url.'';
 include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 ?>
 
-<h1 id="hh">Script5</h1>
+<h1 id="hh">Script6</h1>
 <br>
 <header>
 <script>
