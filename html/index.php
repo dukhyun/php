@@ -114,6 +114,9 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 			<li><a href="/script/script7.php">script7</a></li>
 			<li><a href="/script/script8.php">script8</a></li>
 			<li><a href="/script/script9.php">script9</a></li>
+			<li><a href="/script/script10.php">script10</a></li>
+			<li><a href="/script/script11.php">script11</a></li>
+			<li><a href="/script/script12.php">script12</a></li>
 		</ul>
 	</div>
 	
