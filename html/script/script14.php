@@ -1,0 +1,58 @@
+<?php
+$local_url = '../';
+$web_title = 'PHP 연습장';
+$nav_array = array();
+$nav_array[Home] = $local_url.'';
+include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
+?>
+
+<h1>Script14</h1>
+<br>
+<h2>JS</h2>
+<script>
+function getTotalData(dataIncreasePerDay, numDaysInMonth) { // 반복되는 작업을 함수로 만들자!
+	var dataTotal = 0;
+	var dataPerDay = 100;
+	for (var day = 1; day <= numDaysInMonth; day += 1) { 
+		dataTotal += dataPerDay;
+		dataPerDay += dataIncreasePerDay; 
+	}
+	return dataTotal;
+}
+</script>
+김군은 눈 만 떳다 하면 스마트폰을 손에서 떼지 못하는 중독자다. 하지만 사용할 수 있는 데이터량에는 한계가 있기 때문에, 매달 초에는 항상 '이번달은 진짜 적게 써야지.' 하고 결심을 한다. 하지만 그 결심은 항상 무너지고 말아서, 하루하루가 지날수록 조금씩 인터넷을 더 많이 하고 만다.<br><br>
+계량화 해 본 결과, 김군은 매달 첫날에는 100메가바이트를 사용하고, 그 이후로는 하루에 10메가바이트씩 더 많이 사용한다고 가정하자. 즉 매달 2일에는 110메가바이트를, 3일에는 120메가바이트를 사용하는 식이다. <br><br>
+이번 달이 6월이라고 가정하면, 김군이 이번 한 달 동안 쓰게될 총 데이터량은 얼마일까? 반복문을 써서 답을 구해보자!<br><br>
+답: <script>document.write(getTotalData(10, 30));</script>메가바이트<br><br>
+
+여름철을 지내면서 김군의 스마트폰 중독이 더욱 심해져서, 매일 증가하는 데이터 사용량이 10메가바이트가 아닌 15메가바이트가 되었다고 한다. 9월 한달동안 쓰게될 총 데이터량은 얼마일까?<br><br>
+답: <script>document.write(getTotalData(15, 30));</script>메가바이트<br><br>
+
+같은 상황에서 김군이 10월에 쓰게될 총 데이터량은?<br><br>
+답: <script>document.write(getTotalData(15, 31));</script>메가바이트<br><br>
+
+
+<h2>PHP</h2>
+<?php
+function get_total_data($data_increase_per_day, $num_days_in_month) {
+	$data_total = 0;
+	$data_per_day = 100;
+	for ($day = 1; $day <= $num_days_in_month; $day += 1) {
+		$data_total += $data_per_day;
+		$data_per_day += $data_increase_per_day;
+	}
+	return $data_total;
+}
+?>
+김군은 눈 만 떳다 하면 스마트폰을 손에서 떼지 못하는 중독자다. 하지만 사용할 수 있는 데이터량에는 한계가 있기 때문에, 매달 초에는 항상 '이번달은 진짜 적게 써야지.' 하고 결심을 한다. 하지만 그 결심은 항상 무너지고 말아서, 하루하루가 지날수록 조금씩 인터넷을 더 많이 하고 만다.<br><br>
+계량화 해 본 결과, 김군은 매달 첫날에는 100메가바이트를 사용하고, 그 이후로는 하루에 10메가바이트씩 더 많이 사용한다고 가정하자. 즉 매달 2일에는 110메가바이트를, 3일에는 120메가바이트를 사용하는 식이다. <br><br>
+이번 달이 6월이라고 가정하면, 김군이 이번 한 달 동안 쓰게될 총 데이터량은 얼마일까? 반복문을 써서 답을 구해보자!<br><br>
+답: <?php echo get_total_data(10, 30); ?>메가바이트<br><br>
+
+여름철을 지내면서 김군의 스마트폰 중독이 더욱 심해져서, 매일 증가하는 데이터 사용량이 10메가바이트가 아닌 15메가바이트가 되었다고 한다. 9월 한달동안 쓰게될 총 데이터량은 얼마일까?<br><br>
+답: <?php echo get_total_data(15, 30); ?>메가바이트<br><br>
+
+같은 상황에서 김군이 10월에 쓰게될 총 데이터량은?<br><br>
+답: <?php echo get_total_data(15, 31); ?>메가바이트<br><br>
+
+<?php include $_SERVER['DOCUMENT_ROOT'].'/../section/footer.php'; ?>
