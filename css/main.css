@@ -14,6 +14,8 @@ body {
 .floatright { float: right; }
 .clearboth { clear: both; }
 .center { text-align: center; }
+.clearfix:before, .clearfix:after { content: " "; display: block; }
+.clearfix:after { clear: both; }
 .main_content {
 	background: #fff;
 	display: block;
@@ -24,7 +26,7 @@ body {
 	margin: 0 7px 15px 7px;
 	padding: 10px;
 	width: 48%;
-	min-height: 300px;
+	min-height: 330px;
 }
 @media screen and (min-width: 992px) {
 .box_content { width: 23.5%; }
