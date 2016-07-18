@@ -37,6 +37,15 @@ include_once 'login.php';
 		<h1>게시판1</h1>
 	</div>
 	
+<?php
+	if (isset($_GET['search'])) {
+		echo '<div>';
+		printf('%s로 검색되었습니다. ', $_GET['search']);
+		printf('<a href="index.php">최신목록</a>');
+		echo '</div>';
+	}
+?>
+	
 	<div class="fix table_style">
 		<ul class="header">
 			<li class="index floatleft">번호</li>
