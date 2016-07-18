@@ -210,10 +210,10 @@ header input {
 	border: 1px solid #ccc;
 	color: #888;
 }
-header input[type=text], header input[type=password] {
+header input[type=text], header input[type=password], .search input[type=text] {
 	padding: 2px 4px;
 }
-header input[type=submit] {
+header input[type=submit], .search input[type=submit] {
 	padding: 0 4px 2px;
 }
 /* register form */
@@ -282,4 +282,12 @@ input[type=password] {
 	content: " ";
 	display: block;
 	clear: both;
+}
+/* search */
+.search li {
+	margin-right: 5px;
+    list-style: none;
+}
+.search input {
+	border: 1px solid #ccc;
 }
