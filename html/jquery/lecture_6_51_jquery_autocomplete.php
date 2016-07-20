@@ -5,7 +5,7 @@
 
 <script language="javascript" src="/jquery/jquery-1.11.2.js"></script>
 <script language="javascript" src="/jquery/jquery-ui.js"></script>
-<link rel="stylesheet" href="/jquery/jquery-ui.css" />
+<link rel="stylesheet" href="/jquery/jquery-ui.css">
 
 <script>
 $(document).ready(function(){
@@ -25,4 +25,3 @@ $(document).ready(function(){
 </div>
 </body>
 </html>
-

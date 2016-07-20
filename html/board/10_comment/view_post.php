@@ -8,6 +8,26 @@ $css_array['board'] = 'style.css';
 include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 include 'function.php';
 ?>
+<script language="javascript" src="/jquery/jquery-1.11.2.js"></script>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+$(document).ready(function() {
+	$('.content').on('keyup', 'textarea', 
+		function (e){
+			$(this).css('height', 'auto' );
+			$(this).height(this.scrollHeight);
+		});
+	$('.content').find('textarea').keyup();
+});
+$(document).ready(function() {
+	$('.comment').on('keyup', 'textarea', 
+		function (e){
+			$(this).css('height', 'auto' );
+			$(this).height(this.scrollHeight);
+		});
+	$('.comment').find('textarea').keyup();
+});
+</script>
 
 <div class="view_post">
 	<?php
@@ -121,18 +141,35 @@ include 'function.php';
 				printf("<label>%s</label>", $comment_member);
 				if (check_login()) {
 					if ($comment_member == $_SESSION['id']) {
+						// printf('<a href="javascript:;" onclick="updateComment(%d);">%s</a>', $row['id'], '수정');
+						printf('<a href="comment_update.php?%s&cmt_id=%d">%s</a>',$temp, $row['id'], '수정');
 						printf('<a href="comment_del.php?%s&cmt_id=%d">%s</a>',$temp, $row['id'], '삭제');
 					}
 				}
 			} else {
 				printf("<label>%s</label>", $row['author']);
+				// printf('<a href="javascript:;" onclick="updateComment(%d);">%s</a>', $row['id'], '수정');
+				printf('<a href="comment_update.php?%s&cmt_id=%d">%s</a>',$temp, $row['id'], '수정');
 				printf('<a href="comment_del.php?%s&cmt_id=%d">%s</a>', $temp, $row['id'], '삭제');
 			}
 			?>
 			</li>
 			<li class="comment">
-				<?php printf("%s", $row['content']); ?>
+				<textarea id="comment<?php echo $row['id']; ?>" readonly><?php printf("%s", $row['content']); ?></textarea>
+				<input type="hidden" value="수정">
 			</li>
+			<!--
+			<script>
+			function updateComment(id) {
+				var re = document.getElementById('comment', id);
+				re.readOnly = false;
+				var input = document.createElement("input");
+				input.setAttribute("type", "button");
+				input.setAttribute("value", "update");
+				document.body.appendChild(input);
+			}
+			</script>
+			//-->
 		</ul>
 	<?php
 		}
