@@ -32,6 +32,7 @@ function get_words($input, $slice) {
 			}
 		}
 	}
+	asort($selected);
 	
 	fclose($file_handle);
 	return $selected;
