@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="/jquery/jquery-ui.css">
 <style>
 .ui-autocomplete {
-	max-height: 300px; overflow-y: auto; overflow-x: hidden;
+	/* max-height: 300px; overflow-y: auto; overflow-x: hidden; */
 }
 </style>
 
