@@ -1,27 +1,29 @@
 <?php
-function get_words() {
+function get_words($input) {
 	$words = array();
-	$file_name = './5k_ansi.txt';
+	$file_name = './100k_combined.txt';
 	$file_handle = fopen($file_name, 'r');
 	if (!$file_handle) {
 		die('file could not be opened!');
 	}
-	while (($line = fgets($file_handle)) !== false) {
+	$last_rank = 5000;
+	while (($line = fgets($file_handle)) !== false ) {
 		$wordAndRank = explode("\t", $line);
+		$word = $wordAndRank[0];
 		if (count($wordAndRank) === 2) {
-			$word = $wordAndRank[0];
 			$rank = $wordAndRank[1];
-			$words[$word] = $rank;
 		} else { // error
-			die('count was'.count($wordAndRank).' Error occured!');
+			// die('count was'.count($wordAndRank).' Error occured!');
+			$rank = $last_rank + 1;
 		}
+		$words[$word] = $rank;
 	}
 	fclose($file_handle);
 	asort($words);
 	//print_r($words);
 	
 	$selected = array();
-	$input = $_GET['input'];
+	// $input = $_GET['input'];
 	foreach ($words as $word => $rank) {
 		if (strpos($word, $input) !== false) {
 			$selected[] = $word;
@@ -31,5 +33,5 @@ function get_words() {
 	return $selected;
 }
 
-echo implode(' ', array_slice(get_words(), 0, 10));
-// echo implode(' ', get_words());
+// echo implode(' ', array_slice(get_words($_GET['input']), 0, 10));
+echo implode(' ', get_words($_GET['input']));
