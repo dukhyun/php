@@ -3,7 +3,7 @@ $local_url = '../../';
 $web_title = 'PHP 연습장 - 게시판';
 $nav_array = array();
 $nav_array['Home'] = $local_url.'index.php';
-$nav_array['Board'] = $local_url.'board/11_encryption/';
+$nav_array['Board'] = $local_url.'board/11_xss/';
 $css_array['board'] = 'style.css';
 include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 require_once 'function.php';

@@ -25,7 +25,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 			<li><a href="board/08_refactoring/">Refactoring</a></li>
 			<li><a href="board/09_login/">Login</a></li>
 			<li><a href="board/10_comment/">Comment</a></li>
-			<li><a href="board/11_encryption/">Encryption</a></li>
+			<li><a href="board/11_xss/">XSS(DB, HTML)</a></li>
 		</ul>
 	</div>
 	

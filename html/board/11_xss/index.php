@@ -3,7 +3,7 @@ $local_url = '../../';
 $web_title = 'PHP 연습장 - 게시판';
 $nav_array = array();
 $nav_array['Home'] = $local_url.'index.php';
-$nav_array['Board'] = $local_url.'board/11_encryption/';
+$nav_array['Board'] = $local_url.'board/11_xss/';
 $css_array['board'] = 'style.css';
 // include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 include $local_url.'../section/header.php';
@@ -55,13 +55,16 @@ include_once 'login.php';
 		</ul>
 
 <?php
-	$temp_query = sprintf("board_id = %d", $board_id);
 	if (isset($_GET['search'])) {
-		$search_word = $_GET['search'];
-		$temp_query .= sprintf(" AND (title LIKE '%%%s%%' OR content LIKE '%%%s%%')", $search_word, $search_word);
+		$search_word = '%'.$_GET['search'].'%';
+	} else {
+		$search_word = '%';
 	}
-	$query = sprintf("SELECT * FROM post WHERE %s ORDER BY id DESC LIMIT %d, %d;", $temp_query, $post_limit, $page_post);
-	$result = mysqli_query($conn, $query);
+	$query = 'SELECT * FROM post WHERE board_id=? AND title LIKE ? OR content LIKE ? ORDER BY id DESC LIMIT ?, ?;';
+	$stmt = mysqli_prepare($conn, $query);
+	mysqli_stmt_bind_param($stmt, 'issii', $board_id, $search_word, $search_word, $post_limit, $page_post);
+	mysqli_stmt_execute($stmt);
+	$result = mysqli_stmt_get_result($stmt);
 	if (!$result) {
 		echo $query.'<br>';
 		die ("Database access failed: ".mysqli_error());
@@ -82,8 +85,11 @@ include_once 'login.php';
 	}
 	
 	// 게시판 갯수 구하기
-	$query = sprintf("SELECT count(*) AS count FROM post WHERE %s;", $temp_query);
-	$result = mysqli_query($conn, $query);
+	$query = 'SELECT count(*) AS count FROM post WHERE board_id=? AND title LIKE ? OR content LIKE ?';
+	$stmt = mysqli_prepare($conn, $query);
+	mysqli_stmt_bind_param($stmt, 'iss', $board_id, $search_word, $search_word);
+	mysqli_stmt_execute($stmt);
+	$result = mysqli_stmt_get_result($stmt);
 	if (!$result) {
 		echo $query.'<br>';
 		die ("Database access failed: ".mysqli_error());
