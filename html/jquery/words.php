@@ -49,16 +49,19 @@ function get_words_db($input, $num) {
 	$words = array();
 	$last_rank = 5000;
 	
-	$query = sprintf("SELECT * FROM calvin.dictionary2 WHERE word LIKE '%%%s%%' ORDER BY (CASE WHEN rank IS NOT NULL THEN rank ELSE %d END) LIMIT %d;", $input, $last_rank, $num);
-	$result = mysqli_query($conn, $query);
-	if ($result === false) {
-		die ("Database access failed: ".mysqli_error());
-	}
-	
+	// $query = sprintf("SELECT * FROM calvin.dictionary2 WHERE word LIKE '%%%s%%' ORDER BY (CASE WHEN rank IS NOT NULL THEN rank ELSE %d END) LIMIT %d;", $input, $last_rank, $num);
+	// $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
+	$query = sprintf("CREATE OR REPLACE VIEW dukhyun.temp AS (SELECT * FROM calvin.dictionary2 WHERE word LIKE '%%%s%%' ORDER BY (CASE WHEN rank IS NOT NULL THEN rank ELSE %s END) LIMIT %d);", $input, $last_rank, $num);
+	// CREATE TEMPORARY TABLE : db table create
+	// CREATE TABLE IF NOT EXISTS
+	$query .= sprintf("SELECT * FROM dukhyun.temp ORDER BY word;");
+	mysqli_multi_query($conn, $query) or die(mysqli_error($conn));
+	mysqli_next_result($conn);
+	$result = mysqli_store_result($conn);
 	while ($row = mysqli_fetch_assoc($result)) {
 		$words[] = $row['word'];
 	}
-	asort($words);
+	// asort($words);
 	
 	return $words;
 }
