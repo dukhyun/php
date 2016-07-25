@@ -18,14 +18,16 @@ if (isset($_POST['comment_id'], $_POST['content'])) {
 	$board_id = $_POST['board_id'];
 	$post_id = $_POST['post_id'];
 	
-	$temp_query = sprintf("content = '%s'", $comment);
 	if (isset($_POST['author'])) {
 		$author = $_POST['author'];
-		$temp_query .= sprintf(", author = '%s'", $author);
+	} else {
+		$author = null;
 	}
 
-	$update_query = sprintf("UPDATE comment SET %s WHERE id = %d", $temp_query, $id);
-	if (mysqli_query($conn, $update_query) === false) {
+	$update_query = 'UPDATE comment SET content=?, author=? WHERE id=?';
+	$stmt = mysqli_prepare($conn, $update_query);
+	mysqli_stmt_bind_param($stmt, 'ssi', $comment, $author, $id);
+	if (!mysqli_stmt_execute($stmt)) {
 		echo mysqli_error($conn);
 	} else {
 		echo 'comment DB UPDATE<br>';

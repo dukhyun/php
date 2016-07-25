@@ -26,8 +26,10 @@ if (check_login()) {
 	$board_id = get_board_id($conn, $board_title);
 	$member_id = get_member_id($conn, $member);
 
-	$insert_query = sprintf("INSERT INTO post (member_id, title, content, board_id) VALUES ('%d', '%s', '%s', '%d');", $member_id, $title, $content, $board_id);
-	if (mysqli_query($conn, $insert_query) === false) {
+	$insert_query = 'INSERT INTO post (member_id, title, content, board_id) VALUES (?, ?, ?, ?)';
+	$stmt = mysqli_prepare($conn, $insert_query);
+	mysqli_stmt_bind_param($stmt, 'issi', $member_id, $title, $content, $board_id);
+	if (!mysqli_stmt_execute($stmt)) {
 		echo mysqli_error($conn);
 	} else {
 		echo 'DB INSERT<br>';
@@ -48,8 +50,10 @@ else if (!check_login()) {
 	$conn = db_connect();
 	$board_id = get_board_id($conn, $board_title);
 
-	$insert_query = sprintf("INSERT INTO post (author, title, content, board_id) VALUES ('%s', '%s', '%s', '%d');", $author, $title, $content, $board_id);
-	if (mysqli_query($conn, $insert_query) === false) {
+	$insert_query = 'INSERT INTO post (author, title, content, board_id) VALUES (?, ?, ?, ?)';
+	$stmt = mysqli_prepare($conn, $insert_query);
+	mysqli_stmt_bind_param($stmt, 'sssi' , $author, $title, $content, $board_id);
+	if (!mysqli_stmt_execute($stmt)) {
 		echo mysqli_error($conn);
 	} else {
 		echo 'DB INSERT<br>';

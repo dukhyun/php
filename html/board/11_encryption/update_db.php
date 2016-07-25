@@ -29,9 +29,10 @@ echo $post_id;
 if (isset($_POST['author'])) { // 비회원이 작성한 글일 경우
 	$author = $_POST['author'];
 	
-	$query = sprintf("UPDATE post SET author = '%s', title = '%s', content = '%s' 
-				WHERE id = %d;", $author, $title, $content, $post_id);
-	if (mysqli_query($conn, $query) === false) {
+	$query = 'UPDATE post SET author=?, title=?, content=? WHERE id=?;';
+	$stmt = mysqli_prepare($conn, $query);
+	mysqli_stmt_bind_param($stmt, 'sssi', $author, $title, $content, $post_id);
+	if (!mysqli_stmt_execute($stmt)) {
 		echo 'UPDATE ERROR : '.mysqli_error($conn);
 	} else {
 		echo 'DB UPDATE<br>';
@@ -39,20 +40,17 @@ if (isset($_POST['author'])) { // 비회원이 작성한 글일 경우
 		header($url);
 	}
 	echo $query.'<br>';
-}
-else if ($member_id == $_SESSION['id']) {
-	$member_id = $_POST['member'];
-
-	$query = sprintf("UPDATE post SET member_id = '%s', title = '%s', content = '%s' 
-				WHERE id = %d;", $member_id, $title, $content, $post_id);
-	if (mysqli_query($conn, $query) === false) {
+} else if (isset($_POST['member_id'])) {
+	$query = 'UPDATE post SET title=?, content=? WHERE id=?;';
+	$stmt = mysqli_prepare($conn, $query);
+	mysqli_stmt_bind_param($stmt, 'ssi', $title, $content, $post_id);
+	if (!mysqli_stmt_execute($stmt)) {
 		echo 'UPDATE ERROR : '.mysqli_error($conn);
 	} else {
 		echo 'DB UPDATE<br>';
 		$url = sprintf("Location: view_post.php?board_id=%d&post_id=%d", $board_id, $post_id);
 		header($url);
 	}
-	echo $query.'<br>';
 } else {
 	echo '게시글 수정에 실패했습니다.';
 }

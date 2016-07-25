@@ -12,8 +12,8 @@ if (isset($_POST['id'], $_POST['hash'])) {
 	if ($id == $row['name']) { // 이미 등록된 아이디
 		header('Location: error.php?error_code=4');
 	} else {
-		$stmt = mysqli_prepare($conn, "INSERT INTO member (name, pw_hash) VALUES (?, ?)");
-		mysqli_stmt_bind_param($stmt, "ss", $id, password_hash($password, PASSWORD_DEFAULT));
+		$stmt = mysqli_prepare($conn, 'INSERT INTO member (name, pw_hash) VALUES (?, ?)');
+		mysqli_stmt_bind_param($stmt, 'ss', $id, password_hash($password, PASSWORD_DEFAULT));
 		mysqli_stmt_execute($stmt);
 		// header('Location: index.php'); // 자동 이동
 		echo '<h1>회원가입 성공</h1>';

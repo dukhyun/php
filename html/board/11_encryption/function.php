@@ -11,8 +11,8 @@ function db_connect() {
 	return $conn;
 }
 
-function get_member_id($conn, $member) {
-	$query = sprintf("SELECT id FROM member WHERE name = '%s'", $member);
+function get_member_id($conn, $member_name) {
+	$query = sprintf("SELECT id FROM member WHERE name = '%s'", $member_name);
 	$result = mysqli_query($conn, $query);
 	if ($result === false) {
 		die ("Database access failed: ".mysqli_error());
@@ -147,6 +147,18 @@ function check_user_account($id, $password) {
 		return password_verify($password, $hash);
 	}
 	mysqli_free_result($result);
+	mysqli_close($conn);
+}
+
+function add_post($title, $author, $content) {
+	echo 'Inserting new post, title: '.$title.' author: '.$author.' content: '.htmlspecialchars($content).'<br><br>';
+	$conn = get_db_connection();
+	$query = 'INSERT INTO bulletin_board__post (title, author, content) values(?, ?, ?)';
+	$stmt = mysqli_prepare($conn, $query);
+	mysqli_stmt_bind_param($stmt, 'sss', $title, $author, $content);
+	if (!mysqli_stmt_execute($stmt)) {
+		die('add_post query failure');
+	}
 	mysqli_close($conn);
 }
 ?>

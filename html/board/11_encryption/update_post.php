@@ -34,12 +34,12 @@ include 'function.php';
 				<input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
 			</li>
 			<?php
-				$member_id = get_post_member_id($conn, $post_id);
-				if ($member_id == get_member_id($_SESSION['id'])) {
+				if ($row['member_id'] === get_member_id($conn, $_SESSION['id'])) {
 			?>
 			<li>
 				<label>로그인된 회원</label>
-				<input type="text" name="member" value="<?php echo $row['member_id']; ?>" readonly>
+				<input type="text" name="member_name" value="<?php echo get_member_name($conn, $row['member_id']); ?>" readonly>
+				<input type="hidden" name="member_id" value="<?php echo $row['member_id']; ?>" readonly>
 			</li>
 			<?php
 				} else {

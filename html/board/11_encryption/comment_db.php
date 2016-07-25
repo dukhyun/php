@@ -18,14 +18,17 @@ include 'function.php';
 		$post_id = $_POST['post_id'];
 		if (check_login()) {
 			$user_id = get_member_id($conn, $_SESSION['id']);
-			$insert_query = sprintf("INSERT INTO comment (content, post_id, member_id) VALUES ('%s', '%d', '%d')", $comment, $post_id, $user_id);
+			$insert_query = 'INSERT INTO comment (content, post_id, member_id) VALUES (?, ?, ?)';
+			$stmt = mysqli_prepare($conn, $insert_query);
+			mysqli_stmt_bind_param($stmt, 'sii', $comment, $post_id, $user_id);
 		} else {
 			$author = $_POST['author'];
-			$insert_query = sprintf("INSERT INTO comment (content, post_id, author) VALUES ('%s', '%d', '%s')", $comment, $post_id, $author);
+			$insert_query = 'INSERT INTO comment (content, post_id, author) VALUES (?, ?, ?)';
+			$stmt = mysqli_prepare($conn, $insert_query);
+			mysqli_stmt_bind_param($stmt, 'sis', $comment, $post_id, $author);
 		}
 
-		// insert comment db
-		if (mysqli_query($conn, $insert_query) === false) {
+		if (!mysqli_stmt_execute($stmt)) {
 			echo mysqli_error($conn);
 		} else {
 			echo 'comment DB INSERT<br>';
