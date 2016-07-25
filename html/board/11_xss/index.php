@@ -40,7 +40,7 @@ include_once 'login.php';
 <?php
 	if (isset($_GET['search'])) {
 		echo '<div>';
-		printf('%s로 검색되었습니다. ', $_GET['search']);
+		printf('%s로 검색되었습니다. ', htmlspecialchars($_GET['search']));
 		printf('<a href="index.php">최신목록</a>');
 		echo '</div>';
 	}
@@ -74,11 +74,11 @@ include_once 'login.php';
 		echo '<ul>';
 			printf('<li class="index floatleft">%s</li>', $row['id']);
 			printf('<li class="title floatleft"><a href="view_post.php?page=%d&board_id=%d&post_id=%d">%s</a></li>'
-			, $page, $board_id, $row['id'], $row['title']);
+			, $page, $board_id, $row['id'], htmlspecialchars($row['title']));
 			if (isset($row['member_id'])) {
-				printf('<li class="author floatleft">%s</li>', get_member_name($conn, $row['member_id']));
+				printf('<li class="author floatleft">%s</li>', htmlspecialchars(get_member_name($conn, $row['member_id'])));
 			} else {
-				printf('<li class="author floatleft">%s</li>', $row['author']);
+				printf('<li class="author floatleft">%s</li>', htmlspecialchars($row['author']));
 			}
 			printf('<li class="dtm floatleft">%s</li>', time_set($row['crea_dtm']));
 		echo '</ul>';

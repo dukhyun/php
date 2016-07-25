@@ -81,9 +81,9 @@ $(document).ready(function() {
 	<div class="text floatleft">작성자</div>
 	<?php
 	if ($author != NULL) {
-		printf('<div class="output floatleft">%s</div>', $author);
+		printf('<div class="output floatleft">%s</div>', htmlspecialchars($author));
 	} else {
-		printf('<div class="output floatleft">%s</div>', $post_member);
+		printf('<div class="output floatleft">%s</div>', htmlspecialchars($post_member));
 	}
 	?>
 	<div class="text floatleft">작성 날짜</div>
@@ -93,11 +93,11 @@ $(document).ready(function() {
 	<div class="output floatleft"><?php echo $hit_count; ?></div>
 
 	<div class="text floatleft">제목</div>
-	<div class="output floatleft"><?php echo $title; ?></div>
+	<div class="output floatleft"><?php echo htmlspecialchars($title); ?></div>
 
 	<div class="content clearboth">
 		<textarea readonly><?php // 내용
-			echo $content;
+			echo htmlspecialchars($content);
 		?></textarea>
 	</div>
 	
@@ -138,38 +138,24 @@ $(document).ready(function() {
 			<?php
 			if ($row['member_id'] !== NULL) {
 				$comment_member = get_member_name($conn, $row['member_id']);
-				printf("<label>%s</label>", $comment_member);
+				printf("<label>%s</label>", htmlspecialchars($comment_member));
 				if (check_login()) {
 					if ($comment_member == $_SESSION['id']) {
-						// printf('<a href="javascript:;" onclick="updateComment(%d);">%s</a>', $row['id'], '수정');
 						printf('<a href="comment_update.php?%s&cmt_id=%d">%s</a>',$temp, $row['id'], '수정');
 						printf('<a href="comment_del.php?%s&cmt_id=%d">%s</a>',$temp, $row['id'], '삭제');
 					}
 				}
 			} else {
 				printf("<label>%s</label>", $row['author']);
-				// printf('<a href="javascript:;" onclick="updateComment(%d);">%s</a>', $row['id'], '수정');
 				printf('<a href="comment_update.php?%s&cmt_id=%d">%s</a>',$temp, $row['id'], '수정');
 				printf('<a href="comment_del.php?%s&cmt_id=%d">%s</a>', $temp, $row['id'], '삭제');
 			}
 			?>
 			</li>
 			<li class="comment">
-				<textarea id="comment<?php echo $row['id']; ?>" readonly><?php printf("%s", $row['content']); ?></textarea>
+				<textarea id="comment<?php echo $row['id']; ?>" readonly><?php echo htmlspecialchars($row['content']); ?></textarea>
 				<input type="hidden" value="수정">
 			</li>
-			<!--
-			<script>
-			function updateComment(id) {
-				var re = document.getElementById('comment', id);
-				re.readOnly = false;
-				var input = document.createElement("input");
-				input.setAttribute("type", "button");
-				input.setAttribute("value", "update");
-				document.body.appendChild(input);
-			}
-			</script>
-			//-->
 		</ul>
 	<?php
 		}
@@ -179,8 +165,8 @@ $(document).ready(function() {
 	<form action="comment_db.php" method="post">
 	<ul class="comment_write">
 		<li>
-			<input type="hidden" name="board_id" value="<?php echo $board_id; ?>">
-			<input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
+			<input type="hidden" name="board_id" value="<?php echo $board_id; ?>" readonly>
+			<input type="hidden" name="post_id" value="<?php echo $post_id; ?>" readonly>
 		</li>
 		<li>
 			<label>comment</label>
