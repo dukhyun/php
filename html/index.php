@@ -119,6 +119,20 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 			<li><a href="/script/script10.php">script10</a></li>
 			<li><a href="/script/script11.php">script11</a></li>
 			<li><a href="/script/script12.php">script12</a></li>
+			<li><a href="/script/script13.php">script13</a></li>
+			<li><a href="/script/script14.php">script14</a></li>
+			<li><a href="/script/script15.php">script15</a></li>
+		</ul>
+	</div>
+	
+	<div class="fix box_content floatleft">
+		<h2>J쿼리<span>Jquery</span></h2>
+		<ul> <!-- 목록 //-->
+			<li><a href="/jquery/jquery_1.php">jquery_1</a></li>
+			<li><a href="/jquery/jquery_2.php">jquery_2</a></li>
+			<li><a href="/jquery/jquery_time.php">jquery_time</a></li>
+			<li><a href="/jquery/jquery_autocomplete_1.php">jquery_autocomplete_1</a></li>
+			<li><a href="/jquery/jquery_autocomplete.php">jquery_autocomplete_2</a></li>
 		</ul>
 	</div>
 	

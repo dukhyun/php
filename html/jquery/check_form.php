@@ -4,14 +4,15 @@
 <head>
 <script>
 function checkForm(form, phone) {
-	var re = /123/;
+	var re = /[0-9]/;
+	// test('123')->true
 	if (!re.test(phone.value)) {
-		alert('123만 입력');
+		alert('false : ' + phone.value);
 		phone.focus();
 		return false;
 	}
-	
-	alert('전화번호:', phone.value);
+	alert('true : ' + phone.value);
+	phone.focus();
 	return true;
 }
 </script>
