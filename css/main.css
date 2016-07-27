@@ -80,3 +80,4 @@ input, textarea {
 	background-color: transparent;
 	overflow: hidden;
 }
+form input[type=submit], input[type=button], button { cursor: pointer; }

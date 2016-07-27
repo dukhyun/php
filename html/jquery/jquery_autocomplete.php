@@ -31,10 +31,16 @@ function getAutocompleteSource(userInput) {
 		//url: 'autocomplete.php',
 		url: 'words.php',
 		async: false,
-		data: { input: userInput }, // $_GET['input']
+		// dataType: 'json',
+		data: {
+			// 
+			input: userInput
+		}, // $_GET['input']
 		success : function(result) {
-			//alert(result);
-			source = result.split(' ');
+			// alert(result);
+			// source = result.split(' ');
+			result = JSON.parse(result);
+			source = result;
 		},
 		error: function(xhr) { }
 	});

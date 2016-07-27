@@ -51,6 +51,7 @@ function get_words_db($input, $num) {
 	
 	// $query = sprintf("SELECT * FROM calvin.dictionary2 WHERE word LIKE '%%%s%%' ORDER BY (CASE WHEN rank IS NOT NULL THEN rank ELSE %d END) LIMIT %d;", $input, $last_rank, $num);
 	// $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
+	
 	$query = sprintf("CREATE OR REPLACE VIEW dukhyun.temp AS (SELECT * FROM calvin.dictionary2 WHERE word LIKE '%%%s%%' ORDER BY (CASE WHEN rank IS NOT NULL THEN rank ELSE %s END) LIMIT %d);", $input, $last_rank, $num);
 	// CREATE TEMPORARY TABLE : db table create
 	// CREATE TABLE IF NOT EXISTS
@@ -61,10 +62,9 @@ function get_words_db($input, $num) {
 	while ($row = mysqli_fetch_assoc($result)) {
 		$words[] = $row['word'];
 	}
-	// asort($words);
 	
-	return $words;
+	return json_encode($words);
 }
 
 // echo implode(' ', get_words($_GET['input'], 10));
-echo implode(' ', get_words_db($_GET['input'], 20));
+echo get_words_db($_GET['input'], 20);

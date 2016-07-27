@@ -46,17 +46,18 @@ $(document).ready(function() {
 		$conn = db_connect();
 		
 		// hit_count 증가
-		$query = sprintf("UPDATE post SET hit_count = hit_count + 1 WHERE id = %d;", $post_id);
-		$result = mysqli_query($conn, $query);
-		if (!$result) {
-			die ("Database access failed: ".mysqli_error());
+		$query = 'UPDATE post SET hit_count = hit_count + 1 WHERE id = ?;';
+		$stmt = mysqli_prepare($conn, $query);
+		mysqli_stmt_bind_param($stmt, 'i', $post_id);
+		if (!mysqli_stmt_execute($stmt)) {
+			echo mysqli_error($conn);
 		}
 		
 		// 게시판 내용 출력
 		$query = sprintf("SELECT * FROM post WHERE id = %d;", $post_id);
 		$result = mysqli_query($conn, $query);
 		if (!$result) {
-			die ("Database access failed: ".mysqli_error());
+			die ("post view failed: ".mysqli_error($conn));
 		}
 		$row = mysqli_fetch_assoc($result);
 		
@@ -122,72 +123,10 @@ $(document).ready(function() {
 		<a href="index.php?page=<?php echo $page; ?>">목록</a>
 	</div>
 	
-	<!-- comment //-->
-	<div class="comment_list">
-	<?php
-		$query = sprintf("SELECT * FROM comment WHERE post_id=%d;", $post_id);
-		$result = mysqli_query($conn, $query);
-		if (!$result) {
-			die ("comment load failed: ".mysqli_error());
-		}
-	
-		while ($row = mysqli_fetch_assoc($result)) {
-	?>
-		<ul class="clearfix">
-			<li>
-			<?php
-			if ($row['member_id'] !== NULL) {
-				$comment_member = get_member_name($conn, $row['member_id']);
-				printf("<label>%s</label>", htmlspecialchars($comment_member));
-				if (check_login()) {
-					if ($comment_member == $_SESSION['id']) {
-						printf('<a href="comment_update.php?%s&cmt_id=%d">%s</a>',$temp, $row['id'], '수정');
-						printf('<a href="comment_del.php?%s&cmt_id=%d">%s</a>',$temp, $row['id'], '삭제');
-					}
-				}
-			} else {
-				printf("<label>%s</label>", $row['author']);
-				printf('<a href="comment_update.php?%s&cmt_id=%d">%s</a>',$temp, $row['id'], '수정');
-				printf('<a href="comment_del.php?%s&cmt_id=%d">%s</a>', $temp, $row['id'], '삭제');
-			}
-			?>
-			</li>
-			<li class="comment">
-				<textarea id="comment<?php echo $row['id']; ?>" readonly><?php echo htmlspecialchars($row['content']); ?></textarea>
-				<input type="hidden" value="수정">
-			</li>
-		</ul>
-	<?php
-		}
-	?>
-	</div>
-	
-	<form action="comment_db.php" method="post">
-	<ul class="comment_write">
-		<li>
-			<input type="hidden" name="board_id" value="<?php echo $board_id; ?>" readonly>
-			<input type="hidden" name="post_id" value="<?php echo $post_id; ?>" readonly>
-		</li>
-		<li>
-			<label>comment</label>
-		</li>
-		<?php
-			if (!check_login()) {
-		?>
-		<li>
-			<input type="text" name="author" value="author" onfocus="if(this.value =='author') { this.value=''; }" onblur="if(this.value =='') { this.value='author'; }">
-		</li>
-		<?php
-			}
-		?>
-		<li class="cmt floatleft">
-			<textarea type="text" name="content"></textarea>
-		</li>
-		<li class="floatright">
-			<input type="submit" value="작성">
-		</li>
-	</ul>
-	</form>
+<!-- comment //-->
+<?php
+	include_once 'comment_view.php';
+?>
 	
 <?php 
 	mysqli_close($conn);

@@ -47,7 +47,7 @@ $row = mysqli_fetch_assoc($result);
 			}
 		?>
 		<li class="cmt floatleft">
-			<textarea type="text" name="content"><?php
+			<textarea maxlength="400" name="content"><?php
 				echo $row['content'];
 			?></textarea>
 		</li>

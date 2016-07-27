@@ -238,9 +238,31 @@ input[type=password] {
 .comment_list li {
     list-style: none;
 }
-.comment_list a {
+.comment_list li:first-child {
+	margin-bottom: 5px;
+}
+.comment_list .date {
 	font-size: .8em;
-	margin-left: 10px;
+	color: #aaa;
+	margin: 0 10px;
+}
+.comment_list a {
+	color: black;
+	font-size: 12px;
+	margin-left: 5px;
+}
+.comment_list input[type="button"] {
+	font-size: 12px;
+	padding: 2px;
+	background: transparent;
+	border: 1px solid #f44336;
+	border-radius: 3px;
+	margin-left: 5px;
+	transition-duration: 0.1s;
+}
+.comment_list input[type="button"]:hover {
+	color: white;
+	background: #f44336;
 }
 /* .comment_list .comment {
 	word-break: break-all;
@@ -252,6 +274,10 @@ input[type=password] {
 	border: 0px;
 	resize: none;
 	word-break: break-all;
+}
+.comment_list input[type=submit] {
+	padding: 2px 4px;
+	border: 1px solid #ddd;
 }
 .comment_write {
 	padding-top: 5px;
