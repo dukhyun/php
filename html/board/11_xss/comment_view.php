@@ -1,30 +1,34 @@
 <script>
 var isUpdateReplyMod = false;
+var form;
+var temp_button;
 function updateReply(button, replyId) {
-	var form = document.getElementById(replyId);
+	// var form = document.getElementById(replyId);
 	
 	if (isUpdateReplyMod == false) {
+		form = document.getElementById(replyId);
 		form.content.readOnly = false;
 		form.content.style.border = "1px solid #ddd"
 		form.submit.type = 'submit';
 		isUpdateReplyMod = true;
 		button.value = '취소';
+		temp_button = button;
 	} else {
 		form.content.readOnly = true;
 		form.content.style.border = "0px"
 		form.submit.type = 'hidden';
 		isUpdateReplyMod = false;
-		button.value = '수정';
+		temp_button.value = '수정';
 	}
 	return false;
 }
-function deleteReply(button, replyId) {
-	if (confirm('정말로 삭제하시겠습니까?')) {
-		
+function deleteReply(form) {
+	if (confirm('댓글을 삭제하시겠습니까?')) {
+		form.submit();
+		return true;
 	} else {
-		
+		return false;
 	}
-	return false;
 }
 </script>
 <div class="comment_list">
@@ -61,10 +65,17 @@ function deleteReply(button, replyId) {
 			printf("<span class='date'>%s</span>", time_set($row['date']));
 		?>
 			<span class="floatright">
-				<input type="button" value="수정" onclick="updateReply(this, '<?php echo 'comment_'.$row['id']; ?>');">
-				<form>
-					<input type="button" value="삭제" onclick="deleteReply(this, '<?php echo 'comment_'.$row['id']; ?>');">
-				</form>
+				<span class="floatleft">
+					<input type="button" value="수정" onclick="updateReply(this, '<?php echo 'comment_'.$row['id']; ?>');">
+				</span>
+				<span class="floatleft">
+					<form action="comment_del.php" method="post">
+						<input type="hidden" name="board_id" value="<?php echo $board_id; ?>">
+						<input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
+						<input type="hidden" name="comment_id" value="<?php echo $row['id']; ?>">
+						<input type="button" value="삭제" onclick="deleteReply(this.form);">
+					</form>
+				</span>
 		<?php
 			printf('<a href="comment_update.php?%s&cmt_id=%d">수정</a>',$temp, $row['id']);
 			printf('<a href="comment_del.php?%s&cmt_id=%d">삭제</a>', $temp, $row['id']);
@@ -106,7 +117,7 @@ function deleteReply(button, replyId) {
 	</li>
 	<?php
 		}
-		//id="comment<?php echo $row['id']; ?"
+		//id='comment_'.$row['id'];
 	?>
 	<li class="cmt floatleft">
 		<textarea maxlength="400" name="content"></textarea>

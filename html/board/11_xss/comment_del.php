@@ -17,6 +17,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 	$post_id = $_GET['post_id'];
 	$id = $_GET['cmt_id'];
 }
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+	$board_id  = $_POST['board_id'];
+	$post_id = $_POST['post_id'];
+	$id = $_POST['comment_id'];
+}
 
 $query = sprintf("DELETE FROM comment WHERE id = %d;", $id);
 
@@ -24,7 +29,8 @@ if (mysqli_query($conn, $query) === false) {
 	echo mysqli_error($conn);
 } else {
 	echo 'DB DELETE<br>';
-	header("Location: view_post.php?board_id=".$board_id."&post_id=".$post_id);
+	echo '<script>history.go(-1);</script>';
+	// header("Location: view_post.php?board_id=".$board_id."&post_id=".$post_id);
 }
 mysqli_close($conn);
 ?>
