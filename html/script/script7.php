@@ -32,9 +32,6 @@ function my_function() {
 	$local = 'new local';
 	$global = 'new global';
 }
-?>
-
-<?php
 my_function();
 ?>
 

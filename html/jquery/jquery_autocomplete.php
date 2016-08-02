@@ -33,7 +33,6 @@ function getAutocompleteSource(userInput) {
 		async: false,
 		// dataType: 'json',
 		data: {
-			// 
 			input: userInput
 		}, // $_GET['input']
 		success : function(result) {

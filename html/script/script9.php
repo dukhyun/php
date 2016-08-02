@@ -10,19 +10,19 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 <br>
 <header>
 <script>
-	function myFunction() {
-		var array = [1, 2, 3];
-		var map = { member1 : 'string value', member2 : 2345 };
-		document.write(array, '<br>');
-		// document.write(map, '<br>');
-		document.write(map.member1, '<br>');
-		document.write(map.member2, '<br>');
-	}
+function myFunction() {
+	var array = [1, 2, 3];
+	var map = { member1 : 'string value', member2 : 2345 };
+	document.write(array, '<br>');
+	// document.write(map, '<br>');
+	document.write(map.member1, '<br>');
+	document.write(map.member2, '<br>');
+}
 </script>
 </header>
 
 <script>
-	myFunction();
+myFunction();
 </script>
 <?php
 	$array = array(1, 2, 3);

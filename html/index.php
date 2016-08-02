@@ -96,32 +96,21 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 	</div>
 	
 	<div class="fix box_content floatleft">
-		<h2>세션<span>Section</span></h2>
-		<ul> <!-- 목록 //-->
-			<li><a href="/section/header.php">header</a></li>
-			<li><a href="/section/footer.php">footer</a></li>
-			<li><a href="/section/navbar.php">navbar</a></li>
-		</ul>
-	</div>
-	
-	<div class="fix box_content floatleft">
 		<h2>자바스크립트<span>Script</span></h2>
 		<ul> <!-- 목록 //-->
-			<li><a href="/script/script1.php">script1</a></li>
-			<li><a href="/script/script2.php">script2</a></li>
-			<li><a href="/script/script3.php">script3</a></li>
-			<li><a href="/script/script4.php">script4</a></li>
-			<li><a href="/script/script5.php">script5</a></li>
-			<li><a href="/script/script6.php">script6</a></li>
-			<li><a href="/script/script7.php">script7</a></li>
-			<li><a href="/script/script8.php">script8</a></li>
-			<li><a href="/script/script9.php">script9</a></li>
-			<li><a href="/script/script10.php">script10</a></li>
-			<li><a href="/script/script11.php">script11</a></li>
-			<li><a href="/script/script12.php">script12</a></li>
-			<li><a href="/script/script13.php">script13</a></li>
-			<li><a href="/script/script14.php">script14</a></li>
-			<li><a href="/script/script15.php">script15</a></li>
+			<li><a href="/script/script2.php">history</a></li>
+			<li><a href="/script/script3.php">함수 변수지정</a></li>
+			<li><a href="/script/script4.php">js style</a></li>
+			<li><a href="/script/script5.php">onclick event</a></li>
+			<li><a href="/script/script6.php">알림창</a></li>
+			<li><a href="/script/script8.php">js global 변수</a></li>
+			<li><a href="/script/script9.php">js array</a></li>
+			<li><a href="/script/script10.php">버튼</a></li>
+			<li><a href="/script/script11.php">array 반복문</a></li>
+			<li><a href="/script/script12.php">split, join</a></li>
+			<li><a href="/script/script13.php">sort()</a></li>
+			<li><a href="/script/script14.php">js 함수</a></li>
+			<li><a href="/script/script15.php">push()</a></li>
 		</ul>
 	</div>
 	
@@ -133,6 +122,8 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 			<li><a href="/jquery/jquery_time.php">jquery_time</a></li>
 			<li><a href="/jquery/jquery_autocomplete_1.php">jquery_autocomplete_1</a></li>
 			<li><a href="/jquery/jquery_autocomplete.php">jquery_autocomplete_2</a></li>
+			<li><a href="/jquery/js_dom.php">js_dom</a></li>
+			<li><a href="/jquery/js_table.php">js_table</a></li>
 		</ul>
 	</div>
 	
