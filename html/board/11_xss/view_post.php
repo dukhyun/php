@@ -19,14 +19,6 @@ $(document).ready(function() {
 		});
 	$('.content').find('textarea').keyup();
 });
-$(document).ready(function() {
-	$('.comment').on('keyup', 'textarea', 
-		function (e){
-			$(this).css('height', 'auto' );
-			$(this).height(this.scrollHeight);
-		});
-	$('.comment').find('textarea').keyup();
-});
 </script>
 
 <div class="view_post">

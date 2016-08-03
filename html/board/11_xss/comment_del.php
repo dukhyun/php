@@ -18,8 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 	$id = $_GET['cmt_id'];
 }
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	$board_id  = $_POST['board_id'];
-	$post_id = $_POST['post_id'];
 	$id = $_POST['comment_id'];
 }
 

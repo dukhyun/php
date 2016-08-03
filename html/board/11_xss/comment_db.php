@@ -32,7 +32,8 @@ if (isset($_POST['content'])) {
 		echo mysqli_error($conn);
 	} else {
 		echo 'comment DB INSERT<br>';
-		header("Location: view_post.php?board_id=".$board_id."&post_id=".$post_id);
+		echo '<script>history.go(-1);</script>';
+		// header("Location: view_post.php?board_id=".$board_id."&post_id=".$post_id);
 	}
 }
 ?>

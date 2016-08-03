@@ -15,23 +15,16 @@ $conn = db_connect();
 if (isset($_POST['comment_id'], $_POST['content'])) {
 	$id = $_POST['comment_id'];
 	$comment = $_POST['content'];
-	$board_id = $_POST['board_id'];
-	$post_id = $_POST['post_id'];
-	
-	if (isset($_POST['author'])) {
-		$author = $_POST['author'];
-	} else {
-		$author = null;
-	}
 
-	$update_query = 'UPDATE comment SET content=?, author=? WHERE id=?';
+	$update_query = 'UPDATE comment SET content=? WHERE id=?';
 	$stmt = mysqli_prepare($conn, $update_query);
-	mysqli_stmt_bind_param($stmt, 'ssi', $comment, $author, $id);
+	mysqli_stmt_bind_param($stmt, 'si', $comment, $id);
 	if (!mysqli_stmt_execute($stmt)) {
 		echo mysqli_error($conn);
 	} else {
 		echo 'comment DB UPDATE<br>';
-		header("Location: view_post.php?board_id=".$board_id."&post_id=".$post_id);
+		echo '<script>history.go(-1);</script>';
+		// header("Location: view_post.php?board_id=".$board_id."&post_id=".$post_id);
 	}
 }
 ?>

@@ -226,20 +226,17 @@ input[type=password] {
 	ime-mode: disabled;
 }
 /* comment */
-.comment_list ul {
+.comment_list .comment_line {
 	padding: 10px;
 	border-left: 1px solid #bbb;
 	border-right: 1px solid #bbb;
 	border-bottom: 1px solid #bbb;
 }
-.comment_list ul:first-child {
+.comment_list .comment_line:first-child {
 	border-top: 1px solid #bbb;
 }
 .comment_list li {
     list-style: none;
-}
-.comment_list li:first-child {
-	margin-bottom: 5px;
 }
 .comment_list .date {
 	font-size: .8em;
@@ -274,11 +271,26 @@ input[type=password] {
 	border: 0px;
 	resize: none;
 	word-break: break-all;
+    overflow: auto;
 }
 .comment_list input[type=submit] {
 	padding: 2px 4px;
-	border: 1px solid #ddd;
+	border: 1px solid #222;
 }
+/* show more reply */
+#show_more_reply_button {
+	font-size: 14px;
+	padding: 4px;
+	background: transparent;
+	border: 1px solid #222;
+	margin: 5px;
+	transition-duration: 0.1s;
+}
+#show_more_reply_button:hover {
+	color: white;
+	background: #f44336;
+}
+/* comment write */
 .comment_write {
 	padding-top: 5px;
 	border-top: 1px solid #bbb;
