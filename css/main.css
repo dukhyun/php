@@ -26,13 +26,14 @@ body {
 	margin: 0 7px 15px 7px;
 	padding: 10px;
 	width: 48%;
-	min-height: 350px;
+	min-height: 300px;
 }
 @media screen and (min-width: 992px) {
-.box_content { width: 23.5%; }
+	.box_content { width: 23.5%; }
+	div:nth-child(4n+2) { clear: both; }
 }
 @media screen and (max-width: 738px) {
-.box_content { width: 98%; }
+	.box_content { width: 98%; }
 }
 h1 {
 	font-weight: bold;

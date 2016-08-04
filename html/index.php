@@ -11,7 +11,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 	<div class="fix title">
 		<h1>김덕현님의 PHP 연습장</h1>
 	</div>
-
+	
 	<div class="fix box_content floatleft">
 		<h2>게시판<span>Board</span></h2>
 		<ul> <!-- 목록 //-->
@@ -26,6 +26,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 			<li><a href="board/09_login/">Login</a></li>
 			<li><a href="board/10_comment/">Comment</a></li>
 			<li><a href="board/11_xss/">XSS(DB, HTML)</a></li>
+			<li><a href="board/12_ajax/">AJAX</a></li>
 		</ul>
 	</div>
 	
