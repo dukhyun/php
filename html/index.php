@@ -65,6 +65,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 			<li><a href="exercise/reverse/">문자 역순 정렬</a></li>
 			<li><a href="exercise/garde/">성적 입력</a></li>
 			<li><a href="exercise/diff/">Diff</a></li>
+			<li><a href="exercise/regex/php_regex.php">정규표현식</a></li>
 		</ul>
 	</div>
 	
