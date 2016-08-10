@@ -73,7 +73,15 @@
 	echo '공백제거2: '.htmlspecialchars($result).'<br>';
 	echo '결과: '.htmlspecialchars($result);
 	echo '<br><br>';
-	echo "<script>alert('".$result."');</script>";
+	// echo "<script>alert('".$result."');</script>";
+	
+	// 정규표현식
+	// class = "aaa bbb"
+	// (?<=[^b])
+	// [a-z-]+\s*=\s*["][^"\\]*["]
+	// "[^"]*", [^"\\]
+	// (?=\s*[a-z>])
+	// (?<=[^b])[a-z-]+\s*=\s*["][^"\\]*["](?=\s*[a-z>])
 ?>
 </body>
 </html>

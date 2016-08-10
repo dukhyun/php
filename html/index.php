@@ -84,6 +84,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 			<li><a href="submit/recursive function.php">recursive</a></li>
 			<li><a href="submit/reverse.php">reverse</a></li>
 			<li><a href="submit/class/">class</a></li>
+			<li><a href="submit/val.php">타입 변환</a></li>
 		</ul>
 	</div>
 	

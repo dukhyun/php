@@ -1,4 +1,17 @@
 <script>
+function setDisplay(elems, mode) {
+	for (var i = 0; i < elems.length; i++) {
+		elems[i].style.display = mode;
+	}	
+}
+function getReplyButtons() {
+	return Array.prototype.slice.call(document.getElementsById('edit_reply_button')).concat(
+			Array.prototype.slice.call(document.getElementsById('delete_reply_button')));;
+}
+function resetReplyButtonDisplay() {
+	setDisplay(getReplyButtons(), '');
+}
+
 // 댓글 수정
 var isUpdateReplyMod = false;
 var tempForm;
@@ -15,23 +28,37 @@ function updateReply(button, replyId) {
 		tempButton = button;
 		tempButton.value = '취소';
 	} else {
-		// alert(tempContent);
-		tempForm.content.value = tempContent;
-		tempForm.content.readOnly = true;
-		tempForm.content.style.border = "0px";
-		tempForm.submit.type = 'hidden';
+		// tempForm.content.value = tempContent;
+		// tempForm.content.readOnly = true;
+		// tempForm.content.style.border = "0px";
+		// tempForm.submit.type = 'hidden';
 		isUpdateReplyMod = false;
+		resetReplyButtonDisplay();
 		tempButton.value = '수정';
 	}
 	return false;
 }
-function deleteReply(form) {
+function deleteReply(replyId) {
 	if (confirm('댓글을 삭제하시겠습니까?')) {
-		form.submit();
+		ajaxDeleteReply(replyId);
 		return true;
 	} else {
 		return false;
 	}
+}
+function ajaxDeleteReply(replyId) {
+	$.ajax({ 
+		url: 'comment_del.php',
+		type: 'POST',
+		async: false,
+		data: { reply_id: replyId },
+		success: function(result) {
+		},
+		error: function(xhr) {
+			alert('ajaxDeleteReply');
+		},
+		timeout : 1000
+	});		
 }
 
 // 댓글 더보기
@@ -85,16 +112,10 @@ function showMoreReplies(totalReplies, button) {
 				</span>
 				<span class="floatleft">
 					<form action="comment_del.php" method="post">
-						<input type="hidden" name="board_id" value="<?php echo $board_id; ?>">
-						<input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
 						<input type="hidden" name="comment_id" value="<?php echo $row['id']; ?>">
-						<input type="button" value="삭제" onclick="deleteReply(this.form);">
+						<input type="button" value="삭제" onclick="deleteReply(<?php echo $row['id']; ?>);">
 					</form>
 				</span>
-		<?php
-					// printf('<a href="comment_update.php?%s&cmt_id=%d">수정</a>',$temp, $row['id']);
-					// printf('<a href="comment_del.php?%s&cmt_id=%d">삭제</a>',$temp, $row['id']);
-		?>
 			</span>
 		<?php
 				}
@@ -105,18 +126,14 @@ function showMoreReplies(totalReplies, button) {
 		?>
 			<span class="floatright">
 				<span class="floatleft">
-					<input type="button" value="수정" onclick="updateReply(this, '<?php echo 'form_'.$row['id']; ?>');">
+					<input type="button" id="edit_reply_button" value="수정" onclick="updateReply(this, '<?php echo 'form_'.$row['id']; ?>');">
 				</span>
 				<span class="floatleft">
 					<form action="comment_del.php" method="post">
 						<input type="hidden" name="comment_id" value="<?php echo $row['id']; ?>">
-						<input type="button" value="삭제" onclick="deleteReply(this.form);">
+						<input type="button" id="delete_reply_button" value="삭제" onclick="deleteReply(<?php echo $row['id']; ?>);">
 					</form>
 				</span>
-		<?php
-			// printf('<a href="comment_update.php?%s&cmt_id=%d">수정</a>',$temp, $row['id']);
-			// printf('<a href="comment_del.php?%s&cmt_id=%d">삭제</a>', $temp, $row['id']);
-		?>
 			</span>
 		<?php
 		}
