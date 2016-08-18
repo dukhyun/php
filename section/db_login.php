@@ -1,6 +1,6 @@
 <?php
 	$hostname = 'mykociadb.cvs0xwx2zhxj.ap-northeast-2.rds.amazonaws.com';
 	$username = 'dukhyun';
-	$password = 'turn4013';
+	$password = 'U3*A7k5YP^hM*D9pp4';
 	$dbname = 'dukhyun';
 ?>
