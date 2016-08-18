@@ -65,7 +65,8 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 			<li><a href="exercise/reverse/">문자 역순 정렬</a></li>
 			<li><a href="exercise/garde/">성적 입력</a></li>
 			<li><a href="exercise/diff/">Diff</a></li>
-			<li><a href="exercise/regex/php_regex.php">정규표현식</a></li>
+			<li><a href="exercise/regex/php_regex.php">정규표현식(php)</a></li>
+			<li><a href="exercise/regex/js_regex.php">정규표현식(js)</a></li>
 		</ul>
 	</div>
 	
@@ -88,15 +89,17 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 		</ul>
 	</div>
 	
+	<!--
 	<div class="fix box_content floatleft">
 		<h2>연습<span>Test</span></h2>
-		<ul> <!-- 목록 //-->
+		<ul>
 			<li><a href="test/nav_test.php">네비바test</a></li>
 			<li><a href="test/time.php">Time</a></li>
 			<li><a href="test/server_url.php">server_url</a></li>
 			<li><a href="test/a_link.php">a_link</a></li>
 		</ul>
 	</div>
+	-->
 	
 	<div class="fix box_content floatleft">
 		<h2>자바스크립트<span>Script</span></h2>
@@ -124,9 +127,11 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 			<li><a href="/jquery/jquery_2.php">jquery_2</a></li>
 			<li><a href="/jquery/jquery_time.php">jquery_time</a></li>
 			<li><a href="/jquery/jquery_autocomplete_1.php">jquery_autocomplete_1</a></li>
-			<li><a href="/jquery/jquery_autocomplete.php">jquery_autocomplete_2</a></li>
+			<li><a href="/jquery/jquery_autocomplete_2.php">jquery_autocomplete_2</a></li>
 			<li><a href="/jquery/js_dom.php">js_dom</a></li>
 			<li><a href="/jquery/js_table.php">js_table</a></li>
+			<li><a href="/jquery/js_timer.php">js_timer</a></li>
+			<li><a href="/jquery/jquery_countdown.php">jquery_countdown</a></li>
 		</ul>
 	</div>
 	
