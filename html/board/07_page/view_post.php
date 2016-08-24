@@ -3,8 +3,8 @@ $local_url = '../../';
 $web_title = 'PHP 연습장 - 게시판';
 $nav_array = array();
 $nav_array['Home'] = $local_url.'index.php';
-$nav_array['Board'] = $local_url.'board/06_delete/index.php';
-$css_array['board'] = $local_url.'board/06_delete/style.css';
+$nav_array['Board'] = $local_url.'board/07_page/index.php';
+$css_array['board'] = $local_url.'board/07_page/style.css';
 include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 include 'function.php';
 ?>

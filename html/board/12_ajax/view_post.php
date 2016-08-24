@@ -67,7 +67,7 @@ $(document).ready(function() {
 	<div class="fix">
 		<h1>보기 화면</h1>
 	</div>
-	
+	<br>
 	<div class="text floatleft">번호</div>
 	<div class="output floatleft"><?php echo $post_id; ?></div>
 

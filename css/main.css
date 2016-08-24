@@ -6,9 +6,7 @@
 }
 a { color:#575757; text-decoration:none; outline:0; }
 a:hover { color: blue; }
-body {
-	color: #575757;
-}
+body { color: #575757; }
 .fix { overflow: hidden; } /* box scroll hidden */
 .floatleft { float: left; }
 .floatright { float: right; }
