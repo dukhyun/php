@@ -49,8 +49,7 @@ function diff($arr, $diff, $i, $j) {
 		if ($arr[$i+1][$j+1] > 0) {
 			$result = $diff[$i][$j] + $arr[$i+1][$j+1];
 			$path = 3;
-		}
-		else if ($arr[$i+1][$j] > 0 || $arr[$i][$j+1] > 0) {
+		} else if ($arr[$i+1][$j] > 0 || $arr[$i][$j+1] > 0) {
 			if ($arr[$i+1][$j] > $arr[$i][$j+1]) {
 				$result = $arr[$i+1][$j];
 				$path = 1;

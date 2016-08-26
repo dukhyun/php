@@ -10,7 +10,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 <?php
 	include 'function.php';
 	
-	$text_a = 'abcdefg';
+	$text_a = 'azbcdefg';
 	$text_b = 'axcbcbbeh';
 	
 	$diff_a = str_arr($text_a);
@@ -55,24 +55,31 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 				$diff_check[$a][$b] = 'unchanged';
 				$diff_result['a'][$b][0] = 'unchanged';
 				$diff_result['b'][$b][0] = 'unchanged';
+				echo $a.', '.$b;
+				echo '(unchanged,'.$diff_result['a'][$b][1].')';
 				$temp = $b;
 				break;
 			} else if ($path[$a][$b][1] == 1 || $path[$a][$b][1] == 0) {
 				$diff_check[$a][$b] = 'del';
 				$diff_result['a'][$b][0] = 'del';
-				// echo '(del"'.$diff_result['a'][$b][1].'")';
+				echo $a.', '.$b;
+				echo '(del,'.$diff_result['a'][$b][1].')';
 				$diff_result['b'] = insert_blank($diff_result['b'], $b);
+				$temp = $b - 1;
 				break;
 			} else if ($b > $temp && !$diff_result['b'][$b][0]) {
 				$diff_check[$a][$b] = 'add';
 				$diff_result['b'][$b][0] = 'add';
-				// echo '(add"'.$diff_result['b'][$b][1].'")';
+				echo $a.', '.$b;
+				echo '(add,'.$diff_result['b'][$b][1].')';
 				$diff_result['a'] = insert_blank($diff_result['a'], $b);
 			}
 			$b += 1;
 		}
 		// 문제점 수정 중..
 	}
+	echo '<br>';
+	// print_r($diff_result);
 ?>
 
 <div class="fix main_content">
@@ -145,6 +152,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 				printf('<li class="floatleft">%s</li>', $str_a);
 				foreach ($diff_b as $b => $str_b) {
 					$str = path_sc($path[$a][$b][1]);
+					// $str = $path[$a][$b][1];
 					printf('<li class="path floatleft">%s</li>', $str);
 					unset($str);
 				}
@@ -217,7 +225,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 				<?php
 				for ($i = 0; $i < count($diff_result['b']); $i += 1) {
 					printf('<li class="path floatleft %s">%s</li>'
-					, $diff_result['b'][$i][0], $diff_result[b][$i][1]);
+					, $diff_result['b'][$i][0], $diff_result['b'][$i][1]);
 				}
 				?>
 			</ul>
