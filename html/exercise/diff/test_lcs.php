@@ -2,8 +2,8 @@
 $local_url = '../../';
 $web_title = 'PHP 연습장 - Diff';
 $nav_array = array();
-$nav_array[Home] = $local_url.'index.php';
-$css_array[diff] = 'style.css';
+$nav_array['Home'] = $local_url.'index.php';
+$css_array['diff'] = 'style.css';
 include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 ?>
 
@@ -33,7 +33,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 	$path = array();
 	for ($a = count($diff_array)-1; $a >= 0; $a -= 1) {
 		for ($b = count($diff_array[$a])-1; $b >= 0; $b -= 1) {
-			$path[$a][$b] = diff($result, $diff_array, $a, $b);
+			$path[$a][$b] = diff_cell($result, $diff_array, $a, $b);
 			$result[$a][$b] = $path[$a][$b][0];
 		}
 	}

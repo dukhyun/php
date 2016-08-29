@@ -29,11 +29,13 @@ function insert_blank($array, $index) {
 	return $array;
 }
 
-function diff($arr, $diff, $i, $j) {
+// $arr : 현재까지 계산된 부분
+// $match_array : 0, 1의 2차원 array
+function diff_cell($arr, $match_array, $i, $j) {
 	$result = 0;
 	$path = 0;
 	
-	if (!$diff[$i][$j]) { // diff not
+	if (!$match_array[$i][$j]) { // no match
 		if ($arr[$i+1][$j] > 0 || $arr[$i][$j+1] > 0) {
 			if ($arr[$i+1][$j] > $arr[$i][$j+1]) {
 				$result = $arr[$i+1][$j];
@@ -45,7 +47,7 @@ function diff($arr, $diff, $i, $j) {
 		}
 	} else { // diff ok
 		if ($arr[$i+1][$j+1] > 0) {
-			$result = $diff[$i][$j] + $arr[$i+1][$j+1];
+			$result = $match_array[$i][$j] + $arr[$i+1][$j+1];
 			$path = 3;
 		} else if ($arr[$i+1][$j] > 0 || $arr[$i][$j+1] > 0) {
 			if ($arr[$i+1][$j] > $arr[$i][$j+1]) {
@@ -56,7 +58,7 @@ function diff($arr, $diff, $i, $j) {
 				$path = 2;
 			}
 		} else {
-			$result = $diff[$i][$j];
+			$result = $match_array[$i][$j];
 			$path = 3;
 		}
 	}
