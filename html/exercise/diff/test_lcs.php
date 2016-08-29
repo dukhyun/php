@@ -31,8 +31,8 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 	// Result_Diff
 	$result = array();
 	$path = array();
-	for ($a = count($diff_array); $a >= 0; $a -= 1) {
-		for ($b = count($diff_array[$a]); $b >= 0; $b -= 1) {
+	for ($a = count($diff_array)-1; $a >= 0; $a -= 1) {
+		for ($b = count($diff_array[$a])-1; $b >= 0; $b -= 1) {
 			$path[$a][$b] = diff($result, $diff_array, $a, $b);
 			$result[$a][$b] = $path[$a][$b][0];
 		}
@@ -41,10 +41,6 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 	// best_path
 	$best_path = array();
 	$diff_check = array();
-	// diff_result
-	$diff_result = array();
-	$diff_result['a'] = str_arr_diff($text_a);
-	$diff_result['b'] = str_arr_diff($text_b);
 	
 	$temp = -1;
 	for ($a = 0; $a < count($diff_a); $a += 1) {
@@ -53,33 +49,58 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 			if ($path[$a][$b][1] == 3) {
 				$best_path[$a][$b] = $diff_a[$a];
 				$diff_check[$a][$b] = 'unchanged';
-				$diff_result['a'][$b][0] = 'unchanged';
-				$diff_result['b'][$b][0] = 'unchanged';
-				echo $a.', '.$b;
-				echo '(unchanged,'.$diff_result['a'][$b][1].')';
 				$temp = $b;
 				break;
 			} else if ($path[$a][$b][1] == 1 || $path[$a][$b][1] == 0) {
+				$best_path[$a][$b] = $diff_a[$a];
 				$diff_check[$a][$b] = 'del';
-				$diff_result['a'][$b][0] = 'del';
-				echo $a.', '.$b;
-				echo '(del,'.$diff_result['a'][$b][1].')';
-				$diff_result['b'] = insert_blank($diff_result['b'], $b);
 				$temp = $b - 1;
 				break;
 			} else if ($b > $temp && !$diff_result['b'][$b][0]) {
+				$best_path[$a][$b] = $diff_b[$b];
 				$diff_check[$a][$b] = 'add';
-				$diff_result['b'][$b][0] = 'add';
-				echo $a.', '.$b;
-				echo '(add,'.$diff_result['b'][$b][1].')';
-				$diff_result['a'] = insert_blank($diff_result['a'], $b);
 			}
 			$b += 1;
 		}
-		// 문제점 수정 중..
 	}
+	
+	// diff_result
+	$diff_result = array();
+	$diff_result[0] = str_arr_diff($text_a);
+	$diff_result[1] = str_arr_diff($text_b);
+	
+	$a = 0;
+	$temp = -1;
+	while (true) {
+		$b = $temp + 1;
+		while (true) {
+			if ($diff_check[$a][$b] == 'unchanged') {
+				echo '('.$a.', '.$b.')'.$diff_result[0][$a][1].'<br>';
+				$diff_result[0][$a][0] = $diff_check[$a][$b];
+				$diff_result[1][$b][0] = $diff_check[$a][$b];
+				$temp = $b;
+				break;
+			} else if ($diff_check[$a][$b] == 'del') {
+				echo '('.$a.', '.$b.')<br>';
+				$diff_result[0][$a][0] = $diff_check[$a][$b];
+				$diff_result[1] = insert_blank($diff_result[1], $b);
+				// $temp = $b - 1;
+				break;
+			} else if ($diff_check[$a][$b] == 'add') {
+				echo '('.$a.', '.$b.')<br>';
+				$diff_result[1][$b][0] = $diff_check[$a][$b];
+				// $diff_result[0] = insert_blank($diff_result[1], $b);
+			}
+			$b += 1;
+		}
+		$a += 1;
+		
+		if ($diff_result[0][$a] == null) {
+			break;
+		}
+	}
+	
 	echo '<br>';
-	// print_r($diff_result);
 ?>
 
 <div class="fix main_content">
@@ -215,17 +236,17 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 			<p>Diff Result</p>
 			<ul>
 				<?php
-				for ($i = 0; $i < count($diff_result['a']); $i += 1) {
+				for ($i = 0; $i < count($diff_result[0]); $i += 1) {
 					printf('<li class="header path floatleft %s">%s</li>'
-					, $diff_result['a'][$i][0], $diff_result['a'][$i][1]);
+					, $diff_result[0][$i][0], $diff_result[0][$i][1]);
 				}
 				?>
 			</ul>
 			<ul>
 				<?php
-				for ($i = 0; $i < count($diff_result['b']); $i += 1) {
+				for ($i = 0; $i < count($diff_result[1]); $i += 1) {
 					printf('<li class="path floatleft %s">%s</li>'
-					, $diff_result['b'][$i][0], $diff_result['b'][$i][1]);
+					, $diff_result[1][$i][0], $diff_result[1][$i][1]);
 				}
 				?>
 			</ul>
