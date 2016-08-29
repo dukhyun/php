@@ -9,6 +9,7 @@ function str_arr($str) {
 	return $arr;
 }
 
+// Array(class, char)
 function str_arr_diff($str) {
 	$arr = array();
 	for ($index = 0; $index < strlen($str); $index += 1) {
@@ -24,7 +25,7 @@ function insert_blank($array, $index) {
 		$array[$i+1] = $array[$i];
 	}
 	
-	$array[$index] = array('blank', '');
+	$array[$index] = array('blank', null);
 	
 	return $array;
 }
@@ -32,35 +33,43 @@ function insert_blank($array, $index) {
 // $arr : 현재까지 계산된 부분
 // $match_array : 0, 1의 2차원 array
 function diff_cell($arr, $match_array, $i, $j) {
-	$result = 0;
-	$path = 0;
+	// $result : result array value
+	// $path : 방향
+	if (isset($arr[$i+1][$j])) {
+		$right = $arr[$i+1][$j];
+	} else {
+		$right = 0;
+	}
 	
-	if (!$match_array[$i][$j]) { // no match
-		if ($arr[$i+1][$j] > 0 || $arr[$i][$j+1] > 0) {
-			if ($arr[$i+1][$j] > $arr[$i][$j+1]) {
-				$result = $arr[$i+1][$j];
-				$path = 1;
-			} else {
-				$result = $arr[$i][$j+1];
-				$path = 2;
-			}
-		}
-	} else { // diff ok
-		if ($arr[$i+1][$j+1] > 0) {
-			$result = $match_array[$i][$j] + $arr[$i+1][$j+1];
+	if (isset($arr[$i][$j+1])) {
+		$bottom = $arr[$i][$j+1];
+	} else {
+		$bottom = 0;
+	}
+	
+	if (isset($arr[$i+1][$j+1])) {
+		$diagonal = $arr[$i+1][$j+1];
+	} else {
+		$diagonal = 0;
+	}
+
+	if ($right > $bottom) {
+		$result = $right;
+		$path = 1;
+	} else {
+		$result = $bottom;
+		$path = 2;
+	}
+	
+	if ($match_array[$i][$j] === 1) {
+		if ($diagonal + 1 > $result) {
+			$result = $diagonal + 1;
 			$path = 3;
-		} else if ($arr[$i+1][$j] > 0 || $arr[$i][$j+1] > 0) {
-			if ($arr[$i+1][$j] > $arr[$i][$j+1]) {
-				$result = $arr[$i+1][$j];
-				$path = 1;
-			} else {
-				$result = $arr[$i][$j+1];
-				$path = 2;
-			}
-		} else {
-			$result = $match_array[$i][$j];
-			$path = 3;
 		}
+	}
+	
+	if ($result == 0) {
+		$path = 0;
 	}
 	
 	return array($result, $path);
@@ -68,10 +77,10 @@ function diff_cell($arr, $match_array, $i, $j) {
 
 function path_sc($a) {
 	if ($a == 1) {
-		$str = '↓';
+		$str = '→';
 	}
 	else if ($a == 2) {
-		$str = '→';
+		$str = '↓';
 	}
 	else if ($a == 3) {
 		$str = '↘';

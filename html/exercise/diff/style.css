@@ -52,3 +52,10 @@ form input[type=submit] {
 .diff .unchanged {
 	background-color: yellow;
 }
+
+/* .table_style div {
+	display: none;
+}
+.table_style .diff {
+	display: inline; !important
+} */
