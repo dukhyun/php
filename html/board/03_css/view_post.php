@@ -1,40 +1,31 @@
 <!DOCTYPE html>
 
 <?php
-	function get_line($num) {
-		$file_name = 'data.txt';
-		$fh = fopen($file_name, 'r') or die("파일 읽기 실패");
-		
-		$index = 0;
-		while (($line = fgets($fh)) !== false) {
-			$index += 1;
-			$tmp = explode("\t", $line);
-			if ($index == $num) {
-				return $tmp;
-			}
+function get_line($num) {
+	$file_name = 'data.txt';
+	$fh = fopen($file_name, 'r') or die("파일 읽기 실패");
+	
+	$index = 0;
+	while (($line = fgets($fh)) !== false) {
+		$index += 1;
+		$tmp = explode("\t", $line);
+		if ($index == $num) {
+			return $tmp;
 		}
-		
-		return false;
 	}
+	
+	return false;
+}
 ?>
-
-<html>
-<head>
-<meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="style.css">
-<style>
-</style>
-</head>
-<body>
 
 <?php
-	$local_url = '../../';
-	$navy = array();
-	$navy[Home] = $local_url.'index.php';
-	$navy[Board] = 'index.php';
-	include $local_url.'savefrom/navybar.php';
+$local_url = '../..';
+$nav_array = array();
+$nav_array['Home'] = $local_url.'/index.php';
+$nav_array['Board'] = 'index.php';
+include $local_url.'/../section/header.php';
 ?>
-
+<link rel="stylesheet" type="text/css" href="style.css">
 <div class="view_post">
 	<?php
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {

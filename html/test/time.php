@@ -1,7 +1,7 @@
 <?php
 $local_url = '../';
 $nav_array = array();
-$nav_array['Home'] = $local_url.'index.php';
+$nav_array['Home'] = $local_url.'/index.php';
 include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 ?>
 

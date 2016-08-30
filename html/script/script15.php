@@ -2,7 +2,7 @@
 $local_url = '../';
 $web_title = 'PHP 연습장';
 $nav_array = array();
-$nav_array[Home] = $local_url.'';
+$nav_array['Home'] = $local_url.'';
 include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 ?>
 <header>

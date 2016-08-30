@@ -56,8 +56,10 @@
 <body>
 
 <?php
-	$local_url = '../../';
-	include $local_url.'/from/navybar.php'
+$local_url = '../..';
+$nav_array = array();
+$nav_array['Home'] = $local_url.'';
+include $local_url.'/../section/header.php';
 ?>
 
 <table>

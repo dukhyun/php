@@ -1,10 +1,10 @@
 <?php
-$local_url = '../../';
+$local_url = '../..';
 $web_title = 'PHP 연습장 - 게시판';
 $nav_array = array();
-$nav_array['Home'] = $local_url.'index.php';
-$nav_array['Board'] = $local_url.'board/10_comment/index.php';
-$css_array['board'] = $local_url.'board/10_comment/style.css';
+$nav_array['Home'] = $local_url.'/index.php';
+$nav_array['Board'] = 'index.php';
+$css_array['board'] = 'style.css';
 include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 include 'function.php';
 ?>
@@ -35,7 +35,7 @@ include 'function.php';
 			</li>
 			<?php
 				$member_id = get_post_member_id($conn, $post_id);
-				if ($member_id == $_SESSION['id']) {
+				if (isset($_SESSION['id']) && $member_id == $_SESSION['id']) {
 			?>
 			<li>
 				<label>로그인된 회원</label>

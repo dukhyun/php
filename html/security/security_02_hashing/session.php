@@ -24,7 +24,7 @@ function start_session() {
     session_regenerate_id(true); // session fixation 대비
 }
 
- // start_session 호출된 후에 사용되어야 한다
+// start_session 호출된 후에 사용되어야 한다
 function destroy_session() {
 	$_SESSION = array(); // 모든 세션 변수 제거
 	// 세션 쿠키 제거

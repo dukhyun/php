@@ -1,8 +1,8 @@
 <?php
-$local_url = '../';
+$local_url = '..';
 $nav_array = array();
-$nav_array['Home'] = $local_url.'index.php';
-include $local_url.'header.php';
+$nav_array['Home'] = $local_url.'/index.php';
+include $local_url.'/../section/header.php';
 ?>
 
 <?php
@@ -14,8 +14,8 @@ function get_sum($n) {
         return $n + get_sum($n-1);
     }
 }
-
+echo 'recursive function<br>';
 echo get_sum(5);
 ?>
 
-<?php include $local_url.'footer.php'; ?>
+<?php include $local_url.'/../section/footer.php'; ?>

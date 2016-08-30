@@ -1,9 +1,9 @@
 <?php
-$local_url = '../../';
+$local_url = '../..';
 $web_title = 'PHP 연습장 - Diff';
 $nav_array = array();
-$nav_array[Home] = $local_url.'index.php';
-$css_array[diff] = 'style.css';
+$nav_array['Home'] = $local_url.'/index.php';
+$css_array['diff'] = 'style.css';
 include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 ?>
 

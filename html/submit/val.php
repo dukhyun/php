@@ -1,7 +1,7 @@
 <?php
 $local_url = '../';
 $nav_array = array();
-$nav_array['Home'] = $local_url.'index.php';
+$nav_array['Home'] = $local_url.'/index.php';
 include $local_url.'../section/header.php';
 ?>
 
@@ -92,4 +92,4 @@ echo '<br><br>';
 ?>
 
 
-<?php include $local_url.'footer.php';
+<?php include $local_url.'/../section/footer.php';

@@ -1,7 +1,7 @@
 <?php
 $local_url = '../';
 $nav_array = array();
-$nav_array[Home] = $local_url.'/index.php';
+$nav_array['Home'] = $local_url.'/index.php';
 include $local_url.'/header.php';
 ?>
 
@@ -12,4 +12,4 @@ echo 'PHP_SELF : '.$_SERVER['PHP_SELF'].'<br>';
 echo dirname($_SERVER['DOCUMENT_ROOT']."/nothing");
 ?>
 
-<?php include $local_url.'footer.php'; ?>
+<?php include $local_url.'/../section/footer.php'; ?>

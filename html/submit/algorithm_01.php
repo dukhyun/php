@@ -1,8 +1,8 @@
 <?php
-$local_url = '../';
+$local_url = '..';
 $nav_array = array();
-$nav_array['Home'] = $local_url.'index.php';
-include $local_url.'header.php';
+$nav_array['Home'] = $local_url.'/index.php';
+include $local_url.'/../section/header.php';
 ?>
 
 <?php
@@ -239,4 +239,4 @@ arr1 : <?php print_r(subarray($arr1)); ?><br>
 arr2 : <?php print_r(subarray($arr2)); ?><br>
 arr3 : <?php print_r(subarray($arr3)); ?><br>
 
-<?php include $local_url.'footer.php'; ?>
+<?php include $local_url.'/../section/footer.php'; ?>

@@ -1,10 +1,10 @@
 <?php
-$local_url = '../../';
+$local_url = '../..';
 $nav_array = array();
-$nav_array['Home'] = $local_url.'index.php';
+$nav_array['Home'] = $local_url.'/index.php';
 $css_array['input'] = 'style.css';
-include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
-include $_SERVER['DOCUMENT_ROOT'].'/../section/db_login.php';
+include $local_url.'/../section/header.php';
+include $local_url.'/../section/db_login.php';
 ?>
 
 <div class="fix main_content">
@@ -27,4 +27,4 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/db_login.php';
 	<?php include 'table_b.php' ?>
 </div>
 
-<?php include $_SERVER['DOCUMENT_ROOT'].'/../section/footer.php'; ?>
+<?php include $local_url.'/../section/footer.php'; ?>

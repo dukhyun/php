@@ -10,8 +10,8 @@ $css_array['nav'] = '/css/nav.css';
 <meta charset="UTF-8">
 <meta name="theme-color" content="#000000">
 <?php // title
-if (!$web_title) {
-	echo '</title>'.$web_title.'</title>';
+if (isset($web_title)) {
+	echo '<title>'.$web_title.'</title>';
 }
 ?>
 <?php // css
@@ -23,6 +23,9 @@ foreach ($css_array as $key => $link) {
 
 <body>
 <?php // navbar
-$nav_php = $_SERVER['DOCUMENT_ROOT'].'/../section/navbar.php';
-include $nav_php;
+if (isset($local_url)) {
+	include $local_url.'/../section/navbar.php';
+} else {
+	include $_SERVER['DOCUMENT_ROOT'].'/../section/navbar.php';
+}
 ?>

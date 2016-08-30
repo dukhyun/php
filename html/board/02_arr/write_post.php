@@ -38,14 +38,12 @@
 	}
 	</style>
 </head>
-<body>
-
 <?php
-	$local_url = '../../';
-	$navy = array();
-	$navy[Home] = $local_url.'index.php';
-	$navy[Board] = 'index.php';
-	include $local_url.'savefrom/navybar.php';
+$local_url = '../..';
+$nav_array = array();
+$nav_array['Home'] = $local_url.'/index.php';
+$nav_array['Board'] = 'index.php';
+include $local_url.'/../section/header.php';
 ?>
 
 <div>

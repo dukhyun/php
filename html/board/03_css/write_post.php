@@ -1,18 +1,11 @@
-<!DOCTYPE html>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<html>
-<head>
-<meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-
 <?php
-	$local_url = '../../';
-	$navy = array();
-	$navy[Home] = $local_url.'index.php';
-	$navy[Board] = 'index.php';
-	include $local_url.'savefrom/navybar.php';
+$local_url = '../..';
+$nav_array = array();
+$nav_array['Home'] = $local_url.'/index.php';
+$nav_array['Board'] = 'index.php';
+$css_array = array();
+$css_array['style'] = 'style.css';
+include $local_url.'/../section/header.php';
 ?>
 
 <div class="fix input_content">

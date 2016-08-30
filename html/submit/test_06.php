@@ -1,8 +1,8 @@
 <?php
-$local_url = '../';
+$local_url = '..';
 $nav_array = array();
-$nav_array['Home'] = $local_url.'index.php';
-include $local_url.'header.php';
+$nav_array['Home'] = '/index.php';
+include $local_url.'/../section/header.php';
 ?>
 
 <?php
@@ -155,7 +155,11 @@ include $local_url.'header.php';
 	} // 4.567799999999999268
 ?>
 
-<?php print_r(arr_floor(4.5678)); ?>
+<?php
+	echo 'arr_floor(4.5678): ';
+	print_r(arr_floor(4.5678));
+	echo '<br>';
+?>
 
 <p>======================================================================</p>
 
@@ -205,7 +209,7 @@ include $local_url.'header.php';
 <p>======================================================================</p>
 
 <?php
-	function arr_floor($number) {
+	function arr_floor2($number) {
 		$array = array();
 		
 		while (floor($number % 10) > 0) {
@@ -219,6 +223,10 @@ include $local_url.'header.php';
 	}
 ?>
 
-<?php print_r(arr_floor(45678)); ?>
+<?php
+	echo 'arr_floor2(45678): ';
+	print_r(arr_floor2(45678));
+	echo '<br>';
+?>
 
-<?php include $local_url.'footer.php'; ?>
+<?php include $local_url.'/../section/footer.php'; ?>

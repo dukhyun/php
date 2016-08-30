@@ -16,3 +16,12 @@ input[type=text] {
 input[type=submit] {
 	padding: 5px 10px;
 }
+
+#grade ul {
+	clear: both;
+}
+#grade li {
+	width: 100px;
+	float: left;
+	list-style: none;
+}

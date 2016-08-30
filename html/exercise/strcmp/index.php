@@ -2,7 +2,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <html>
 
-<p><a href="../index.php">돌아가기</a></p>
+<p><a href="/index.php">돌아가기</a></p>
 
 <h1>strcmp 연습</h1>
 

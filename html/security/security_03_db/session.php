@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER["DOCUMENT_ROOT"]."/../includes/my/mylib.php";
+// require_once $_SERVER["DOCUMENT_ROOT"]."/../includes/my/mylib.php";
 define("USER_ACCOUNTS_FILE_NAME", "user_accounts.txt");
 
 // 하나의 페이지에서 한 번만 호출되어야 한다.

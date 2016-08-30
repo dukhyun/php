@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<p><a href="../index.php">돌아가기</a></p>
+<p><a href="index.php">돌아가기</a></p>
 
 <?php
 	// 문자열 => 문자

@@ -1,12 +1,12 @@
 <?php
-$local_url = '../../';
+$local_url = '../..';
 $web_title = 'PHP 연습장 - 게시판';
 $nav_array = array();
-$nav_array['Home'] = $local_url.'index.php';
-$nav_array['Board'] = $local_url.'board/09_login/';
+$nav_array['Home'] = $local_url.'/index.php';
+$nav_array['Board'] = 'index.php';
 $css_array['board'] = 'style.css';
 // include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
-include $local_url.'../section/header.php';
+include $local_url.'/../section/header.php';
 require_once 'function.php';
 ?>
 
@@ -20,10 +20,10 @@ include_once 'login.php';
 <?php
 	// page 값이 존재하지 않으면 1page 출력
 	if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-		if ($_GET['page'] == false) {
-			$page = 1;
-		} else {
+		if (isset($_GET['page'])) {
 			$page = $_GET['page'];
+		} else {
+			$page = 1;
 		}
 	}
 	

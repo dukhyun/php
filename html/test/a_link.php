@@ -1,7 +1,7 @@
 <?php
 $local_url = '../';
 $nav_array = array();
-$nav_array['Home'] = $local_url.'index.php';
+$nav_array['Home'] = $local_url.'/index.php';
 include $local_url.'header.php';
 ?>
 
@@ -17,4 +17,4 @@ a:active { color: red; }
 	<a href="/">link'/'</a>
 </div>
 
-<?php include $local_url.'footer.php'; ?>
+<?php include $local_url.'/../section/footer.php'; ?>

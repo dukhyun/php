@@ -3,7 +3,7 @@
 <html>
 <style>
 	font#acc {
-		// color: red;
+		/* color: red; */
 		background-color: yellow;
 	}
 </style>

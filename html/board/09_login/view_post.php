@@ -1,11 +1,11 @@
 <?php
-$local_url = '../../';
+$local_url = '../..';
 $web_title = 'PHP 연습장 - 게시판';
 $nav_array = array();
-$nav_array['Home'] = $local_url.'index.php';
-$nav_array['Board'] = $local_url.'board/09_login/';
+$nav_array['Home'] = $local_url.'/index.php';
+$nav_array['Board'] = 'index.php';
 $css_array['board'] = 'style.css';
-include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
+include $local_url.'/../section/header.php';
 include 'function.php';
 ?>
 
@@ -17,7 +17,10 @@ include 'function.php';
 	
 	<?php
 		if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-			$page = $_GET['page'];
+			if (isset($_GET['page'])) {
+				$page = $_GET['page'];
+			}
+			
 			$board_id = $_GET['board_id'];
 			$post_id = $_GET['post_id'];
 		}
@@ -55,13 +58,13 @@ include 'function.php';
 	<div class="fix">
 		<h1>보기 화면</h1>
 	</div>
-	
+	<br>
 	<div class="text floatleft">번호</div>
 	<div class="output floatleft"><?php echo $post_id; ?></div>
 
 	<div class="text floatleft">작성자</div>
 	<?php
-	if ($author != NULL) {
+	if (isset($author)) {
 		printf('<div class="output floatleft">%s</div>', $author);
 	} else {
 		printf('<div class="output floatleft">%s</div>', $member_id);
@@ -87,8 +90,8 @@ include 'function.php';
 	<?php
 	// echo $member_id.', '.$_SESSION['id'];
 	$temp = sprintf('board_id=%d&post_id=%d', $board_id, $post_id);
-	if ($member_id) {
-		if ($member_id == $_SESSION['id']) {
+	if (isset($member_id)) {
+		if (isset($_SESSION['id']) && $member_id == $_SESSION['id']) {
 	?>
 		<a href="update_post.php?<?php echo $temp; ?>">수정</a>
 		<a href="delete_post.php?<?php echo $temp; ?>">삭제</a>
