@@ -8,13 +8,17 @@
 <div class="content">
 	<h1>폼 예시</h1>
 	<form action="login.php" method="post">
-		<span style="font=D2Coding;">이름</span>: <input type="text" name="name"><br>
+		이름: <input type="text" name="name"><br>
 		E-mail: <input type="text" name="email"><br>
-		Website: <input type="text" name="website"><br>
-		Comment: <textarea name="comment" rows="5" cols="40"></textarea><br>
-		성별:<br>
-		Female<input type="radio" name="gender" value="female"><br>
-		Male<input type="radio" name="gender" value="male"><br>
+		Website: <input type="text" name="website">
+		<br>
+		Comment: <br>
+		<textarea name="comment" rows="5" cols="40"></textarea>
+		<br>
+		성별: <?php // echo 'input type="radio"<br>'; ?>
+		Female<input type="radio" name="gender" value="female">
+		Male<input type="radio" name="gender" value="male">
+		<br>
 		<input type="submit" value="제출">
 	</form>
 </div>

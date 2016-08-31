@@ -1,8 +1,8 @@
 <?php
-$local_url = '../';
+$local_url = '..';
 $nav_array = array();
 $nav_array['Home'] = $local_url.'/index.php';
-include $local_url.'header.php';
+include $local_url.'/../section/header.php';
 ?>
 
 <style>

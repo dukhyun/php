@@ -1,7 +1,7 @@
 <?php
-	if ($local_url == '') {
-		$local_url = '../';
-	}
+if (!isset($local_url)) {
+	$local_url = $_SERVER['DOCUMENT_ROOT'];
+}
 ?>
 
 <link rel="stylesheet" type="text/css" href="<?php echo $local_url; ?>style.css">

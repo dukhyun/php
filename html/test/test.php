@@ -1,15 +1,12 @@
 <?php
-$local_url = '../';
+$local_url = '..';
 $nav_array = array();
-$nav_array['Home'] = $local_url.'/index.php';
-include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
+$nav_array['Home'] = '/index.php';
+include $local_url.'/../section/header.php';
 ?>
 
-
-<?php include $_SERVER['DOCUMENT_ROOT'].'/../section/footer.php'; ?>
-
-
+<?php include $local_url.'/../section/footer.php'; ?>
 
 <?php // db_login
-include $_SERVER['DOCUMENT_ROOT'].'/../section/db_login.php';
+include $local_url.'/../section/db_login.php';
 ?>
