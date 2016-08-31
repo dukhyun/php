@@ -53,9 +53,9 @@ form input[type=submit] {
 	background-color: yellow;
 }
 
-/* .table_style div {
+.table_style div {
 	display: none;
 }
 .table_style .diff {
 	display: inline; !important
-} */
+}

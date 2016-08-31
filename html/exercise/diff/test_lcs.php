@@ -10,10 +10,10 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 <?php
 	include 'function.php';
 	
-	$text_a = 'axcbcbbeh';
-	$text_b = 'azbcdefg';
+	$text_a = 'jaxsbeh';
+	$text_b = 'xxazbcddefg';
 	
-	$diff_a = str_arr($text_a);
+	$diff_a = str_arr($text_a); // str_split($text_a);
 	$diff_b = str_arr($text_b);
 	
 	// Diff => 2차배열 저장
@@ -42,6 +42,8 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 	// best_path
 	$best_path = array();
 	$diff_check = array();
+	$match_index_a = array();
+	$match_index_b = array();
 	
 	$temp = -1;
 	for ($a = 0; $a < count($diff_a); $a += 1) {
@@ -50,6 +52,8 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 			if ($path[$a][$b] == 3) {
 				$best_path[$a][$b] = $diff_a[$a];
 				$diff_check[$a][$b] = 'unchanged';
+				$match_index_a[] = $a;
+				$match_index_b[] = $b;
 				$temp = $b;
 				break;
 			} else if ($path[$a][$b] == 1 || $path[$a][$b] == 0) {
@@ -66,11 +70,65 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 		}
 	}
 	
+	// match_index() function
+	
 	// diff_result
 	$diff_result = array();
-	$diff_result[0] = str_arr_diff($text_a);
-	$diff_result[1] = str_arr_diff($text_b);
+	$diff_result[0] = array();
+	$diff_result[1] = array();
+	for ($i = 0; $i <= count($match_index_a); $i += 1) {
+		if ($i == count($match_index_a)) {
+			$index_a = count($diff_a);
+			$index_b = count($diff_b);
+		} else {
+			$index_a = $match_index_a[$i];
+			$index_b = $match_index_b[$i];
+		}
+		
+		if ($i == 0) {
+			// 첫번째 배열
+			$previous_index_a = -1;
+			$previous_index_b = -1;
+		} else {
+			$previous_index_a = $match_index_a[$i - 1];
+			$previous_index_b = $match_index_b[$i - 1];
+		}
+		
+		$length_a = $index_a - $previous_index_a;
+		$length_b = $index_b - $previous_index_b;
+		
+		$max_length = max($length_a, $length_b);
+		
+		$j = $previous_index_a + 1;
+		$k = $previous_index_b + 1;
+		
+		// add, del, blank 관련
+		for ($count = 0; $count < $max_length - 1; $count++) {
+			if ($j < $index_a) {
+				$diff_result[0][] = array('del', $diff_a[$j]);
+			} else {
+				$diff_result[0][] = array('blank', null);
+			}
+			
+			if ($k < $index_b) {
+				$diff_result[1][] = array('add', $diff_b[$k]);
+			} else {
+				$diff_result[1][] = array('blank', null);
+			}
+			
+			$j += 1;
+			$k += 1;
+		}
+		
+		if ($i !== count($match_index_a)) {
+			// 매칭된 대상
+			$match_char = $diff_a[$index_a]; // = $diff_result[1][$index_b];
+			$diff_result[0][] = array('unchanged', $match_char);
+			$diff_result[1][] = array('unchanged', $match_char);
+		}
+	}
 	
+	/*
 	$length = 0;
 	foreach ($diff_b as $b => $_b) {
 		foreach ($diff_a as $a => $_a) {
@@ -92,6 +150,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 			}
 		}
 	}
+	*/
 	
 	echo '<br>';
 ?>
