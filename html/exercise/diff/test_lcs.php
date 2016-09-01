@@ -47,8 +47,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 	
 	$temp = -1;
 	for ($a = 0; $a < count($diff_a); $a += 1) {
-		$b = $temp + 1;
-		while (true) {
+		for ($b = $temp + 1; $b < count($diff_b); $b += 1) {
 			if ($path[$a][$b] == 3) {
 				$best_path[$a][$b] = $diff_a[$a];
 				$diff_check[$a][$b] = 'unchanged';
@@ -56,7 +55,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 				$match_index_b[] = $b;
 				$temp = $b;
 				break;
-			} else if ($path[$a][$b] == 1 || $path[$a][$b] == 0) {
+			} else if ($path[$a][$b] == 1) {
 				$best_path[$a][$b] = $diff_a[$a];
 				$diff_check[$a][$b] = 'del';
 				$temp = $b - 1;
@@ -66,7 +65,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 				$diff_check[$a][$b] = 'add';
 				// echo $a.', '.$b.', '.$diff_check[$a][$b].'<br>';
 			}
-			$b += 1;
+			// $b += 1;
 		}
 	}
 	
@@ -154,7 +153,6 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 	
 	echo '<br>';
 ?>
-
 <div class="fix main_content">
 	<div class="table_style">
 		<p><?php echo 'StringA: '.$text_a.'<br>'; ?></p>

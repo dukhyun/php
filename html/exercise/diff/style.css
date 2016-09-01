@@ -9,7 +9,18 @@ form li, ul li {
 }
 .diff_text {
 	width: 400px;
-	margin-bottom: 10px;
+}
+ol.diff_text {
+	padding-left: 40px;
+	padding-right: 10px;
+	line-height: 22px;
+}
+ol.diff_text li {
+	white-space: nowrap;
+	/* text-overflow: ellipsis; */
+}
+ol.diff_text div {
+	height: 22px;
 }
 form textarea, .diff_content textarea {
 	width: 100%;
@@ -53,9 +64,9 @@ form input[type=submit] {
 	background-color: yellow;
 }
 
-.table_style div {
+/* .table_style div {
 	display: none;
 }
 .table_style .diff {
 	display: inline; !important
-}
+} */

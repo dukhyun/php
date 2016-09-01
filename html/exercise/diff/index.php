@@ -13,11 +13,11 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 			<ul>
 				<li class="diff_text floatleft">
 					<label>Orignal Text</label>
-					<textarea name="diff_ori"></textarea>
+					<textarea name="txt_a"></textarea>
 				</li>
 				<li class="diff_text floatleft">
 					<label>Changed Text</label>
-					<textarea name="diff_cha"></textarea>
+					<textarea name="txt_b"></textarea>
 				</li>
 			</ul>
 			<ul>
