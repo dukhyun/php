@@ -1,5 +1,5 @@
 <?php
-$local_url = '';
+$local_url = '.';
 $web_title = 'PHP 연습장';
 $nav_array = array();
 $nav_array['Home'] = $local_url.'';
