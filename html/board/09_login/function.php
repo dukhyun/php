@@ -72,7 +72,7 @@ function start_session() {
         $httponly);
  
     session_start();
-    session_regenerate_id(true);
+    session_regenerate_id();
 }
 
 // 쿠키 삭제
