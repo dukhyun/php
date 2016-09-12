@@ -6,13 +6,27 @@ $nav_array['Home'] = $local_url.'';
 include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 ?>
 
-<h1 id="hh">Script7</h1>
+<h1 id="hh">Script8</h1>
 <br>
-<header>
 <script>
-var number = 5;
+var a = 1;
+var b = 2;
+function myFunc() {
+	a = 5;
+	var b = 5;
+	var c = 5;
+	d = 5;
+}
 </script>
-</header>
+<script>
+document.write('javascript<br>');
+myFunc();
+document.write('a = ', a, '<br>');
+document.write('b = ', b, '<br>');
+document.write('c = ', c, '<br>');
+document.write('d = ', d, '<br>');
+</script>
+
 
 <?php
 $number = 4;
@@ -24,6 +38,7 @@ function my_function() {
 ?>
 
 <?php 
+echo 'PHP<br>';
 echo '지역변수 : '.my_function();
 echo '<br>';
 echo '전역변수 : '.$number;

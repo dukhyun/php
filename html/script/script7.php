@@ -8,7 +8,6 @@ include $_SERVER['DOCUMENT_ROOT'].'/../section/header.php';
 
 <h1 id="hh">Script7</h1>
 <br>
-<header>
 <script>
 var global = 'global'; // 선언
 function myFunction() {
@@ -23,7 +22,13 @@ function myFunction() {
 	}
 }
 </script>
-</header>
+<script>
+document.write(global, '<br>');
+myFunction();
+document.write(global, '<br>');
+document.write(local, '<br>');
+document.write(mistake, '<br>');
+</script>
 
 <?php
 $global = 'global';
