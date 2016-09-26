@@ -61,7 +61,7 @@
 	// echo '3-3 결과: '.htmlspecialchars(preg_replace($regex, '<$1$2>', $result));
 	echo '<br><br>';
 	
-	$text = '<p  class = "my_class"   id = "a2" >4번    예제</p>';
+	$text = '<p  class = "my_class"   id  =  "a2" >4번    예제</p>';
 	echo '원래 값: '.htmlspecialchars($text).'<br>';
 	$regex = '/\s+\s/';
 	$result = implode(' ', preg_split($regex, $text));
