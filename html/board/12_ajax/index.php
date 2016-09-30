@@ -18,7 +18,7 @@ include_once 'login.php';
 ?>
 
 <?php
-	// page 값이 존재하지 않으면 1page 출력
+	// page 값이 존재하지 않으면 1 page 출력
 	if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 		if (isset($_GET['page'])) {
 			$page = $_GET['page'];
