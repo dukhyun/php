@@ -4,7 +4,6 @@
 <body>
 <script>
 var regex = /"([a-z_]+)"/;
-var text = "<span class=\"my_class\">";
 var text = '<span class="my_class">';
 var result = text.match(regex);
 document.write(result);
